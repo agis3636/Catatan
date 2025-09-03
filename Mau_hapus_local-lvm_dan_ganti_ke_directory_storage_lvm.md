@@ -1,68 +1,47 @@
-🔹 Cek kondisi sekarang
-
-Jalankan:
+🔹Cek kondisi sekarang, Jalankan:
 
     lsblk
     pvs
     vgs
     lvs
-
-
 Untuk lihat struktur disk, physical volume (PV), volume group (VG), dan logical volume (LV).
 Biasanya hasil default Proxmox seperti ini:
+- /dev/pve/root → untuk OS Proxmox
+- /dev/pve/swap → swap
+- /dev/pve/data (local-lvm) → dipakai buat VM/CT
 
-/dev/pve/root → untuk OS Proxmox
-
-/dev/pve/swap → swap
-
-/dev/pve/data (local-lvm) → dipakai buat VM/CT
-
-🔹 Opsi yang bisa dilakukan
-1. Menghapus local-lvm (jika tidak dipakai)
-
+# Menghapus local-lvm (jika tidak dipakai)
 Jika kamu mau hapus local-lvm dan ubah jadi storage directory biasa (lebih fleksibel):
 
     lvremove pve/data
-
 ✅ Langkah-langkah
 
 Pastikan LV data sudah terhapus
 Jalankan:
 
     lvs
-
-
 Harusnya sudah tidak ada pve/data.
-
 Cek ruang kosong di VG
 
     vgs
-
-
 Kolom VFree harus ada ~11 GB free.
 
-Perbesar root
+# Extend atau Perbesar root
 Jalankan:
 
     lvextend -l +100%FREE /dev/pve/root
-
-
 Ini akan ambil semua ruang kosong di VG pve dan menambahkannya ke pve/root.
-
-Resize filesystem
+## Resize filesystem
 Karena root pakai ext4, lakukan:
 
     resize2fs /dev/pve/root
-
 Cek hasil
 
     df -h /
-
-
 Harusnya ukuran root sudah bertambah dari 18 GB → ±29 GB.
-
-
 Jadi sekarang root (/dev/mapper/pve-root) ukurannya 35G, dan mas mau “potong” sekitar 10G buat dijadikan LV baru (misalnya untuk storage terpisah atau testing).
+
+---
 
 ⚠️ Perhatian: ini agak riskan karena kita harus mengecilkan filesystem root yang sedang dipakai. Kalau salah langkah bisa bikin sistem tidak boot. Jadi backup dulu atau minimal lakukan dari console (bukan lewat SSH).
 
@@ -135,48 +114,36 @@ Jadi walaupun df -h menunjukkan free space 30G, itu adalah kosong di filesystem 
 
 Karena itu tidak bisa bikin LV baru langsung (soalnya VG pve sudah habis dialokasikan ke pve-root).
 
-✅ Solusi yang Aman
+---
+
+# ✅ Solusi yang Aman
 
 Kalau mau bikin partisi/volume baru (agis), ada beberapa opsi:
-
 1. Buat folder saja di root filesystem
 
-Karena pve-root masih punya free 30G, paling aman dan gampang:
+Karena pve-root masih punya free 30G, paling aman dan gampang
 
     mkdir /agis
-
-
-→ nanti df -h tetap nunjuk 30G, tapi kamu bisa pakai /agis sebagai storage.
-Lalu tambahkan ke Proxmox:
+nanti df -h tetap nunjuk 30G, tapi kamu bisa pakai /agis sebagai storage.
+2. Lalu tambahkan ke Proxmox:
 
     pvesm add dir agis-storage --path /agis --content iso,backup,vztmpl,images
+- agis-storage → nama storage (bebas, asal unik).
+- --path /agis → lokasi folder yang barusan dibuat.
+- --content ... → jenis konten yang bisa disimpan (bisa ditambah/dikurangi, contoh: images,iso,backup,vztmpl,snippets).
+
+3. Verifikasi storage
 
 .
 
-    agis-storage → nama storage (bebas, asal unik).
-    
-    --path /agis → lokasi folder yang barusan dibuat.
-    
-    --content ... → jenis konten yang bisa disimpan (bisa ditambah/dikurangi, contoh: images,iso,backup,vztmpl,snippets).
-
-Verifikasi storage
-
-
     pvesm status
+
 Harus muncul agis-storage dengan status active.
-
 Cek di Web GUI
-
 - Masuk ke Datacenter → Storage.
-
 - Kamu akan lihat storage baru bernama agis-storage.
-
 - Bisa dipakai untuk upload ISO, backup, atau taruh disk VM.
-
 📌 Dengan cara ini:
-
 Tidak ada partisi yang disentuh.
-
 OS tetap aman.
-
 Folder /agis bisa memanfaatkan free 30G di root filesystem.
