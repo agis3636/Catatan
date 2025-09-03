@@ -1,0 +1,62 @@
+🔹 Cek kondisi sekarang
+
+Jalankan:
+
+  lsblk
+  pvs
+  vgs
+  lvs
+
+
+Untuk lihat struktur disk, physical volume (PV), volume group (VG), dan logical volume (LV).
+Biasanya hasil default Proxmox seperti ini:
+
+/dev/pve/root → untuk OS Proxmox
+
+/dev/pve/swap → swap
+
+/dev/pve/data (local-lvm) → dipakai buat VM/CT
+
+🔹 Opsi yang bisa dilakukan
+1. Menghapus local-lvm (jika tidak dipakai)
+
+Jika kamu mau hapus local-lvm dan ubah jadi storage directory biasa (lebih fleksibel):
+
+  lvremove pve/data
+
+✅ Langkah-langkah
+
+Pastikan LV data sudah terhapus
+Jalankan:
+
+  lvs
+
+
+Harusnya sudah tidak ada pve/data.
+
+Cek ruang kosong di VG
+
+  vgs
+
+
+Kolom VFree harus ada ~11 GB free.
+
+Perbesar root
+Jalankan:
+
+  lvextend -l +100%FREE /dev/pve/root
+
+
+Ini akan ambil semua ruang kosong di VG pve dan menambahkannya ke pve/root.
+
+Resize filesystem
+Karena root pakai ext4, lakukan:
+
+  resize2fs /dev/pve/root
+
+Cek hasil
+
+  df -h /
+
+
+Harusnya ukuran root sudah bertambah dari 18 GB → ±29 GB.
