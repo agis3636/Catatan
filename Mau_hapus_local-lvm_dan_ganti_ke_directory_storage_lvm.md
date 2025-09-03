@@ -143,13 +143,40 @@ Kalau mau bikin partisi/volume baru (agis), ada beberapa opsi:
 
 Karena pve-root masih punya free 30G, paling aman dan gampang:
 
-mkdir /agis
+    mkdir /agis
 
 
 → nanti df -h tetap nunjuk 30G, tapi kamu bisa pakai /agis sebagai storage.
 Lalu tambahkan ke Proxmox:
 
-pvesm add dir agis-storage --path /agis --content iso,backup,vztmpl,images
+    pvesm add dir agis-storage --path /agis --content iso,backup,vztmpl,images
+
+.
+
+    agis-storage → nama storage (bebas, asal unik).
+    
+    --path /agis → lokasi folder yang barusan dibuat.
+    
+    --content ... → jenis konten yang bisa disimpan (bisa ditambah/dikurangi, contoh: images,iso,backup,vztmpl,snippets).
+
+Verifikasi storage
 
 
-💡 Ini cara paling simpel, tidak merusak partisi sama sekali.
+    pvesm status
+Harus muncul agis-storage dengan status active.
+
+Cek di Web GUI
+
+- Masuk ke Datacenter → Storage.
+
+- Kamu akan lihat storage baru bernama agis-storage.
+
+- Bisa dipakai untuk upload ISO, backup, atau taruh disk VM.
+
+📌 Dengan cara ini:
+
+Tidak ada partisi yang disentuh.
+
+OS tetap aman.
+
+Folder /agis bisa memanfaatkan free 30G di root filesystem.
