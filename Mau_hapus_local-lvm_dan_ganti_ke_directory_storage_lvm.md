@@ -125,3 +125,31 @@ Tambahkan ke Proxmox WebUI
     ID: vmdata
 
 Sekarang Proxmox punya storage baru 10G.
+
+Oke, paham 👍
+Berarti kondisinya gini:
+
+Disk 34G → semua sudah dialokasikan ke VG pve → pve-root = 34G (ext4).
+
+Jadi walaupun df -h menunjukkan free space 30G, itu adalah kosong di filesystem ext4 root, bukan free PE di LVM.
+
+Karena itu tidak bisa bikin LV baru langsung (soalnya VG pve sudah habis dialokasikan ke pve-root).
+
+✅ Solusi yang Aman
+
+Kalau mau bikin partisi/volume baru (agis), ada beberapa opsi:
+
+1. Buat folder saja di root filesystem
+
+Karena pve-root masih punya free 30G, paling aman dan gampang:
+
+mkdir /agis
+
+
+→ nanti df -h tetap nunjuk 30G, tapi kamu bisa pakai /agis sebagai storage.
+Lalu tambahkan ke Proxmox:
+
+pvesm add dir agis-storage --path /agis --content iso,backup,vztmpl,images
+
+
+💡 Ini cara paling simpel, tidak merusak partisi sama sekali.
