@@ -125,3 +125,67 @@ pvesm add dir agis-storage --path /agis --content iso,backup,vztmpl,images
 mau saya bikinkan **angka pasti** (berapa G shrink `pve-root`) sesuai data real di server kamu? Soalnya kalau asal kasih angka bisa bikin OS tidak muat (misalnya kalau root 19G ternyata masih kurang).
 
 Mau saya kasih cara **cek berapa minimal ukuran aman untuk root Proxmox** dulu?
+
+---
+
+---
+
+Oke saya jelasin pelan² biar jelas ya 🙏
+
+---
+
+### Kondisi awal disk kamu:
+
+* Total disk: **34 GB**
+* Semuanya dipakai oleh **LV `pve-root`** (ext4)
+* Isi OS: baru kepakai ±2.5 GB
+* Sisa kosong di filesystem root: ±30 GB
+
+---
+
+### Tujuan kamu:
+
+* Mau tetap pakai root untuk OS Proxmox (jangan dihapus).
+* Mau bikin **partisi/volume baru** bernama `agis` dengan ukuran **15 GB**.
+
+---
+
+### Kenapa ada angka 19 GB dan 15 GB tadi?
+
+Karena total disk = 34 GB, kalau kamu mau bikin LV baru 15 GB (`agis`), maka root harus diperkecil dulu supaya ada ruang tersisa.
+
+* Root sekarang: **34 GB penuh**
+* Kalau kamu kasih **15 GB ke agis**, sisa untuk root = **34 GB – 15 GB = 19 GB**
+
+👉 Jadi:
+
+* `pve-root` (root OS Proxmox) → **19 GB**
+* `pve-agis` (baru) → **15 GB**
+
+---
+
+### Skema sebelum & sesudah
+
+**Sebelum** (default install):
+
+```
+Disk 34G
+└── pve-root 34G (ext4, OS Proxmox)
+```
+
+**Sesudah shrink + bikin agis**:
+
+```
+Disk 34G
+├── pve-root 19G (ext4, OS Proxmox)
+└── pve-agis 15G (ext4, storage agis)
+```
+
+---
+
+📌 Jadi angka **19G** = sisa untuk root setelah diperkecil.
+📌 Angka **15G** = ukuran LV baru `agis` yang kamu minta.
+
+---
+
+Mau saya kasih **command lengkap** di GParted Live untuk melakukan shrink ke **19 GB** lalu bikin `agis` **15 GB**, langsung tinggal copy-paste?
