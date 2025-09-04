@@ -30,9 +30,9 @@ Makanya OpenSSH secara default memblokir root login pakai password.
 ---
 📂 Opsi PermitRootLogin di /etc/ssh/sshd_config
 1. PermitRootLogin prohibit-password (default modern Debian/Ubuntu)
-        - Artinya: root boleh login via SSH, tapi hanya dengan SSH key, bukan password.
-        - Password root tidak diterima.
-- Lebih aman, karena hacker tidak bisa brute-force password.
+     - Artinya: root boleh login via SSH, tapi hanya dengan SSH key, bukan password.
+     - Password root tidak diterima.
+     - Lebih aman, karena hacker tidak bisa brute-force password.
 2. PermitRootLogin yes
   - Artinya: root boleh login dengan password ATAU SSH key.
   - Ini yang kamu butuhkan kalau cuma punya user root dan belum set SSH key.
