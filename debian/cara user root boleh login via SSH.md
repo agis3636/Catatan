@@ -1,28 +1,26 @@
 OpenSSH di Debian (terbaru), secara default disable root login via password (PermitRootLogin prohibit-password).
 Container/OS kamu memang cuma punya user root. Karena itu SSH gagal.
 ---
-🔧 Solusi
-1 Allow root login via SSH (kurang aman)
+# 🔧 Allow root login via SSH (kurang aman)
+1. Edit /etc/ssh/sshd_config di dalam container:
 
-2 Edit /etc/ssh/sshd_config di dalam container:
+        nano /etc/ssh/sshd_config
+2. Cari baris:
 
-    nano /etc/ssh/sshd_config
-3 Cari baris:
+        PermitRootLogin prohibit-password
+3. Ubah jadi:
 
-    PermitRootLogin prohibit-password
-4 Ubah jadi:
+        PermitRootLogin yes
+4. Simpan, lalu restart SSH:
 
-    PermitRootLogin yes
-5 Simpan, lalu restart SSH:
-
-    systemctl restart ssh
+        systemctl restart ssh
 Sekarang bisa SSH root@container pakai password.
 
 ---
 ---
 ---
 
-Bagus banget pertanyaannya 👍 mari saya jelasin detail biar clear 👇
+# 👍 mari simak penjelasan detail biar clear 👇
 ---
 🔑 SSH & Root Login
 - **SSH** (Secure Shell) = protokol untuk login remote ke server.
