@@ -34,15 +34,14 @@ Makanya OpenSSH secara default memblokir root login pakai password.
      - Password root tidak diterima.
      - Lebih aman, karena hacker tidak bisa brute-force password.
 2. PermitRootLogin yes
-
    - Artinya: root boleh login dengan password ATAU SSH key.
-  - Ini yang kamu butuhkan kalau cuma punya user root dan belum set SSH key.
-  - Kurang aman di server yang terbuka ke internet → brute-force gampang.
+   - Ini yang kamu butuhkan kalau cuma punya user root dan belum set SSH key.
+   - Kurang aman di server yang terbuka ke internet → brute-force gampang.
 3. PermitRootLogin no
-  - Root tidak boleh login via SSH sama sekali.
-  - Biasanya dipakai kalau sysadmin hanya login pakai user biasa + sudo.
+   - Root tidak boleh login via SSH sama sekali.
+   - Biasanya dipakai kalau sysadmin hanya login pakai user biasa + sudo.
 4. PermitRootLogin without-password (lama, sama dengan prohibit-password)
-  - Alias lama, sekarang sudah diganti.
+   - Alias lama, sekarang sudah diganti.
 ---
 ⚡ Jadi kenapa kamu harus ubah jadi PermitRootLogin yes?
 Karena:
