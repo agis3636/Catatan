@@ -1,6 +1,7 @@
 Betul sekali! Anda sangat tepat. Dengan 2 HDD, eksperimen jadi jauh lebih aman dan menyenangkan:
-•	HDD 1: untuk sistem Proxmox dan VM yang sudah ada (jangan disentuh).
-•	HDD 2: untuk "korban" eksperimen, bisa diformat ulang sesuka hati untuk mencoba ZFS, LVM, LVM-Thin, dll.
+- HDD 1: untuk sistem Proxmox dan VM yang sudah ada (jangan disentuh).
+- HDD 2: untuk "korban" eksperimen, bisa diformat ulang sesuka hati untuk mencoba ZFS, LVM, LVM-Thin, dll.
+
 Tapi, jangan khawatir! Meski cuma punya 1 HDD, masih ada beberapa cara kreatif dan aman untuk Anda belajar "ganti-ganti" dan mencoba fitur storage Proxmox lainnya.
 
 # Solusi untuk Eksperimen dengan 1 HDD:
