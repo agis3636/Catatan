@@ -24,21 +24,27 @@ o	Perintah ini membuat file test_disk.img berukuran 20.000 MB (20GB) yang berisi
 Perintah ini akan membuat "disk virtual" dari file tersebut. Cek dengan perintah lsblk, Anda akan melihat device baru seperti loop0.
 
 3.	Gunakan Loop Device itu untuk Eksperimen!
+
 Sekarang, di Web Interface Proxmox, Anda akan melihat "disk baru" ini muncul di:
+
 `Node -> System -> Disks`
+
 Ia akan terlihat seperti disk fisik biasa (misal /dev/loop0). Anda sekarang bisa:
+
 o	Membuat ZFS Pool di atas loop0.
 o	Membuat Partisi LVM di atas loop0.
 o	Initialize Disk dan tambahkan sebagai storage LVM atau LVM-Thin.
 o	Intinya, hampir semua bisa dicoba!
 
 4.	Bersih-bersih setelah selesai:
+
 Jika eksperimen selesai dan ingin membebaskan space, hapus storage yang dibuat dari Web Interface, lalu:
    ```bash
    losetup -d /dev/loop0  # Hapus loop device
    rm /root/test_disk.img # Hapus file imagenya
    ```
 *Kelebihan Cara Ini:*
+
 •	Aman 100% untuk sistem utama Anda. Anda hanya bermain dengan sebuah file.
 •	Bisa dicoba berulang kali. Jika gagal, hapus file dan buat lagi.
 •	Tidak perlu hardware tambahan.
