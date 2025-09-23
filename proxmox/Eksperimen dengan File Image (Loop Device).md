@@ -15,7 +15,7 @@ Login via SSH ke Proxmox dan jalankan perintah:
    ```bash
    dd if=/dev/zero of=/root/test_disk.img bs=1M count=20000 status=progress
    ```
-o	Perintah ini membuat file test_disk.img berukuran 20.000 MB (20GB) yang berisi angka nol.
+Perintah ini membuat file test_disk.img berukuran 20.000 MB (20GB) yang berisi angka nol.
 
 2.	Attach File sebagai Loop Device:
    ```bash
@@ -30,11 +30,10 @@ Sekarang, di Web Interface Proxmox, Anda akan melihat "disk baru" ini muncul di:
 `Node -> System -> Disks`
 
 Ia akan terlihat seperti disk fisik biasa (misal /dev/loop0). Anda sekarang bisa:
-
-o	Membuat ZFS Pool di atas loop0.
-o	Membuat Partisi LVM di atas loop0.
-o	Initialize Disk dan tambahkan sebagai storage LVM atau LVM-Thin.
-o	Intinya, hampir semua bisa dicoba!
+- Membuat ZFS Pool di atas loop0.
+- Membuat Partisi LVM di atas loop0.
+- Initialize Disk dan tambahkan sebagai storage LVM atau LVM-Thin.
+- Intinya, hampir semua bisa dicoba!
 
 4.	Bersih-bersih setelah selesai:
 
@@ -44,10 +43,9 @@ Jika eksperimen selesai dan ingin membebaskan space, hapus storage yang dibuat d
    rm /root/test_disk.img # Hapus file imagenya
    ```
 *Kelebihan Cara Ini:*
-
-•	Aman 100% untuk sistem utama Anda. Anda hanya bermain dengan sebuah file.
-•	Bisa dicoba berulang kali. Jika gagal, hapus file dan buat lagi.
-•	Tidak perlu hardware tambahan.
+- Aman 100% untuk sistem utama Anda. Anda hanya bermain dengan sebuah file.
+- Bisa dicoba berulang kali. Jika gagal, hapus file dan buat lagi.
+- Tidak perlu hardware tambahan.
 
 ---
 
@@ -58,17 +56,18 @@ Anda punya flashdisk USB yang tidak terpakai? Itu bisa jadi "disk kedua" untuk e
 2.	Buka Node -> System -> Disks. Flashdisk Anda akan muncul di sini (e.g., /dev/sdb).
 3.	HATI-HATI! Pastikan Anda memilih disk yang benar (flashdisk Anda, jangan sampai salah pilih disk sistem!).
 4.	Anda sekarang bisa mem-format, membuat ZFS pool, atau setup LVM di flashdisk itu.
+
 Peringatan:
-•	Pastikan sekali lagi bahwa Anda memilih flashdisk, bukan HDD utama Anda! Semua data di flashdisk akan hilang.
-•	Performa flashdisk biasanya jelek untuk menjalankan VM, tapi cukup untuk belajar konsepnya.
+- Pastikan sekali lagi bahwa Anda memilih flashdisk, bukan HDD utama Anda! Semua data di flashdisk akan hilang.
+- Performa flashdisk biasanya jelek untuk menjalankan VM, tapi cukup untuk belajar konsepnya.
 
 ---
 
 ## Eksperimen dengan Storage Berbasis Jaringan (Network Storage)
 
 Seperti yang disebutkan sebelumnya, ini adalah eksperimen yang sangat aman dan justru sangat berguna di dunia nyata.
-•	Coba Mount NFS/CIFS dari PC/Laptop/NAS lain di jaringan Anda.
-•	Atau, setup NFS Server langsung di Proxmox Anda sendiri (di dalam sebuah Container atau VM) untuk mensimulasikan server lain. Lalu, mount NFS share tersebut kembali ke Proxmox host.
+- Coba Mount NFS/CIFS dari PC/Laptop/NAS lain di jaringan Anda.
+- Atau, setup NFS Server langsung di Proxmox Anda sendiri (di dalam sebuah Container atau VM) untuk mensimulasikan server lain. Lalu, mount NFS share tersebut kembali ke Proxmox host.
 
 ---
 
