@@ -16,20 +16,20 @@ Pastikan sesuai, misalnya proxmox-node1.
 nano /etc/hostname
 ```
 
-Ubah isinya jadi nama host sesuai node.
+- Ubah isinya jadi nama host sesuai node.
 Contoh Node1:
 
 ```bash
 proxmox-node1
 ```
 
-Buka file:
+- Edit file file:
 
 ```bash
 nano /etc/hosts
 ```
 
-Sesuaikan misalnya seperti ini (anggap pakai jaringan 192.168.100.x).
+- Sesuaikan misalnya seperti ini (anggap pakai jaringan 192.168.100.x).
 Pastikan sudah seperti yang kita bahas sebelumnya:
 
 ```
@@ -62,7 +62,6 @@ Kalau masih ngeyel, bisa sekalian reboot node:
 reboot
 ```
 
-**Catatan**: IP & hostname harus konsisten di semua node.
 👉 Setelah langkah ini, di Web GUI tiap node akan tampil dengan nama unik (proxmox-node1).
 
 ---
@@ -87,6 +86,8 @@ iface ens18 inet static
     gateway 192.168.100.1
 ```
 
+---
+
 > `ens18` = nama NIC di VM. Bisa jadi `eth0` atau lain → cek dulu pakai `ip a`.
 
 ---
@@ -97,9 +98,12 @@ Setelah diubah, restart network:
 
 ```bash
 systemctl restart networking
-atau reboot VM.
 ```
 
----
+Kalau masih ngeyel, bisa sekalian reboot node:
 
-Kalau bisa, berarti jaringan & hostname sudah beres.
+```bash
+reboot
+```
+
+**Catatan**: IP & hostname harus konsisten di semua node. Kalau bisa, berarti jaringan & hostname sudah beres.
