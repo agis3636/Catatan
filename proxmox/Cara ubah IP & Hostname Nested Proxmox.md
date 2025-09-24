@@ -29,16 +29,14 @@ proxmox-node1
 nano /etc/hosts
 ```
 
-- Sesuaikan misalnya seperti ini (anggap pakai jaringan 192.168.100.x).
-Pastikan sudah seperti yang kita bahas sebelumnya:
+- Sesuaikan misalnya seperti ini (anggap pakai jaringan 192.168.100.x). Pastikan sudah seperti yang kita bahas sebelumnya:
 
 ```
 127.0.0.1       localhost
 192.168.100.11  proxmox-node1
 ```
 
-perintah di bawah ini, kalau ingin saling terhubung dengan vm proxmox lain.
-ini jika ada 3 vm proxmox, nanti bisa saling terhubung (opsional):
+- perintah di bawah ini, kalau ingin saling terhubung dengan vm proxmox lain. ini jika ada 3 vm proxmox, nanti bisa saling terhubung (opsional):
 
 ```
 127.0.0.1       localhost
@@ -47,16 +45,14 @@ ini jika ada 3 vm proxmox, nanti bisa saling terhubung (opsional):
 192.168.100.13  proxmox-node3
 ```
 
-- Restart PVE services
-
-Setelah itu, jalankan:
+- Restart PVE services. Setelah itu, jalankan:
 
 ```bash
 systemctl restart pveproxy
 systemctl restart pvedaemon
 ```
 
-Kalau masih ngeyel, bisa sekalian reboot node:
+- Kalau masih ngeyel, bisa sekalian reboot node:
 
 ```bash
 reboot
@@ -74,7 +70,7 @@ reboot
 nano /etc/network/interfaces
 ```
 
-Contoh Node1 (IP 192.168.100.11):
+- Contoh Node1 (IP 192.168.100.11):
 
 ```
 auto lo
@@ -92,15 +88,13 @@ iface ens18 inet static
 
 ---
 
-- Restart Network / Reboot
-
-Setelah diubah, restart network:
+- Restart Network / Reboot. Setelah diubah, restart network:
 
 ```bash
 systemctl restart networking
 ```
 
-Kalau masih ngeyel, bisa sekalian reboot node:
+- Kalau masih ngeyel, bisa sekalian reboot node:
 
 ```bash
 reboot
