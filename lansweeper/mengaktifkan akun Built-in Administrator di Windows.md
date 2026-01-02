@@ -12,15 +12,21 @@ net user administrator /active:yes
 
 ```
 
-
 4. *(Opsional)* Jika Anda ingin memberi password langsung pada akun tersebut, ketik:
 ```cmd
 net user administrator *
 
 ```
 
-
 *(Lalu masukkan password baru saat diminta).*
+
+5. To disable the account later, run: 
+```cmd
+net user administrator /active:no
+
+```
+
+---
 
 ### Metode 2: Menggunakan Computer Management (Visual)
 
@@ -31,6 +37,17 @@ Jika Anda lebih suka menggunakan tampilan jendela:
 3. Klik kanan pada user **Administrator**, lalu pilih **Properties**.
 4. **Hapus centang** pada opsi **Account is disabled**.
 5. Klik **OK**.
+
+---
+
+### Method 3: If You Are Locked Out
+
+If you cannot log in and need the admin account to fix your PC, you can enable it through the Recovery Environment.
+
+1. On the login screen, hold the Shift key and click Restart (Power icon > Restart).
+2. Navigate to Troubleshoot > Advanced Options > Command Prompt.
+3. Type the same command: net user administrator /active:yes.
+4. Close the Command Prompt and click Continue to boot back into Windows. The Administrator account should now appear on the login screen.
 
 ---
 
