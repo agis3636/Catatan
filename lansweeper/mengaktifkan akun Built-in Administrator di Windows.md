@@ -44,10 +44,15 @@ Jika Anda lebih suka menggunakan tampilan jendela:
 
 If you cannot log in and need the admin account to fix your PC, you can enable it through the Recovery Environment.
 
-1. On the login screen, hold the Shift key and click Restart (Power icon > Restart).
-2. Navigate to Troubleshoot > Advanced Options > Command Prompt.
-3. Type the same command: net user administrator /active:yes.
-4. Close the Command Prompt and click Continue to boot back into Windows. The Administrator account should now appear on the login screen.
+1. On the login screen, hold the `Shift` key and click `Restart` (Power icon > Restart).
+2. Navigate to `Troubleshoot > Advanced Options > Command Prompt`.
+3. Type the same command:
+```cmd
+net user administrator /active:yes
+
+```
+
+4. Close the Command Prompt and click `Continue` to boot back into Windows. The Administrator account should now appear on the login screen.
 
 ---
 
