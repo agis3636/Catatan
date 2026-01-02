@@ -1,3 +1,11 @@
-start ms-cxh:localonly
+Tekan Shift + F10
 
-OOBE\BYPASSNRO
+Akan muncul Command Prompt (hitam)
+
+Ketik:
+    
+    start ms-cxh:localonly
+
+atau
+
+    OOBE\BYPASSNRO
