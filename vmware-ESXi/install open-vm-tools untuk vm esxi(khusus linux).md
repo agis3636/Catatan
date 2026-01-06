@@ -18,9 +18,7 @@ VMware sendiri sekarang **MELARANG** kita install pakai cara manual (CD ISO) unt
 
 ---
 
-### Cara Cek & Install di Linux (ESXi)
-
-Coba cek dulu, biasanya sudah ada. Kalau belum, begini caranya:
+### Install di Linux (ESXi)
 
 **Untuk Debian / Ubuntu:**
 
