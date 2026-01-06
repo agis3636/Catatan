@@ -20,7 +20,7 @@ VMware sendiri sekarang **MELARANG** kita install pakai cara manual (CD ISO) unt
 
 ### Install di Linux (ESXi)
 
-**Untuk Debian / Ubuntu:**
+* **Untuk Debian / Ubuntu:**
 
 ```bash
 # Update repo dulu
@@ -34,7 +34,7 @@ apt install open-vm-tools-desktop
 
 ```
 
-**Untuk CentOS / AlmaLinux / Rocky:**
+* **Untuk CentOS / AlmaLinux / Rocky:**
 
 ```bash
 yum install open-vm-tools
