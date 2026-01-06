@@ -69,6 +69,7 @@ Buat ini satu per satu:
 | BypassTPMCheck        | 1     |
 | BypassSecureBootCheck | 1     |
 | BypassRAMCheck        | 1     |
+| BypassCPUCheck        | 1     |
 
 (Double click → isi value `1` → OK)
 
@@ -78,7 +79,8 @@ Hasil akhirnya harus seperti ini:
 LabConfig
  ├─ BypassTPMCheck = 1
  ├─ BypassSecureBootCheck = 1
- └─ BypassRAMCheck = 1
+ ├─ BypassRAMCheck = 1
+ └─ BypassCPUCheck = 1
 ```
 
 ---
