@@ -191,6 +191,7 @@ Ini sering lupa.
 * Masukkan IP Address TrueNAS.
 * Klik **Save Configuration**.
 
+<img width="1350" height="402" alt="Image" src="https://github.com/user-attachments/assets/89d2b490-4b3b-4457-9901-6d7829cee581" />
 
 4. Klik **Rescan Adapter** (di menu atas).
 5. Masuk ke menu **Storage** > **Devices**. Anda harusnya melihat disk baru (FreeBSD iSCSI Disk).
