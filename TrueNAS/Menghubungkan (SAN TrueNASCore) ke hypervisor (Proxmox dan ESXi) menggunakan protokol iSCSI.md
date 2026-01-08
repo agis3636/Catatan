@@ -21,7 +21,7 @@ Dalam dunia penyimpanan (terutama ZFS yang digunakan TrueNAS), Anda **tidak bisa
 
 ### Panduan Praktis Konfigurasi
 
-#### Tahap 1: Persiapan Storage Pool di TrueNAS Core
+# Tahap 1: Persiapan Storage Pool di TrueNAS Core
 
 <img width="1387" height="709" alt="Image" src="https://github.com/user-attachments/assets/097b8097-3a1d-498f-a3c2-b674f8d1da01" />
 
@@ -35,7 +35,7 @@ Karena HDD belum terbaca/disetting, kita harus membuat "Kolam" (Pool) dulu.
 6. Pada bagian **Data VDevs**, pastikan pilihannya adalah **Stripe** (Agar total jadi +/- 60GB). *Ingat risiko RAID 0 yang saya sebut di atas.*
 7. Klik **Create**.
 
-#### Tahap 2: Membuat Zvol (Block Device untuk LUN)
+# Tahap 2: Membuat Zvol (Block Device untuk LUN)
 
 <img width="1147" height="152" alt="Image" src="https://github.com/user-attachments/assets/6b5df3d2-51b3-432e-862a-85f0e12a68b1" />
 
@@ -55,7 +55,7 @@ iSCSI membutuhkan *block device*, di ZFS ini disebut **Zvol**.
 
 <img width="1155" height="224" alt="Image" src="https://github.com/user-attachments/assets/6403ead1-3a58-4872-9111-2c4250628b17" />
 
-#### Tahap 3: Konfigurasi iSCSI (Sharing)
+# Tahap 3: Konfigurasi iSCSI (Sharing)
 
 <img width="1388" height="622" alt="Image" src="https://github.com/user-attachments/assets/21e9714a-0d5a-4a5f-a4ee-b31d5a544724" />
 
@@ -133,7 +133,7 @@ Konfigurasi ini memiliki beberapa tab, kerjakan berurutan:
 ---
 
 
-#### Tahap 4: Hidupkan Service iSCSI
+# Tahap 4: Hidupkan Service iSCSI
 
 <img width="1391" height="900" alt="Image" src="https://github.com/user-attachments/assets/627e2a93-f22b-403e-8653-18b17abd85dc" />
 
@@ -148,7 +148,7 @@ Ini sering lupa.
 ---
 
 
-#### Tahap 5: Menghubungkan ke Proxmox VE
+# Tahap 5: Menghubungkan ke Proxmox VE
 
 <img width="454" height="178" alt="Image" src="https://github.com/user-attachments/assets/045013c3-d676-40da-b301-7fcb91c059b5" />
 
@@ -175,7 +175,7 @@ Ini sering lupa.
 
 ---
 
-#### Tahap 6: Menghubungkan ke VMware ESXi
+# Tahap 6: Menghubungkan ke VMware ESXi
 
 1. Login ke **ESXi Web Client**.
 2. Masuk ke **Storage** > **Adapters**.
