@@ -49,6 +49,7 @@ iSCSI membutuhkan *block device*, di ZFS ini disebut **Zvol**.
 * **Sparse:** Centang (Ini adalah *Thin Provisioning*, artinya space hanya terpakai jika diisi data).
 * Klik **Submit**.
 
+<img width="1388" height="582" alt="Image" src="https://github.com/user-attachments/assets/b655923f-07f7-42db-b975-3ae47ee92e3e" />
 
 3. Ulangi langkah di atas untuk membuat `zvol-esxi` dengan ukuran sama.
 
