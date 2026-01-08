@@ -193,11 +193,11 @@ Ini sering lupa.
 
 <img width="1350" height="402" alt="Image" src="https://github.com/user-attachments/assets/89d2b490-4b3b-4457-9901-6d7829cee581" />
 
-4. Klik **Rescan Adapter** (di menu atas).
-5. Masuk ke menu **Devices**. Anda harusnya melihat disk baru (FreeBSD iSCSI Disk).
+4. di Menu **Adapter** Klik **Rescan** (di menu atas).
 
 <img width="1164" height="278" alt="Image" src="https://github.com/user-attachments/assets/4854c577-de3e-4dbd-8209-5bcd0024f44f" />
 
+5. Masuk ke menu **Devices**. Anda harusnya melihat disk baru (FreeBSD iSCSI Disk).
 6. Pilih Storage SAN nya.
 * Klik **New Datastore**.
 * Pilih **VMFS**.
