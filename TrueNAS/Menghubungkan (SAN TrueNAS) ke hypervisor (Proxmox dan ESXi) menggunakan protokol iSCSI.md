@@ -1,0 +1,169 @@
+Menghubungkan penyimpanan terpusat (SAN) ke hypervisor (Proxmox dan ESXi) menggunakan protokol iSCSI adalah standar industri yang sangat baik untuk dipelajari.
+
+Berikut adalah panduan praktis langkah demi langkah.
+
+---
+
+### Tantangan Kapasitas (Penting!)
+
+Anda memiliki 3 HDD x 20GB = **60GB Total Raw Capacity**.
+Anda ingin membuat 2 LUN x 30GB = **60GB Total Request**.
+
+Dalam dunia penyimpanan (terutama ZFS yang digunakan TrueNAS), Anda **tidak bisa** menggunakan 100% kapasitas disk. ZFS butuh ruang untuk *metadata* dan *overhead*.
+
+* Jika Anda memaksa 60GB penuh, performa akan hancur dan risiko data korup tinggi.
+* **Solusi:** Saya akan memandu Anda menggunakan metode **Stripe (RAID 0)** untuk mendapatkan kapasitas maksimal, dan menggunakan fitur **Thin Provisioning**.
+* *Warning:* Metode Stripe tidak memiliki redundansi. **Jika 1 HDD rusak, semua data di ke-3 HDD hilang.** Jangan simpan data kritis tanpa backup.
+
+
+
+---
+
+### Panduan Praktis Konfigurasi
+
+#### Tahap 1: Persiapan Storage Pool di TrueNAS Core
+
+Karena HDD belum terbaca/disetting, kita harus membuat "Kolam" (Pool) dulu.
+
+1. Login ke **TrueNAS Web GUI**.
+2. Pergi ke menu **Storage** > **Pools**.
+3. Klik **ADD** > **Create new pool**.
+4. Beri nama, misal: `tank-data`.
+5. Centang ke-3 HDD 20GB Anda.
+6. Pada bagian **Data VDevs**, pastikan pilihannya adalah **Stripe** (Agar total jadi +/- 60GB). *Ingat risiko RAID 0 yang saya sebut di atas.*
+7. Klik **Create**.
+
+#### Tahap 2: Membuat Zvol (Block Device untuk LUN)
+
+iSCSI membutuhkan *block device*, di ZFS ini disebut **Zvol**.
+
+1. Di menu **Storage** > **Pools**, klik titik tiga di samping `tank-data`.
+2. Pilih **Add Zvol**.
+* **Name:** `zvol-proxmox`
+* **Size:** `25 GiB` (Saran saya kurangi jadi 25GB agar muat, atau ketik 30GB tapi centang *Sparse*).
+* **Force Size:** Centang jika sistem protes soal kapasitas.
+* **Sparse:** Centang (Ini adalah *Thin Provisioning*, artinya space hanya terpakai jika diisi data).
+* Klik **Submit**.
+
+
+3. Ulangi langkah di atas untuk membuat `zvol-esxi` dengan ukuran sama.
+
+#### Tahap 3: Konfigurasi iSCSI (Sharing)
+
+Sekarang kita "bagikan" Zvol tersebut agar bisa diakses jaringan. Pergi ke menu **Sharing** > **Block Shares (iSCSI)**.
+
+Konfigurasi ini memiliki beberapa tab, kerjakan berurutan:
+
+1. **Portals** (Pintu Gerbang):
+* Klik **Add**.
+* **IP Address:** Pilih `0.0.0.0` (atau IP khusus TrueNAS Anda).
+* **Save**.
+
+
+2. **Initiators** (Siapa yang boleh akses):
+* Klik **Add**.
+* Biarkan `ALL` (kosong/default) agar Proxmox dan ESXi bisa akses tanpa filter rumit dulu.
+* **Save**.
+
+
+3. **Targets** (Nama share):
+* Klik **Add**.
+* **Name:** `target-san`
+* **Portal Group ID:** Pilih ID dari langkah 1.
+* **Initiator Group ID:** Pilih ID dari langkah 2.
+* **Save**.
+
+
+4. **Extents** (Isi share/Mapping ke Zvol):
+* *Buat Extent untuk Proxmox:*
+* **Name:** `extent-proxmox`
+* **Device:** Pilih `zvol-proxmox` yang dibuat di Tahap 2.
+* **Save**.
+
+
+* *Buat Extent untuk ESXi:*
+* **Name:** `extent-esxi`
+* **Device:** Pilih `zvol-esxi`.
+* **Save**.
+
+
+
+
+5. **Associated Targets** (Menghubungkan Target dengan Extent):
+* Klik **Add**.
+* **Target:** `target-san`
+* **LUN ID:** `0`
+* **Extent:** `extent-proxmox`
+* **Save**.
+* Klik **Add** lagi.
+* **Target:** `target-san`
+* **LUN ID:** `1`
+* **Extent:** `extent-esxi`
+* **Save**.
+
+
+
+*Catatan: Sekarang LUN 0 adalah jatah Proxmox, LUN 1 adalah jatah ESXi.*
+
+
+---
+
+
+#### Tahap 4: Hidupkan Service iSCSI
+
+Ini sering lupa.
+
+1. Ke menu **Services** (di menu kiri).
+2. Cari **iSCSI**.
+3. Geser tombolnya jadi **ON** (Running).
+4. Centang **Start Automatically**.
+
+
+---
+
+
+#### Tahap 5: Menghubungkan ke Proxmox VE
+
+1. Login ke **Proxmox GUI**.
+2. Klik **Datacenter** (di menu kiri atas) > **Storage**.
+3. Klik **Add** > **iSCSI**.
+* **ID:** `truenas-iscsi`
+* **Portal:** Masukkan IP Address TrueNAS.
+* **Target:** (Akan muncul otomatis setelah memasukkan IP, pilih `target-san`).
+* **Uncheck** "Use LUNs directly" (Kita ingin membuat LVM di atasnya agar lebih fleksibel).
+* Klik **Add**.
+
+
+4. Sekarang buat volume group agar bisa dipakai VM. Klik **Add** > **LVM**.
+* **ID:** `san-proxmox`
+* **Base Storage:** Pilih `truenas-iscsi` (yang baru dibuat).
+* **Base Volume:** Pilih LUN 0 (yang ukurannya 30GB/25GB tadi).
+* **Content:** Disk image, Container.
+* Klik **Add**.
+
+
+
+*Hasil: Storage `san-proxmox` siap digunakan untuk membuat VM.*
+
+---
+
+#### Tahap 6: Menghubungkan ke VMware ESXi
+
+1. Login ke **ESXi Web Client**.
+2. Masuk ke **Storage** > **Adapters**.
+3. Klik **Software iSCSI**.
+* Ubah status menjadi **Enabled**.
+* Di bagian **Dynamic Targets**, klik **Add dynamic target**.
+* Masukkan IP Address TrueNAS.
+* Klik **Save Configuration**.
+
+
+4. Klik **Rescan Adapter** (di menu atas).
+5. Masuk ke menu **Storage** > **Devices**. Anda harusnya melihat disk baru (FreeBSD iSCSI Disk).
+6. Masuk ke menu **Storage** > **Datastores**.
+* Klik **New Datastore**.
+* Pilih **VMFS**.
+* Beri nama, misal `san-esxi`.
+* Pilih device iSCSI (pastikan pilih LUN 1 / atau bedakan berdasarkan ukuran jika sama). *Hati-hati jangan format LUN punya Proxmox*.
+* Pilih **Full disk** > **Next** > **Finish**.
+
