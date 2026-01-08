@@ -161,6 +161,7 @@ Ini sering lupa.
 * **Uncheck** "Use LUNs directly" (Kita ingin membuat LVM di atasnya agar lebih fleksibel).
 * Klik **Add**.
 
+<img width="451" height="200" alt="Image" src="https://github.com/user-attachments/assets/f811619d-cae1-4cee-b3c0-34cac30726f4" />
 
 4. Sekarang buat volume group agar bisa dipakai VM. Klik **Add** > **LVM**.
 * **ID:** `san-proxmox`
