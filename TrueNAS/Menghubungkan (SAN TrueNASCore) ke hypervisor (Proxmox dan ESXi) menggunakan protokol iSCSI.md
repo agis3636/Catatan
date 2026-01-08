@@ -72,7 +72,7 @@ Konfigurasi ini memiliki beberapa tab, kerjakan berurutan:
 * **Save**.
 
 
-2. **Initiators** (Siapa yang boleh akses):
+### 2. **Initiators** (Siapa yang boleh akses):
 
 <img width="1152" height="604" alt="Image" src="https://github.com/user-attachments/assets/b72ced2d-9431-467f-81f7-2613a27183d8" />
 
@@ -81,7 +81,7 @@ Konfigurasi ini memiliki beberapa tab, kerjakan berurutan:
 * **Save**.
 
 
-3. **Targets** (Nama share):
+### 3. **Targets** (Nama share):
 
 <img width="767" height="314" alt="Image" src="https://github.com/user-attachments/assets/0004e429-24c3-4005-8fe9-6ad5df27d423" />
 
@@ -92,7 +92,7 @@ Konfigurasi ini memiliki beberapa tab, kerjakan berurutan:
 * **Save**.
 
 
-4. **Extents** (Isi share/Mapping ke Zvol):
+### 4. **Extents** (Isi share/Mapping ke Zvol):
 
 * *Buat Extent untuk Proxmox:*
 * **Name:** `extent-proxmox`
@@ -109,7 +109,7 @@ Konfigurasi ini memiliki beberapa tab, kerjakan berurutan:
 
 
 
-5. **Associated Targets** (Menghubungkan Target dengan Extent):
+### 5. **Associated Targets** (Menghubungkan Target dengan Extent):
 
 * Klik **Add**.
 * **Target:** `target-san`
