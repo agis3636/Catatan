@@ -183,6 +183,9 @@ Ini sering lupa.
 1. Login ke **ESXi Web Client**.
 2. Masuk ke **Storage** > **Adapters**.
 3. Klik **Software iSCSI**.
+
+<img width="1001" height="638" alt="Image" src="https://github.com/user-attachments/assets/e649b7b4-8a8f-4c52-9db8-5b1dc227f413" />
+
 * Ubah status menjadi **Enabled**.
 * Di bagian **Dynamic Targets**, klik **Add dynamic target**.
 * Masukkan IP Address TrueNAS.
@@ -198,3 +201,9 @@ Ini sering lupa.
 * Pilih device iSCSI (pastikan pilih LUN 1 / atau bedakan berdasarkan ukuran jika sama). *Hati-hati jangan format LUN punya Proxmox*.
 * Pilih **Full disk** > **Next** > **Finish**.
 
+<img width="754" height="276" alt="Image" src="https://github.com/user-attachments/assets/6543c3a0-35f9-4249-afea-36f493c0c226" />
+<img width="935" height="593" alt="Image" src="https://github.com/user-attachments/assets/0aa561bc-b1e5-48b2-95de-e19ea145f00b" />
+<img width="932" height="587" alt="Image" src="https://github.com/user-attachments/assets/4897a2f3-c12c-409f-ad87-1b7d0cc516f2" />
+<img width="932" height="591" alt="Image" src="https://github.com/user-attachments/assets/5b114e01-4b86-4f0c-af70-2537cc81ac6c" />
+<img width="1159" height="238" alt="Image" src="https://github.com/user-attachments/assets/420a8840-ce69-4782-b093-ebd18bd4c576" />
+<img width="1137" height="447" alt="Image" src="https://github.com/user-attachments/assets/256ce3d8-54ff-4284-ac19-773e0154b8cc" />
