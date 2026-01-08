@@ -63,7 +63,7 @@ Sekarang kita "bagikan" Zvol tersebut agar bisa diakses jaringan. Pergi ke menu 
 
 Konfigurasi ini memiliki beberapa tab, kerjakan berurutan:
 
-1. **Portals** (Pintu Gerbang):
+### 1. **Portals** (Pintu Gerbang):
 
 <img width="769" height="302" alt="Image" src="https://github.com/user-attachments/assets/b0c2d553-a3c7-4ec9-869d-848b250557cd" />
 
