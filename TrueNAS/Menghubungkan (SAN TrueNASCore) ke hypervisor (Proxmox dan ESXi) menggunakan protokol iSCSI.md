@@ -150,20 +150,22 @@ Ini sering lupa.
 
 # Tahap 5: Menghubungkan ke Proxmox VE
 
-<img width="454" height="178" alt="Image" src="https://github.com/user-attachments/assets/045013c3-d676-40da-b301-7fcb91c059b5" />
-
 1. Login ke **Proxmox GUI**.
 2. Klik **Datacenter** (di menu kiri atas) > **Storage**.
 3. Klik **Add** > **iSCSI**.
+
+<img width="454" height="178" alt="Image" src="https://github.com/user-attachments/assets/045013c3-d676-40da-b301-7fcb91c059b5" />
+
 * **ID:** `truenas-iscsi`
 * **Portal:** Masukkan IP Address TrueNAS.
 * **Target:** (Akan muncul otomatis setelah memasukkan IP, pilih `target-san`).
 * **Uncheck** "Use LUNs directly" (Kita ingin membuat LVM di atasnya agar lebih fleksibel).
 * Klik **Add**.
 
+4. Sekarang buat volume group agar bisa dipakai VM. Klik **Add** > **LVM**.
+
 <img width="451" height="200" alt="Image" src="https://github.com/user-attachments/assets/f811619d-cae1-4cee-b3c0-34cac30726f4" />
 
-4. Sekarang buat volume group agar bisa dipakai VM. Klik **Add** > **LVM**.
 * **ID:** `san-proxmox`
 * **Base Storage:** Pilih `truenas-iscsi` (yang baru dibuat).
 * **Base Volume:** Pilih LUN 0 (yang ukurannya 30GB/25GB tadi).
