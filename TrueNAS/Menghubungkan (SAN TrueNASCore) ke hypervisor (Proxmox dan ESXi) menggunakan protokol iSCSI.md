@@ -94,13 +94,12 @@ Konfigurasi ini memiliki beberapa tab, kerjakan berurutan:
 
 4. **Extents** (Isi share/Mapping ke Zvol):
 
-<img width="767" height="572" alt="Image" src="https://github.com/user-attachments/assets/2e232367-8321-4c7e-b8a9-d8fa2284c365" />
-
 * *Buat Extent untuk Proxmox:*
 * **Name:** `extent-proxmox`
 * **Device:** Pilih `zvol-proxmox` yang dibuat di Tahap 2.
 * **Save**.
 
+<img width="767" height="572" alt="Image" src="https://github.com/user-attachments/assets/2e232367-8321-4c7e-b8a9-d8fa2284c365" />
 
 * *Buat Extent untuk ESXi:*
 * **Name:** `extent-esxi`
@@ -112,13 +111,14 @@ Konfigurasi ini memiliki beberapa tab, kerjakan berurutan:
 
 5. **Associated Targets** (Menghubungkan Target dengan Extent):
 
-<img width="768" height="211" alt="Image" src="https://github.com/user-attachments/assets/8aab2272-35a4-452f-b25c-8a8be97602b1" />
-
 * Klik **Add**.
 * **Target:** `target-san`
 * **LUN ID:** `0`
 * **Extent:** `extent-proxmox`
 * **Save**.
+
+<img width="768" height="211" alt="Image" src="https://github.com/user-attachments/assets/8aab2272-35a4-452f-b25c-8a8be97602b1" />
+
 * Klik **Add** lagi.
 * **Target:** `target-san`
 * **LUN ID:** `1`
