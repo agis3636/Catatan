@@ -53,27 +53,38 @@ iSCSI membutuhkan *block device*, di ZFS ini disebut **Zvol**.
 
 3. Ulangi langkah di atas untuk membuat `zvol-esxi` dengan ukuran sama.
 
+<img width="1155" height="224" alt="Image" src="https://github.com/user-attachments/assets/6403ead1-3a58-4872-9111-2c4250628b17" />
+
 #### Tahap 3: Konfigurasi iSCSI (Sharing)
 
-
+<img width="1388" height="622" alt="Image" src="https://github.com/user-attachments/assets/21e9714a-0d5a-4a5f-a4ee-b31d5a544724" />
 
 Sekarang kita "bagikan" Zvol tersebut agar bisa diakses jaringan. Pergi ke menu **Sharing** > **Block Shares (iSCSI)**.
 
 Konfigurasi ini memiliki beberapa tab, kerjakan berurutan:
 
 1. **Portals** (Pintu Gerbang):
+
+<img width="769" height="302" alt="Image" src="https://github.com/user-attachments/assets/b0c2d553-a3c7-4ec9-869d-848b250557cd" />
+
 * Klik **Add**.
 * **IP Address:** Pilih `0.0.0.0` (atau IP khusus TrueNAS Anda).
 * **Save**.
 
 
 2. **Initiators** (Siapa yang boleh akses):
+
+<img width="1152" height="604" alt="Image" src="https://github.com/user-attachments/assets/b72ced2d-9431-467f-81f7-2613a27183d8" />
+
 * Klik **Add**.
 * Biarkan `ALL` (kosong/default) agar Proxmox dan ESXi bisa akses tanpa filter rumit dulu.
 * **Save**.
 
 
 3. **Targets** (Nama share):
+
+<img width="767" height="314" alt="Image" src="https://github.com/user-attachments/assets/0004e429-24c3-4005-8fe9-6ad5df27d423" />
+
 * Klik **Add**.
 * **Name:** `target-san`
 * **Portal Group ID:** Pilih ID dari langkah 1.
@@ -82,6 +93,9 @@ Konfigurasi ini memiliki beberapa tab, kerjakan berurutan:
 
 
 4. **Extents** (Isi share/Mapping ke Zvol):
+
+<img width="767" height="572" alt="Image" src="https://github.com/user-attachments/assets/2e232367-8321-4c7e-b8a9-d8fa2284c365" />
+
 * *Buat Extent untuk Proxmox:*
 * **Name:** `extent-proxmox`
 * **Device:** Pilih `zvol-proxmox` yang dibuat di Tahap 2.
@@ -97,6 +111,9 @@ Konfigurasi ini memiliki beberapa tab, kerjakan berurutan:
 
 
 5. **Associated Targets** (Menghubungkan Target dengan Extent):
+
+<img width="768" height="211" alt="Image" src="https://github.com/user-attachments/assets/8aab2272-35a4-452f-b25c-8a8be97602b1" />
+
 * Klik **Add**.
 * **Target:** `target-san`
 * **LUN ID:** `0`
@@ -118,6 +135,8 @@ Konfigurasi ini memiliki beberapa tab, kerjakan berurutan:
 
 #### Tahap 4: Hidupkan Service iSCSI
 
+<img width="1391" height="900" alt="Image" src="https://github.com/user-attachments/assets/627e2a93-f22b-403e-8653-18b17abd85dc" />
+
 Ini sering lupa.
 
 1. Ke menu **Services** (di menu kiri).
@@ -130,6 +149,8 @@ Ini sering lupa.
 
 
 #### Tahap 5: Menghubungkan ke Proxmox VE
+
+<img width="454" height="178" alt="Image" src="https://github.com/user-attachments/assets/045013c3-d676-40da-b301-7fcb91c059b5" />
 
 1. Login ke **Proxmox GUI**.
 2. Klik **Datacenter** (di menu kiri atas) > **Storage**.
