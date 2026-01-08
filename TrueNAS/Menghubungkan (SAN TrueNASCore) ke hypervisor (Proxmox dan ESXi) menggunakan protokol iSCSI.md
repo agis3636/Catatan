@@ -37,6 +37,8 @@ Karena HDD belum terbaca/disetting, kita harus membuat "Kolam" (Pool) dulu.
 
 #### Tahap 2: Membuat Zvol (Block Device untuk LUN)
 
+<img width="1147" height="152" alt="Image" src="https://github.com/user-attachments/assets/6b5df3d2-51b3-432e-862a-85f0e12a68b1" />
+
 iSCSI membutuhkan *block device*, di ZFS ini disebut **Zvol**.
 
 1. Di menu **Storage** > **Pools**, klik titik tiga di samping `tank-data`.
@@ -51,6 +53,8 @@ iSCSI membutuhkan *block device*, di ZFS ini disebut **Zvol**.
 3. Ulangi langkah di atas untuk membuat `zvol-esxi` dengan ukuran sama.
 
 #### Tahap 3: Konfigurasi iSCSI (Sharing)
+
+
 
 Sekarang kita "bagikan" Zvol tersebut agar bisa diakses jaringan. Pergi ke menu **Sharing** > **Block Shares (iSCSI)**.
 
