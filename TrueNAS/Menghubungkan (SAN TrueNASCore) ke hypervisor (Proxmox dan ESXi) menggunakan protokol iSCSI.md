@@ -23,6 +23,8 @@ Dalam dunia penyimpanan (terutama ZFS yang digunakan TrueNAS), Anda **tidak bisa
 
 #### Tahap 1: Persiapan Storage Pool di TrueNAS Core
 
+<img width="1387" height="709" alt="Image" src="https://github.com/user-attachments/assets/097b8097-3a1d-498f-a3c2-b674f8d1da01" />
+
 Karena HDD belum terbaca/disetting, kita harus membuat "Kolam" (Pool) dulu.
 
 1. Login ke **TrueNAS Web GUI**.
