@@ -53,7 +53,7 @@ Meskipun toleransi kerusakannya sama dengan RAID 5/6, cara kerja **dRAID** berbe
 
 ---
 
-### 
+### .
 
 * **Saran:** **Tidak disarankan** menggunakan dRAID untuk jumlah disk sesedikit.
 * **Alasannya:** dRAID dirancang untuk sistem besar dengan puluhan disk (misal 20-100 disk) agar proses *rebuild* tidak memakan waktu berhari-hari.
