@@ -71,3 +71,7 @@ Lihat pada gambar ketiga kamu, ada tulisan **STOPPED** berwarna merah di sebelah
 1. Klik titik tiga (**⋮**) di pojok kanan kotak iSCSI tersebut.
 2. Pilih **Turn On Service**.
 3. Pastikan indikator berubah menjadi **RUNNING** (Hijau).
+
+<img width="598" height="231" alt="Image" src="https://github.com/user-attachments/assets/1aa4ddbe-018d-4834-ba5a-5a1ee6474049" />
+
+<img width="1417" height="909" alt="Image" src="https://github.com/user-attachments/assets/70552ad8-e447-4872-aedd-335eba3fba85" />
