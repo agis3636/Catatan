@@ -2,8 +2,6 @@ kita akan eksekusi pembuatan **4 Zvol** secara berurutan. Karena kamu menggunaka
 
 Silakan buka menu **Storage**, klik pada titik tiga di sebelah Pool kamu, dan pilih **Add Zvol**. Lakukan langkah ini 4 kali dengan panduan setting berikut:
 
----
-
 ### 1. Zvol untuk Proxmox (LUN 1)
 
 * **Zvol Name:** `LUN_Proxmox`
@@ -37,13 +35,17 @@ Silakan buka menu **Storage**, klik pada titik tiga di sebelah Pool kamu, dan pi
 * **Block Size:** Biarkan default.
 * **Sync:** `Standard`.
 
+<img width="387" height="909" alt="Image" src="https://github.com/user-attachments/assets/d82f7426-3825-4e34-8e8f-98c87e8387f3" />
+
+<img width="1418" height="908" alt="Image" src="https://github.com/user-attachments/assets/7c291320-d313-461f-ab95-3c085514b6b6" />
+
+---
+
 ---
 
 Untuk membuat iSCSI LUN yang bisa dibaca oleh Proxmox, ESXi, dan Windows, kita akan menggunakan fitur **Wizard** agar konfigurasinya otomatis terhubung antara Portal, Target, dan Extent.
 
 Berikut adalah langkah-langkah untuk membuat keempat LUN tersebut:
-
----
 
 ### Langkah 1: Jalankan iSCSI Wizard
 
@@ -61,8 +63,6 @@ Ulangi langkah ini untuk setiap LUN. Untuk yang pertama (Proxmox):
 6. **Initiator:** Biarkan kosong atau pilih **Allow All** untuk tahap awal agar koneksi tidak ditolak.
 
 Ulangi proses Wizard ini untuk `LUN_ESXi`, `LUN_Windows`, dan `LUN_Linux`.
-
----
 
 ### Langkah 3: Nyalakan Service iSCSI
 
