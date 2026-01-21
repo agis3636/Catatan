@@ -64,19 +64,7 @@ Ulangi proses Wizard ini untuk `LUN_ESXi`, `LUN_Windows`, dan `LUN_Linux`.
 
 ---
 
-### Langkah 3: Optimasi Khusus (Penting!)
-
-Agar performa maksimal di masing-masing platform, pastikan pengaturan berikut saat di Wizard:
-
-| Target Platform | Saran Pengaturan |
-| --- | --- |
-| **VMware ESXi** | Gunakan **LUN ID** yang unik (misal: 1). ESXi sangat sensitif terhadap ID disk. |
-| **Windows** | Aktifkan fitur **Physical Block Size Reporting** jika ada pilihannya, agar Windows bisa melakukan format NTFS dengan benar. |
-| **Proxmox** | Pastikan **Thin Provisioning** (Sparse) tetap aktif agar storage di Proxmox terbaca sebagai *Thin Pool*. |
-
----
-
-### Langkah 4: Nyalakan Service iSCSI
+### Langkah 3: Nyalakan Service iSCSI
 
 Lihat pada gambar ketiga kamu, ada tulisan **STOPPED** berwarna merah di sebelah *Block (iSCSI) Shares Targets*.
 
