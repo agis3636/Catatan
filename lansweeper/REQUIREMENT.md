@@ -7,19 +7,19 @@ Berikut adalah spesifikasi **Hardware & Software** untuk server Lansweeper (On-P
 Ini syarat mutlak sistem operasi dan pendukungnya:
 
 * **Operating System (Server):**
-* **Rekomendasi:** Windows Server 2016, 2019, atau 2022 (64-bit).
-* *Boleh (tapi tidak disarankan untuk produksi besar):* Windows 10 atau Windows 11 (64-bit).
+1 **Rekomendasi:** Windows Server 2016, 2019, atau 2022 (64-bit).
+2 *Boleh (tapi tidak disarankan untuk produksi besar):* Windows 10 atau Windows 11 (64-bit).
 
 
 * **Architecture:** Wajib **x64 (64-bit)**. Lansweeper tidak lagi mendukung 32-bit.
 * **Dependency (Otomatis diinstall, tapi wajib support):**
-* .NET Framework 4.8 atau lebih baru.
-* Visual C++ Redistributable.
+1 .NET Framework 4.8 atau lebih baru.
+2 Visual C++ Redistributable.
 
 
 * **Database:**
-* *Bawaan (Gratis):* SQL LocalDB (Hanya untuk < 1.000 aset).
-* *Produksi (Rekomendasi):* Microsoft SQL Server (Express/Standard/Enterprise).
+1 *Bawaan (Gratis):* SQL LocalDB (Hanya untuk < 1.000 aset).
+2 *Produksi (Rekomendasi):* Microsoft SQL Server (Express/Standard/Enterprise).
 
 
 
