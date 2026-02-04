@@ -29,7 +29,7 @@ ls /etc/netplan/
 ```
 
 
-*(Biasanya namanya `00-installer-config.yaml` atau `50-cloud-init.yaml`)*.
+*(Biasanya namanya `00-installer-config.yaml` atau `50-cloud-init.yaml` atau `01-netcfg.yaml` .)*.
 2. Edit file tersebut (ganti nama file sesuai hasil di atas):
 ```bash
 sudo nano /etc/netplan/00-installer-config.yaml
