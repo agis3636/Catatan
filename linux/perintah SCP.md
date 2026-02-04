@@ -47,5 +47,3 @@ md5sum /home/zimbra/zcs-NETWORK-10.1.0_GA_4655.UBUNTU22_64.20240819064312.tgz
 ```
 
 Cocokkan kodenya dengan nilai **MD5** yang ada di website Zimbra atau di gambar daftar download kamu tadi. Kalau beda satu huruf saja, instalasi pasti gagal.
-
-**Saran:** Mengingat kamu kemarin kena cegat karena pakai Ubuntu 24.04, apakah servernya sudah kamu *downgrade* atau ganti ke **Ubuntu 22.04**? Soalnya paket ini khusus buat versi 22.04.
