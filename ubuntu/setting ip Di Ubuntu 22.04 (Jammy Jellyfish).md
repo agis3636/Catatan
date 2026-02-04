@@ -43,19 +43,12 @@ sudo nano /etc/netplan/00-installer-config.yaml
 ```yaml
 network:
   version: 2
-  renderer: networkd
   ethernets:
-    ens18:              # Ganti dengan nama interface Anda (Langkah 1)
-      dhcp4: no
-      addresses:
-        - 192.168.1.10/24  # Ganti dengan IP Target & Subnet (/24 = 255.255.255.0)
-      routes:           # Pengganti "gateway4" yang sudah deprecated
-        - to: default
-          via: 192.168.1.1 # Ganti dengan IP Gateway/Router Anda
+    ens18:
+      addresses: [192.168.100.65/24]
+      routes: [{to: default, via: 192.168.100.1}]
       nameservers:
-        addresses:
-          - 8.8.8.8     # DNS Google
-          - 1.1.1.1     # DNS Cloudflare
+        addresses: [8.8.8.8, 1.1.1.1]
 
 ```
 
