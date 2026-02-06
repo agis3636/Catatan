@@ -33,7 +33,7 @@ Jalankan perintah ini di ketiga VM Ubuntu Anda:
 
 ```bash
 sudo apt update && sudo apt install -y software-properties-common
-sudo add-apt-repository ppa:linbit/linbit-drbd9-stack
+sudo add-apt-repository ppa:linbit/linbit-drbd9-stack -y
 sudo apt update
 
 ```
@@ -43,7 +43,7 @@ sudo apt update
 VM 1 akan menjadi Controller (pengatur):
 
 ```bash
-sudo apt install -y linstor-controller linstor-satellite linstor-client drbd-utils
+sudo apt install -y linstor-controller linstor-satellite linstor-client drbd-dkms drbd-utils
 
 ```
 
@@ -52,13 +52,14 @@ sudo apt install -y linstor-controller linstor-satellite linstor-client drbd-uti
 VM lainnya cukup menjadi Satellite (penyimpan):
 
 ```bash
-sudo apt install -y linstor-satellite drbd-utils
+sudo apt install -y linstor-satellite drbd-dkms drbd-utils
 
 ```
 
 ---
 
-
+# Cek apakah versinya sudah naik ke 9
+drbdadm --version
 
 
 ---
