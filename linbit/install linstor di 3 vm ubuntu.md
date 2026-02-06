@@ -59,24 +59,19 @@ sudo apt install -y linstor-satellite drbd-utils
 ---
 
 
+
+
+---
+
+---
+
+---
+
 Untuk mendapatkan tampilan Web UI LINSTOR (Dashboard), kamu perlu menginstal paket tambahan bernama **LINSTOR Gateway** atau **LINSTOR GUI**. Karena kamu menggunakan 3 VM berbasis Linux (kemungkinan Ubuntu/Debian berdasarkan gambar sebelumnya), berikut adalah cara mengaktifkannya agar bisa diakses lewat browser.
 
 Semua langkah di bawah ini dilakukan **HANYA di VM 1 (Controller - 192.168.100.10)**.
 
----
-
-## 1. Tambahkan Repositori LINBIT
-
-LINSTOR GUI biasanya tidak ada di repositori standar Linux. Kamu harus menambahkan repositori resmi dari LINBIT.
-
-```bash
-# Tambahkan key dan repo LINBIT (untuk Ubuntu/Debian)
-add-apt-repository ppa:linbit/linbit-drbd9-stack
-apt update
-
-```
-
-## 2. Instalasi LINSTOR GUI
+## 4. Instalasi LINSTOR GUI
 
 Ketik perintah ini di **VM 1 (Controller)**:
 
@@ -87,7 +82,7 @@ apt install linstor-gui linstor-controller
 
 *Catatan: Jika kamu ingin menggunakan versi Docker (lebih praktis), kamu bisa menjalankan image `linbit/linstor-gui`.*
 
-## 3. Jalankan Service
+## 5. Jalankan Service
 
 Pastikan layanan controller dan GUI sudah berjalan:
 
@@ -97,7 +92,7 @@ systemctl enable --now linstor-gui
 
 ```
 
-## 4. Cara Akses Web UI
+## 6. Cara Akses Web UI
 
 Buka browser (Chrome/Firefox) di komputer kamu, lalu masukkan alamat IP VM 1:
 
