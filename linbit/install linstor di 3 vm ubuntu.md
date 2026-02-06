@@ -57,3 +57,75 @@ sudo apt install -y linstor-satellite drbd-utils
 ```
 
 ---
+
+
+Untuk mendapatkan tampilan Web UI LINSTOR (Dashboard), kamu perlu menginstal paket tambahan bernama **LINSTOR Gateway** atau **LINSTOR GUI**. Karena kamu menggunakan 3 VM berbasis Linux (kemungkinan Ubuntu/Debian berdasarkan gambar sebelumnya), berikut adalah cara mengaktifkannya agar bisa diakses lewat browser.
+
+Semua langkah di bawah ini dilakukan **HANYA di VM 1 (Controller - 192.168.100.10)**.
+
+---
+
+## 1. Tambahkan Repositori LINBIT
+
+LINSTOR GUI biasanya tidak ada di repositori standar Linux. Kamu harus menambahkan repositori resmi dari LINBIT.
+
+```bash
+# Tambahkan key dan repo LINBIT (untuk Ubuntu/Debian)
+add-apt-repository ppa:linbit/linbit-drbd9-stack
+apt update
+
+```
+
+## 2. Instalasi LINSTOR GUI
+
+Ketik perintah ini di **VM 1 (Controller)**:
+
+```bash
+apt install linstor-gui linstor-controller
+
+```
+
+*Catatan: Jika kamu ingin menggunakan versi Docker (lebih praktis), kamu bisa menjalankan image `linbit/linstor-gui`.*
+
+## 3. Jalankan Service
+
+Pastikan layanan controller dan GUI sudah berjalan:
+
+```bash
+systemctl enable --now linstor-controller
+systemctl enable --now linstor-gui
+
+```
+
+## 4. Cara Akses Web UI
+
+Buka browser (Chrome/Firefox) di komputer kamu, lalu masukkan alamat IP VM 1:
+
+* **Alamat:** `http://192.168.100.10:3370`
+* **Port Default:** 3370
+
+---
+
+### **PENTING: Kenapa "No Data" atau Error Muncul Lagi?**
+
+Jika kamu sudah berhasil masuk ke Web UI tapi melihat pesan "No Data" atau tidak bisa klik Submit, itu karena **VM 2 (100.20)** dan **VM 3 (100.30)** kamu belum punya disk cadangan yang siap dipakai LINSTOR.
+
+**Lakukan ini sekarang sebelum setting GUI:**
+
+1. **Di Proxmox:** Tambahkan "Hard Disk" baru (misal 100GB) ke VM 2 dan VM 3.
+2. **Cek di Terminal VM 2 & 3:** Ketik `lsblk`. Kamu harus melihat ada `/dev/sdb` (disk 100G) yang muncul di sana.
+3. **Hapus Konfigurasi Lama:** Di terminal **VM 1 (Controller)**, ketik ini untuk membersihkan sisa error kemarin:
+```bash
+linstor node delete satellite-1
+linstor node delete satellite-2
+linstor node delete controller
+
+```
+
+
+4. **Daftarkan Ulang:** Gunakan perintah `linstor node create` seperti yang saya berikan sebelumnya agar statusnya `ONLINE` di Dashboard.
+
+---
+
+**Langkah Selanjutnya:**
+Setelah `lsblk` di VM 2 dan VM 3 menunjukkan adanya disk baru (sdb), apakah kamu ingin saya pandu membuat **Storage Pool** langsung dari Web UI-nya?
