@@ -51,9 +51,15 @@ Di sinilah antivirus (seperti McAfee) terkadang ikut campur. **Saran: Matikan Mc
 
 1. Klik tombol **Start**, ketik **CMD**, lalu klik kanan dan pilih **Run as Administrator**.
 2. Ketik perintah berikut satu per satu dan tekan Enter:
-* `cd C:\OfficeLTSC`
-* `setup.exe /configure configuration.xml`
 
+```xml
+C:\Windows\System32 > cd C:\OfficeLTSC
+
+C:\OfficeLTSC > setup.exe /download Configuration.xml
+
+C:\OfficeLTSC > setup.exe /configure Configuration.xml
+
+```
 
 3. Jendela instalasi Office akan muncul. Tunggu sampai selesai.
 
