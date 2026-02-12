@@ -22,7 +22,7 @@ Pastikan kembali settingan IP di Client sesuai dengan gambar yang Anda kirim tad
 4. Ketik nama domain Anda: `test.local`, lalu klik **OK**.
 5. Akan muncul jendela login keamanan Windows:
 * **Username:** `Administrator | user yang tadi di buat di OU`
-* **Password:** (Password yang Anda buat saat instalasi AD DS | Paswoord User OU)
+* **Password:** (Password yang Anda buat saat instalasi AD DS | Password User OU)
 
 
 6. Jika berhasil, akan muncul pesan: **"Welcome to the test.local domain."**
