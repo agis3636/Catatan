@@ -12,11 +12,9 @@ Tailscale should already be installed in your workshop virtual machine.
 
 ```bash
 tailscale status
-```
 
 You should see output like:
 
-```bash
 $ tailscale status
 ```
 
@@ -26,15 +24,12 @@ Logged out.
 
 ```bash
 tailscale up
-```
 
 You should see output like:
 
-```bash
 $ tailscale up
-```
 
-```bash
+
 To authenticate, visit:
 
         https://login.tailscale.com/a/...
