@@ -11,6 +11,7 @@ Tailscale should already be installed in your workshop virtual machine.
 👈 In the terminal for the remote VM on the left run the command below:
 
 ```bash
+run
 tailscale status
 
 You should see output like:
@@ -23,6 +24,7 @@ Logged out.
 👈 In the terminal for the remote VM run the command below and then click the link in the output to authenticate the VM to your tailnet:
 
 ```bash
+run
 tailscale up
 
 You should see output like:
