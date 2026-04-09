@@ -1,6 +1,9 @@
+<img width="956" height="352" alt="Image" src="https://github.com/user-attachments/assets/8b2bfb69-bb94-48e8-84c7-5917b1058f8e" />
+
 Partisi berukuran 524 MB yang ada di gambar Anda adalah **Recovery Partition** (Partisi Pemulihan) bawaan Windows. Posisinya yang berada di antara drive (C:) dan ruang "Unallocated" (30 GB) memang menjadi penghalang, karena agar drive C: bisa diperluas (*Extend Volume*), ruang kosong (Unallocated) harus berada persis di sebelah kanannya.
 
 **⚠️ Peringatan Penting Sebelum Menghapus:**
+
 Menghapus partisi ini akan menghilangkan fitur **Windows Recovery Environment (WinRE)**. Artinya, jika suatu saat Windows Anda gagal *booting* atau bermasalah, Anda tidak bisa menggunakan fitur bawaan seperti *Reset this PC* atau *Startup Repair* tanpa bantuan Flashdisk Installer Windows. Jika Anda paham risikonya dan memiliki media instalasi Windows untuk berjaga-jaga, silakan lanjutkan.
 
 Windows memproteksi partisi ini, sehingga Anda tidak bisa menghapusnya hanya dengan klik kanan di Disk Management (opsinya akan berwarna abu-abu). Anda harus menggunakan *Command Prompt* (`diskpart`).
