@@ -108,9 +108,9 @@ Agar pengaturan akses lebih rapi dan mudah dikelola:
 
 ---
 
-## Contoh Setup untuk Tim Sales
+## Contoh Setup untuk Tim
 
-Contoh pembagian role untuk kebutuhan tim sales:
+Contoh pembagian role untuk kebutuhan tim:
 
 | Role | Siapa |
 |---|---|
