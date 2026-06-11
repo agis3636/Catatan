@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul Ansible - Dari Dasar Sampai Deploy</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f6f9; color: #2c3e50; }
+
+  .cover {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: white;
+    padding: 80px 60px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .cover h1 { font-size: 42px; font-weight: 800; margin-bottom: 12px; }
+  .cover .subtitle { font-size: 18px; opacity: 0.8; margin-bottom: 30px; }
+  .cover .badge {
+    display: inline-block;
+    background: #e94560;
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-right: 8px;
+    margin-bottom: 8px;
+  }
+
+  .toc {
+    background: white;
+    margin: 30px auto;
+    max-width: 900px;
+    border-radius: 12px;
+    padding: 30px 40px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+  .toc h2 { font-size: 20px; color: #0f3460; margin-bottom: 16px; border-bottom: 2px solid #e94560; padding-bottom: 8px; }
+  .toc ol { padding-left: 20px; }
+  .toc li { padding: 4px 0; color: #555; font-size: 15px; }
+
+  .content { max-width: 900px; margin: 0 auto; padding: 0 20px 60px; }
+
+  .section {
+    background: white;
+    border-radius: 12px;
+    padding: 36px 40px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  }
+
+  .section-number {
+    display: inline-block;
+    background: #0f3460;
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 36px;
+    font-weight: 700;
+    font-size: 15px;
+    margin-right: 12px;
+  }
+  h2.section-title {
+    font-size: 22px;
+    color: #0f3460;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+  }
+  h3 { font-size: 17px; color: #e94560; margin: 20px 0 10px; }
+
+  p { line-height: 1.75; color: #444; margin-bottom: 12px; font-size: 15px; }
+
+  pre, code {
+    font-family: 'Courier New', monospace;
+    background: #1e1e2e;
+    color: #cdd6f4;
+    border-radius: 8px;
+  }
+  pre {
+    padding: 18px 22px;
+    margin: 14px 0;
+    overflow-x: auto;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  code {
+    padding: 2px 7px;
+    font-size: 13px;
+    color: #89b4fa;
+    background: #1e1e2e;
+  }
+
+  .comment { color: #6c7086; }
+  .keyword { color: #cba6f7; }
+  .string { color: #a6e3a1; }
+  .key { color: #89dceb; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  th {
+    background: #0f3460;
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+  }
+  td { padding: 9px 14px; border-bottom: 1px solid #eee; }
+  tr:hover td { background: #f8f9ff; }
+  tr:nth-child(even) td { background: #f5f7ff; }
+
+  .callout {
+    border-left: 4px solid #e94560;
+    background: #fff5f5;
+    padding: 14px 18px;
+    border-radius: 0 8px 8px 0;
+    margin: 16px 0;
+    font-size: 14px;
+    color: #444;
+  }
+  .callout.info { border-color: #0f3460; background: #f0f4ff; }
+  .callout.success { border-color: #27ae60; background: #f0fff4; }
+  .callout.warning { border-color: #f39c12; background: #fffbf0; }
+
+  .flow {
+    background: #1e1e2e;
+    color: #cdd6f4;
+    padding: 18px 22px;
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 13px;
+    line-height: 2;
+    margin: 14px 0;
+  }
+
+  .badge-inline {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 4px;
+  }
+  .badge-green { background: #d4edda; color: #155724; }
+  .badge-blue { background: #cce5ff; color: #004085; }
+  .badge-red { background: #f8d7da; color: #721c24; }
+
+  .recap {
+    background: linear-gradient(135deg, #0f3460, #16213e);
+    color: white;
+    padding: 30px 40px;
+    border-radius: 12px;
+    margin-top: 30px;
+  }
+  .recap h2 { font-size: 22px; margin-bottom: 16px; }
+  .recap .check { margin: 8px 0; font-size: 15px; }
+  .recap .check::before { content: "✅ "; }
+
+  @media print {
+    body { background: white; }
+    .section { box-shadow: none; border: 1px solid #ddd; }
+    .toc { box-shadow: none; border: 1px solid #ddd; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div style="font-size:13px; opacity:0.6; margin-bottom:10px; letter-spacing:2px;">MODUL PEMBELAJARAN</div>
+  <h1>Ansible</h1>
+  <div class="subtitle">Dari Dasar Sampai Deploy ke Multiple VM</div>
+  <div>
+    <span class="badge">DevOps</span>
+    <span class="badge">Automation</span>
+    <span class="badge">Proxmox</span>
+    <span class="badge">Linux</span>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+  <h2>Daftar Isi</h2>
+  <ol>
+    <li>Apa itu Ansible?</li>
+    <li>Cara Kerja Ansible</li>
+    <li>Konsep Utama</li>
+    <li>Persiapan Infrastruktur (Proxmox)</li>
+    <li>Full Clone vs Linked Clone</li>
+    <li>Instalasi Ansible</li>
+    <li>Konfigurasi IP VM</li>
+    <li>Setup SSH Key</li>
+    <li>Membuat Inventory</li>
+    <li>Membuat & Menjalankan Playbook</li>
+    <li>Variable per Host</li>
+    <li>Deploy File Berbeda ke VM Berbeda</li>
+    <li>Idempotency</li>
+    <li>Ansible Vault (Keamanan Password)</li>
+    <li>Kemampuan Lain Ansible</li>
+  </ol>
+</div>
+
+<div class="content">
+
+  <!-- SECTION 1 -->
+  <div class="section">
+    <h2 class="section-title"><span class="section-number">1</span>Apa itu Ansible?</h2>
+    <p>Ansible adalah tool otomasi IT <strong>open-source</strong> yang digunakan untuk mengelola konfigurasi server, deploy aplikasi, dan otomasi berbagai task IT secara otomatis dan konsisten.</p>
+    <p>Bayangkan kamu punya 50 server yang harus dikonfigurasi dengan cara yang sama — tanpa Ansible, kamu harus masuk satu-satu dan mengetik perintah yang sama berulang-ulang. Dengan Ansible, cukup tulis instruksi sekali, jalankan sekali, semua server selesai sekaligus.</p>
+
+    <h3>Kegunaan Utama</h3>
+    <table>
+      <tr><th>Kegunaan</th><th>Penjelasan</th></tr>
+      <tr><td>Configuration Management</td><td>Mengatur konfigurasi server agar tetap konsisten</td></tr>
+      <tr><td>Application Deployment</td><td>Deploy aplikasi ke banyak server sekaligus</td></tr>
+      <tr><td>Provisioning</td><td>Menyiapkan infrastruktur baru secara otomatis</td></tr>
+      <tr><td>Orchestration</td><td>Mengoordinasikan task kompleks di banyak sistem</td></tr>
+    </table>
+
+    <h3>Keunggulan Ansible</h3>
+    <table>
+      <tr><th>Keunggulan</th><th>Penjelasan</th></tr>
+      <tr><td><strong>Agentless</strong></td><td>Tidak perlu install software tambahan di server target, cukup SSH</td></tr>
+      <tr><td><strong>Simple</strong></td><td>Menggunakan YAML yang mudah dibaca manusia</td></tr>
+      <tr><td><strong>Idempotent</strong></td><td>Aman dijalankan berkali-kali, hasilnya selalu sama</td></tr>
+      <tr><td><strong>Banyak Modul</strong></td><td>Ribuan modul siap pakai (AWS, Docker, Kubernetes, dll.)</td></tr>
+    </table>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="section">
+    <h2 class="section-title"><span class="section-number">2</span>Cara Kerja Ansible</h2>
+    <p>Ansible bekerja dengan prinsip <strong>push-based</strong> — dari satu komputer (Control Node), Ansible masuk ke semua server target lewat SSH dan menjalankan instruksi yang sudah ditulis.</p>
+
+    <div class="flow">
+Control Node (Laptop/PC/VM Ansible)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|--- SSH ----&gt; Server/VM 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|--- SSH ----&gt; Server/VM 2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|--- SSH ----&gt; Server/VM 3<br>
+    </div>
+
+    <div class="callout info">
+      <strong>Penting:</strong> Hanya Control Node yang perlu install Ansible. Server target tidak perlu install apa-apa — cukup bisa diakses via SSH.
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="section">
+    <h2 class="section-title"><span class="section-number">3</span>Konsep Utama</h2>
+    <table>
+      <tr><th>Istilah</th><th>Penjelasan</th></tr>
+      <tr><td><strong>Control Node</strong></td><td>Komputer/VM tempat Ansible diinstall. Dari sinilah semua perintah dijalankan.</td></tr>
+      <tr><td><strong>Managed Node</strong></td><td>Server target yang akan dikontrol oleh Ansible.</td></tr>
+      <tr><td><strong>Inventory</strong></td><td>File berisi daftar IP/hostname server yang akan dikelola.</td></tr>
+      <tr><td><strong>Playbook</strong></td><td>File YAML berisi daftar instruksi (task) yang akan dijalankan.</td></tr>
+      <tr><td><strong>Task</strong></td><td>Satu perintah/aksi dalam playbook (contoh: install nginx).</td></tr>
+      <tr><td><strong>Module</strong></td><td>Unit kerja bawaan Ansible (contoh: <code>apt</code>, <code>copy</code>, <code>service</code>).</td></tr>
+      <tr><td><strong>Role</strong></td><td>Kumpulan playbook yang terorganisir dan bisa dipakai ulang.</td></tr>
+      <tr><td><strong>Handler</strong></td><td>Task yang hanya jalan jika ada perubahan (contoh: restart nginx hanya jika config berubah).</td></tr>
+    </table>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="section">
+    <h2 class="section-title"><span class="section-number">4</span>Persiapan Infrastruktur (Proxmox)</h2>
+    <p>Dalam studi kasus ini, infrastruktur yang digunakan adalah:</p>
+
+    <div class="flow">
+Proxmox<br>
+├── [VM] raspberry-ansible  → Control Node (Ansible diinstall di sini)<br>
+├── [VM] hasil-ansible-1    → Target VM 1<br>
+└── [VM] hasil-ansible-2    → Target VM 2<br>
+&nbsp;<br>
+Template: Debian (sumber clone untuk VM target)
+    </div>
+
+    <p>VM target dibuat dari <strong>clone template Debian</strong> yang sudah disiapkan sebelumnya di Proxmox.</p>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="section">
+    <h2 class="section-title"><span class="section-number">5</span>Full Clone vs Linked Clone</h2>
+    <p>Saat membuat VM dari template di Proxmox, ada dua pilihan metode clone:</p>
+
+    <table>
+      <tr><th></th><th>Full Clone</th><th>Linked Clone</th></tr>
+      <tr><td><strong>Cara kerja</strong></td><td>Copy 100% data template</td><td>Hanya simpan perubahan dari template</td></tr>
+      <tr><td><strong>Kemandirian VM</strong></td><td>VM berdiri sendiri, template bisa dihapus</td><td>Bergantung pada template</td></tr>
+      <tr><td><strong>Storage</strong></td><td>Lebih besar</td><td>Lebih hemat</td></tr>
+      <tr><td><strong>Performa</strong></td><td>Lebih baik</td><td>Sedikit lebih lambat</td></tr>
+      <tr><td><strong>Rekomendasi</strong></td><td>Production</td><td>Testing / Lab</td></tr>
+    </table>
+
+    <div class="callout success">
+      <strong>Rekomendasi:</strong> Untuk lingkungan production gunakan <strong>Full Clone</strong>. Untuk lab/testing, Linked Clone lebih hemat storage.
+    </div>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="section">
+    <h2 class="section-title"><span class="section-number">6</span>Instalasi Ansible</h2>
+    <p>Ansible hanya diinstall di <strong>Control Node</strong> (dalam kasus ini: VM raspberry-ansible). Jalankan perintah berikut:</p>
+
+    <pre><span class="comment"># Update package list dulu</span>
+sudo apt update
+
+<span class="comment"># Install Ansible</span>
+sudo apt install ansible -y
+
+<span class="comment"># Verifikasi instalasi berhasil</span>
+ansible --version</pre>
+
+    <p>Hasil yang diharapkan:</p>
+    <pre>ansible 2.10.17
+  python version = 3.9.2</pre>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="section">
+    <h2 class="section-title"><span class="section-number">7</span>Konfigurasi IP VM</h2>
+    <p>Masalah umum setelah clone dari template: <strong>semua VM punya IP yang sama</strong> (IP ter-copy dari template). Harus diubah manual via Proxmox console.</p>
+
+    <p>Masuk ke masing-masing VM via console Proxmox, lalu edit konfigurasi network:</p>
+
+    <pre>sudo nano /etc/network/interfaces</pre>
+
+    <p>Isi untuk <strong>hasil-ansible-1:</strong></p>
+    <pre><span class="key">auto</span> eth0
+<span class="key">iface</span> eth0 inet static
+    address 192.168.200.21
+    netmask 255.255.255.0
+    gateway 192.168.200.1</pre>
+
+    <p>Isi untuk <strong>hasil-ansible-2:</strong></p>
+    <pre><span class="key">auto</span> eth0
+<span class="key">iface</span> eth0 inet static
+    address 192.168.200.22
+    netmask 255.255.255.0
+    gateway 192.168.200.1</pre>
+
+    <p>Restart network setelah disimpan:</p>
+    <pre>sudo systemctl restart networking</pre>
+
+    <div class="callout warning">
+      <strong>Perhatian:</strong> Nama interface belum tentu <code>eth0</code>, bisa <code>ens18</code> atau <code>enp0s18</code>. Cek dulu dengan perintah <code>ip a</code>.
+    </div>
+  </div>
+
+  <!-- SECTION 8 -->
+  <div class="section">
+    <h2 class="section-title"><span class="section-number">8</span>Setup SSH Key</h2>
+    <p>Agar Ansible bisa masuk ke VM target <strong>tanpa input password setiap kali</strong>, kita perlu setup SSH key. Semua perintah dijalankan di <strong>Control Node (raspberry-ansible)</strong>.</p>
+
+    <h3>Konsep SSH Key</h3>
+    <div class="flow">
+raspberry-ansible punya KUNCI 🔑<br>
+hasil-ansible-1 &amp; 2 punya GEMBOK 🔒<br>
+&nbsp;<br>
+Kita pasang gembok di VM target,<br>
+sehingga raspberry bisa masuk bebas pakai kuncinya.
+    </div>
+
+    <h3>Langkah 1 — Buat SSH Key</h3>
+    <pre><span class="comment"># Di Control Node (raspberry-ansible)</span>
+ssh-keygen
+<span class="comment"># Tekan Enter terus sampai selesai, tidak perlu isi passphrase</span></pre>
+
+    <h3>Langkah 2 — Kirim Key ke VM Target</h3>
+    <p>Karena VM target menggunakan port SSH 456 (bukan default 22):</p>
+    <pre><span class="comment"># Kirim ke VM 1</span>
+ssh-copy-id -p 456 debian@192.168.200.21
+
+<span class="comment"># Kirim ke VM 2</span>
+ssh-copy-id -p 456 debian@192.168.200.22
+
+<span class="comment"># Masukkan password user debian di VM target (hanya sekali)</span></pre>
+
+    <p>Hasil sukses:</p>
+    <pre>Number of key(s) added: 1</pre>
+
+    <h3>Langkah 3 — Test SSH</h3>
+    <pre><span class="comment"># Harusnya langsung masuk tanpa diminta password</span>
+ssh -p 456 debian@192.168.200.21</pre>
+  </div>
+
+  <!-- SECTION 9 -->
+  <div class="section">
+    <h2 class="section-title"><span class="section-number">9</span>Membuat Inventory</h2>
+    <p>Inventory adalah file yang berisi <strong>daftar server target</strong> yang akan dikelola Ansible.</p>
+
+    <pre><span class="comment"># Buat file inventory di home directory</span>
+nano ~/inventory.ini</pre>
+
+    <p>Isi file:</p>
+    <pre><span class="comment"># inventory.ini</span>
+
+[debian_vms]
+192.168.200.21 ansible_port=456 ansible_user=debian
+192.168.200.22 ansible_port=456 ansible_user=debian</pre>
+
+    <table>
+      <tr><th>Parameter</th><th>Penjelasan</th></tr>
+      <tr><td><code>[debian_vms]</code></td><td>Nama grup, bisa dipakai di playbook untuk menentukan target</td></tr>
+      <tr><td><code>ansible_port=456</code></td><td>Port SSH yang digunakan (default 22)</td></tr>
+      <tr><td><code>ansible_user=debian</code></td><td>Username untuk login ke VM target</td></tr>
+      <tr><td><code>ansible_become_pass=xxx</code></td><td>Password sudo (opsional, jika tiap VM beda password)</td></tr>
+    </table>
+
+    <h3>Test Koneksi</h3>
+    <pre><span class="comment"># Ping semua VM di inventory</span>
+ansible -i ~/inventory.ini all -m ping</pre>
+
+    <p>Hasil sukses:</p>
+    <pre>192.168.200.21 | SUCCESS => {"ping": "pong"}
+192.168.200.22 | SUCCESS => {"ping": "pong"}</pre>
+
+    <div class="callout info">
+      <strong>Tanda ~ (tilde):</strong> Dalam Linux, <code>~</code> adalah shortcut untuk home directory. <code>~/inventory.ini</code> sama dengan <code>/home/agis/inventory.ini</code>.
+    </div>
+  </div>
+
+  <!-- SECTION 10 -->
+  <div class="section">
+    <h2 class="section-title"><span class="section-number">10</span>Membuat & Menjalankan Playbook</h2>
+    <p>Playbook adalah file YAML berisi instruksi yang akan Ansible jalankan ke server target.</p>
+
+    <pre><span class="comment"># Buat file playbook</span>
+nano ~/playbook.yml</pre>
+
+    <p>Isi playbook:</p>
+    <pre><span class="comment">---</span>
+<span class="key">- name:</span> <span class="string">Setup Semua VM</span>
+  <span class="key">hosts:</span> <span class="string">debian_vms</span>
+  <span class="key">become:</span> <span class="keyword">yes</span>
+
+  <span class="key">tasks:</span>
+
+    <span class="comment"># Task 1: Update & upgrade sistem</span>
+    - <span class="key">name:</span> <span class="string">Update &amp; upgrade</span>
+      <span class="key">apt:</span>
+        <span class="key">update_cache:</span> <span class="keyword">true</span>
+        <span class="key">upgrade:</span> <span class="string">"dist"</span>
+
+    <span class="comment"># Task 2: Install package yang dibutuhkan</span>
+    - <span class="key">name:</span> <span class="string">Install package</span>
+      <span class="key">apt:</span>
+        <span class="key">name:</span>
+          - nginx
+          - curl
+          - git
+        <span class="key">state:</span> <span class="string">present</span>
+
+    <span class="comment"># Task 3: Buat user baru di semua VM</span>
+    - <span class="key">name:</span> <span class="string">Buat user baru</span>
+      <span class="key">user:</span>
+        <span class="key">name:</span> <span class="string">ansibleuser</span>
+        <span class="key">password:</span> <span class="string">"{{ 'password123' | password_hash('sha512') }}"</span>
+        <span class="key">shell:</span> <span class="string">/bin/bash</span>
+        <span class="key">state:</span> <span class="string">present</span>
+
+    <span class="comment"># Task 4: Pastikan nginx berjalan</span>
+    - <span class="key">name:</span> <span class="string">Pastikan nginx jalan</span>
+      <span class="key">service:</span>
+        <span class="key">name:</span> <span class="string">nginx</span>
+        <span class="key">state:</span> <span class="string">started</span>
+        <span class="key">enabled:</span> <span class="keyword">true</span>
+
+    <span class="comment"># Task 5: Deploy halaman web sesuai VM</span>
+    - <span class="key">name:</span> <span class="string">Copy halaman web</span>
+      <span class="key">copy:</span>
+        <span class="key">src:</span> <span class="string">"files/{{ web_file }}"</span>
+        <span class="key">dest:</span> <span class="string">/var/www/html/index.html</span></pre>
+
+    <h3>Penjelasan Baris per Baris</h3>
+    <table>
+      <tr><th>Baris</th><th>Penjelasan</th></tr>
+      <tr><td><code>hosts: debian_vms</code></td><td>Jalankan ke grup debian_vms di inventory</td></tr>
+      <tr><td><code>become: yes</code></td><td>Gunakan sudo untuk semua task</td></tr>
+      <tr><td><code>state: present</code></td><td>Pastikan ada — jika sudah ada, skip (tidak install ulang)</td></tr>
+      <tr><td><code>update_cache: true</code></td><td>Sama seperti <code>apt update</code></td></tr>
+      <tr><td><code>upgrade: "dist"</code></td><td>Upgrade semua package termasuk dependencies</td></tr>
+      <tr><td><code>enabled: true</code></td><td>Otomatis nyala saat VM restart</td></tr>
+      <tr><td><code>{{ web_file }}</code></td><td>Variable yang nilainya diambil dari inventory per host</td></tr>
+    </table>
+
+    <h3>Menjalankan Playbook</h3>
+    <pre><span class="comment"># Tanpa password sudo (jika sudah passwordless)</span>
+ansible-playbook -i ~/inventory.ini ~/playbook.yml
+
+<span class="comment"># Dengan input password sudo manual</span>
+ansible-playbook -i ~/inventory.ini ~/playbook.yml --ask-become-pass
+
+<span class="comment"># Jika password tiap VM beda, tulis di inventory:</span>
+<span class="comment"># ansible_become_pass=passwordVM di inventory.ini</span>
+<span class="comment"># lalu jalankan tanpa --ask-become-pass</span></pre>
+
+    <h3>Membaca Output Playbook</h3>
+    <table>
+      <tr><th>Status</th><th>Warna</th><th>Artinya</th></tr>
+      <tr><td>ok</td><td><span class="badge-inline badge-green">hijau</span></td><td>Task berhasil, tidak ada perubahan</td></tr>
+      <tr><td>changed</td><td><span class="badge-inline" style="background:#fff3cd;color:#856404;">kuning/oranye</span></td><td>Task berhasil dan ada perubahan</td></tr>
+      <tr><td>failed</td><td><span class="badge-inline badge-red">merah</span></td><td>Task gagal</td></tr>
+      <tr><td>skipped</td><td><span class="badge-inline badge-blue">biru</span></td><td>Task dilewati (kondisi tidak terpenuhi)</td></tr>
+    </table>
+
+    <p>Contoh PLAY RECAP sukses:</p>
+    <pre>192.168.200.21 : ok=4  changed=3  failed=0  skipped=0
+192.168.200.22 : ok=4  changed=3  failed=0  skipped=0</pre>
+  </div>
+
+  <!-- SECTION 11 -->
+  <div class="section">
+    <h2 class="section-title"><span class="section-number">11</span>Variable per Host</h2>
+    <p>Ansible memungkinkan setiap host di inventory punya variable yang berbeda. Ini berguna saat kita ingin tiap VM melakukan hal yang sedikit berbeda.</p>
+
+    <h3>Cara Menambahkan Variable di Inventory</h3>
+    <pre><span class="comment"># inventory.ini</span>
+[debian_vms]
+192.168.200.21 ansible_port=456 ansible_user=debian web_file="vm1.html"
+192.168.200.22 ansible_port=456 ansible_user=debian web_file="vm2.html"</pre>
+
+    <p>Variabel <code>web_file</code> bernilai berbeda untuk masing-masing host. Di playbook, variabel dipanggil dengan sintaks <code>{{ nama_variable }}</code>.</p>
+
+    <div class="callout info">
+      <strong>Catatan:</strong> Untuk konten yang pendek, variable bisa langsung ditulis di inventory. Untuk konten panjang (seperti file HTML), lebih baik buat file terpisah.
+    </div>
+  </div>
+
+  <!-- SECTION 12 -->
+  <div class="section">
+    <h2 class="section-title"><span class="section-number">12</span>Deploy File Berbeda ke VM Berbeda</h2>
+    <p>Studi kasus: VM1 menampilkan "Halo Badak" dan VM2 menampilkan "Halo Singa" di halaman web nginx.</p>
+
+    <h3>Struktur Folder</h3>
+    <div class="flow">
+/home/agis/<br>
+├── inventory.ini<br>
+├── playbook.yml<br>
+└── files/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── vm1.html&nbsp;&nbsp;&nbsp;← konten untuk VM1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;└── vm2.html&nbsp;&nbsp;&nbsp;← konten untuk VM2
+    </div>
+
+    <h3>Langkah 1 — Buat folder files</h3>
+    <pre>mkdir ~/files</pre>
+
+    <h3>Langkah 2 — Buat file HTML untuk masing-masing VM</h3>
+    <pre><span class="comment"># vm1.html</span>
+nano ~/files/vm1.html</pre>
+    <pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+    &lt;h1&gt;Halo Badak&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+
+    <pre><span class="comment"># vm2.html</span>
+nano ~/files/vm2.html</pre>
+    <pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+    &lt;h1&gt;Halo Singa&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+
+    <h3>Langkah 3 — Update inventory</h3>
+    <pre>[debian_vms]
+192.168.200.21 ansible_port=456 ansible_user=debian web_file="vm1.html"
+192.168.200.22 ansible_port=456 ansible_user=debian web_file="vm2.html"</pre>
+
+    <h3>Langkah 4 — Task di playbook</h3>
+    <pre>- <span class="key">name:</span> <span class="string">Copy halaman web</span>
+  <span class="key">copy:</span>
+    <span class="key">src:</span> <span class="string">"files/{{ web_file }}"</span>
+    <span class="key">dest:</span> <span class="string">/var/www/html/index.html</span></pre>
+
+    <p>Ansible otomatis memilih file yang sesuai: VM1 mendapat vm1.html, VM2 mendapat vm2.html.</p>
+
+    <div class="callout success">
+      <strong>Hasil:</strong> Buka browser → <code>http://192.168.200.21</code> → tampil <strong>Halo Badak</strong> | <code>http://192.168.200.22</code> → tampil <strong>Halo Singa</strong>
+    </div>
+  </div>
+
+  <!-- SECTION 13 -->
+  <div class="section">
+    <h2 class="section-title"><span class="section-number">13</span>Idempotency</h2>
+    <p>Idempotency adalah salah satu keunggulan terbesar Ansible. Artinya: <strong>jalankan playbook 1x atau 100x, hasilnya selalu sama.</strong></p>
+    <p>Jika sebuah task sudah selesai sebelumnya (misalnya package sudah terinstall), Ansible tidak akan mengeksekusi ulang — cukup menampilkan status <code>ok</code> dan lanjut ke task berikutnya.</p>
+
+    <table>
+      <tr><th></th><th>Run Pertama</th><th>Run Kedua</th></tr>
+      <tr><td>Update & upgrade</td><td>changed</td><td>ok (sudah up-to-date)</td></tr>
+      <tr><td>Install package</td><td>changed</td><td>ok (sudah terinstall)</td></tr>
+      <tr><td>Buat user</td><td>changed</td><td>ok (user sudah ada)</td></tr>
+      <tr><td>Total changed</td><td>3</td><td>0</td></tr>
+    </table>
+
+    <div class="callout info">
+      <strong>Manfaat praktis:</strong> Kamu bisa jalankan ulang playbook kapan saja tanpa khawatir sesuatu "dobel" terjadi — package tidak diinstall dua kali, user tidak dibuat duplikat, dsb.
+    </div>
+  </div>
+
+  <!-- SECTION 14 -->
+  <div class="section">
+    <h2 class="section-title"><span class="section-number">14</span>Ansible Vault (Keamanan Password)</h2>
+    <p>Menyimpan password langsung di inventory (plain text) itu tidak aman untuk production. Ansible Vault adalah fitur bawaan untuk <strong>mengenkripsi password dan data sensitif</strong>.</p>
+
+    <h3>Membuat File Vault</h3>
+    <pre><span class="comment"># Buat file vault yang terenkripsi</span>
+ansible-vault create secrets.yml</pre>
+    <p>Akan diminta membuat password vault, lalu isi file dengan:</p>
+    <pre><span class="key">vault_become_pass_vm1:</span> <span class="string">"passwordVM1"</span>
+<span class="key">vault_become_pass_vm2:</span> <span class="string">"passwordVM2"</span></pre>
+
+    <h3>Menjalankan Playbook dengan Vault</h3>
+    <pre><span class="comment"># Minta input password vault saat run</span>
+ansible-playbook -i ~/inventory.ini ~/playbook.yml --ask-vault-pass</pre>
+
+    <div class="callout warning">
+      <strong>Untuk lab/belajar:</strong> Menyimpan password plain text di inventory masih oke. Tapi untuk server production, selalu gunakan Ansible Vault.
+    </div>
+  </div>
+
+  <!-- SECTION 15 -->
+  <div class="section">
+    <h2 class="section-title"><span class="section-number">15</span>Kemampuan Lain Ansible</h2>
+    <p>Ansible tidak hanya untuk konfigurasi dasar. Berikut kemampuan lain yang bisa dieksplorasi:</p>
+
+    <table>
+      <tr><th>Kemampuan</th><th>Contoh Penggunaan</th></tr>
+      <tr><td><strong>Manajemen Firewall</strong></td><td>Buka/tutup port di semua server sekaligus</td></tr>
+      <tr><td><strong>Deploy Aplikasi</strong></td><td>Pull code dari Git, deploy ke banyak server, rolling update tanpa downtime</td></tr>
+      <tr><td><strong>Docker & Container</strong></td><td>Install Docker, pull image, jalankan/stop container</td></tr>
+      <tr><td><strong>Provisioning Cloud</strong></td><td>Buat VM baru di AWS, GCP, Azure, DigitalOcean secara otomatis</td></tr>
+      <tr><td><strong>Backup Otomatis</strong></td><td>Backup database, compress, kirim ke storage, jadwalkan via cron</td></tr>
+      <tr><td><strong>Monitoring Setup</strong></td><td>Install & konfigurasi Prometheus, Grafana, alert otomatis</td></tr>
+      <tr><td><strong>Integrasi Proxmox</strong></td><td>Buat/clone/start/stop VM di Proxmox lewat playbook</td></tr>
+      <tr><td><strong>Ansible Role</strong></td><td>Rapikan playbook menjadi struktur yang modular & bisa dipakai ulang</td></tr>
+    </table>
+  </div>
+
+  <!-- RECAP -->
+  <div class="recap">
+    <h2>🎯 Recap — Yang Sudah Kamu Kuasai</h2>
+    <div class="check">Memahami konsep dan cara kerja Ansible</div>
+    <div class="check">Menyiapkan infrastruktur di Proxmox (template, clone, IP)</div>
+    <div class="check">Menginstall Ansible di Control Node</div>
+    <div class="check">Setup SSH key untuk akses tanpa password</div>
+    <div class="check">Membuat Inventory dengan parameter custom</div>
+    <div class="check">Membuat dan menjalankan Playbook</div>
+    <div class="check">Menggunakan variable per host</div>
+    <div class="check">Deploy file HTML berbeda ke VM berbeda</div>
+    <div class="check">Memahami konsep Idempotency</div>
+    <br>
+    <p style="color:rgba(255,255,255,0.7); font-size:13px;">Modul ini dibuat berdasarkan sesi belajar praktik langsung.</p>
+  </div>
+
+</div>
+</body>
+</html>
