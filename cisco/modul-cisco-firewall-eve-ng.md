@@ -1,10 +1,6 @@
 # 🔥 Modul Lab Cisco Firewall di EVE-NG
 ### *Panduan Lengkap dari Nol sampai Firewall Berjalan*
 
-> **Level:** Pemula  
-> **Durasi Estimasi:** 3–5 Jam  
-> **Tools:** EVE-NG Community, Cisco ASAv, Cisco IOL, VPCS, MikroTik  
-
 ---
 
 ## 📋 Daftar Isi
@@ -93,30 +89,7 @@
 
 ## 3. Topologi Lab
 
-```
-                    INTERNET
-                       │
-              [MikroTik Gateway]
-               192.168.2.254
-                       │
-         ┌─────────────────────────┐
-         │      Cloud0             │
-         │   (Management Net)      │
-         └─────────────────────────┘
-                  │         │
-          [PC Outside]   [Router]
-          192.168.2.90   e0/0: 192.168.2.233
-                         e0/1: 192.168.100.1
-                                  │
-                            [ASAv Firewall]
-                        Gi0/0: 192.168.100.2 (outside)
-                        Gi0/1: 10.10.10.1    (inside)
-                                  │
-                           [Switch L2]
-                                  │
-                            [PC Inside]
-                           10.10.10.10
-```
+<img width="1055" height="615" alt="Image" src="https://github.com/user-attachments/assets/73ed634c-43d6-463d-99b3-f59374b1a26e" />
 
 ### Penjelasan Setiap Node
 
