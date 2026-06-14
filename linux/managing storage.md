@@ -130,11 +130,11 @@ exfat
 Keterangan singkat:
 
 | Filesystem | Keterangan                                                                  |
-| ---------- | --------------------------------------------------------------------------- |
-| ext4       | Cocok untuk Linux                                                           |
-| NTFS       | Cocok untuk Windows dan Linux                                               |
-| FAT32      | Cocok untuk banyak perangkat, tetapi batas file maksimal sekitar 4 GB       |
-| exFAT      | Cocok untuk flashdisk besar dan kompatibel dengan Windows, Linux, dan macOS |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| ext4       | Cocok untuk Linux. Paling stabil dan umum dipakai di Ubuntu. Mendukung journaling (mengurangi risiko corrupt saat listrik mati). Tidak cocok untuk Windows tanpa tools tambahan.                       |
+| NTFS       | Cocok untuk Windows dan Linux. Banyak dipakai di harddisk/flashdisk yang sering pindah antara Windows–Linux. Mendukung file besar (>4GB) dan permission Windows. Di Linux kadang butuh driver ntfs-3g. |
+| FAT32      | Cocok untuk banyak perangkat (HP, kamera, TV, console). Sangat kompatibel, tapi punya batasan penting: ukuran file maksimal ±4GB dan tidak mendukung fitur security/journaling.                        |
+| exFAT      | Versi modern FAT32. Cocok untuk flashdisk/SD card besar. Tidak ada batas 4GB per file. Kompatibel Windows, Linux, dan macOS (Linux perlu package exfatprogs). Lebih ringan dibanding NTFS.             |
 
 ### 4. Mount
 
