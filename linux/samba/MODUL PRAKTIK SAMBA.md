@@ -43,7 +43,7 @@ Samba adalah layanan di Linux yang memungkinkan folder dibagikan ke jaringan seh
 ```bash
 sudo apt update
 sudo apt install samba smbclient samba-common-bin -y
-````
+
 
 ### 📌 Penjelasan:
 
@@ -322,3 +322,4 @@ Jika berhasil:
 * Folder aman dan terkontrol
 
 ```
+````
