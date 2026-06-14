@@ -1,6 +1,3 @@
-
-
-````md
 # 📘 MODUL PRAKTIK SAMBA (USER BASED FILE SHARING)
 ## Linux Server + Windows & Linux Client
 
@@ -322,4 +319,3 @@ Jika berhasil:
 * Folder aman dan terkontrol
 
 ```
-````
