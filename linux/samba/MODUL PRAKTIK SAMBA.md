@@ -3,7 +3,7 @@
 
 ---
 
-# 🎯 PRAKTIK
+# PRAKTIK nya apa aja:
 
 1. Menginstall Samba di Ubuntu
 2. Membuat folder sharing berbasis user
@@ -14,7 +14,7 @@
 
 ---
 
-# 🧠 KONSEP DASAR SAMBA
+# KONSEP DASAR SAMBA
 
 Samba adalah layanan di Linux yang memungkinkan folder dibagikan ke jaringan sehingga bisa diakses oleh:
 
@@ -24,7 +24,7 @@ Samba adalah layanan di Linux yang memungkinkan folder dibagikan ke jaringan seh
 
 ---
 
-## 🔑 KONSEP PENTING
+## KONSEP PENTING
 
 | Komponen | Fungsi |
 |----------|--------|
@@ -35,14 +35,14 @@ Samba adalah layanan di Linux yang memungkinkan folder dibagikan ke jaringan seh
 
 ---
 
-# 🧱 1. INSTALASI SAMBA
+# 1. INSTALASI SAMBA
 
 ```bash
 sudo apt update
 sudo apt install samba smbclient samba-common-bin -y
 
 
-### 📌 Penjelasan:
+### Penjelasan:
 
 * samba = server utama
 * smbclient = tool test dari Linux client
@@ -50,7 +50,7 @@ sudo apt install samba smbclient samba-common-bin -y
 
 ---
 
-# 🔍 2. CEK SERVICE SAMBA
+# 2. CEK SERVICE SAMBA
 
 ```bash
 systemctl status smbd
@@ -64,19 +64,19 @@ sudo systemctl enable --now smbd nmbd
 
 ---
 
-# 📁 3. MEMBUAT FOLDER SHARING
+# 3. MEMBUAT FOLDER SHARING
 
 ```bash
 sudo mkdir -p /srv/samba/kelas
 ```
 
-### 📌 Penjelasan:
+### Penjelasan:
 
 Folder ini adalah lokasi file yang akan dibagikan ke jaringan.
 
 ---
 
-# 👥 4. MEMBUAT USER DAN GROUP
+# 4. MEMBUAT USER DAN GROUP
 
 ## 4.1 Buat group
 
@@ -84,7 +84,7 @@ Folder ini adalah lokasi file yang akan dibagikan ke jaringan.
 sudo groupadd staf
 ```
 
-### 📌 Fungsi:
+### Fungsi:
 
 Group digunakan untuk mengatur hak akses bersama.
 
@@ -97,7 +97,7 @@ sudo useradd -M -s /usr/sbin/nologin -G staf salsa
 sudo useradd -M -s /usr/sbin/nologin -G staf andi
 ```
 
-### 📌 Penjelasan:
+### Penjelasan:
 
 * user hanya untuk Samba
 * tidak bisa login ke Linux
@@ -112,7 +112,7 @@ sudo smbpasswd -a salsa
 sudo smbpasswd -a andi
 ```
 
-### 📌 Penjelasan:
+### Penjelasan:
 
 Ini adalah password khusus untuk akses Samba (bukan password Linux).
 
@@ -125,14 +125,14 @@ sudo smbpasswd -e andi
 
 ---
 
-# 🔐 5. SET PERMISSION FOLDER
+# 5. SET PERMISSION FOLDER
 
 ```bash
 sudo chown -R root:staf /srv/samba/kelas
 sudo chmod -R 2770 /srv/samba/kelas
 ```
 
-### 📌 Penjelasan:
+### Penjelasan:
 
 * root = pemilik folder
 * staf = group yang boleh akses
@@ -145,7 +145,7 @@ sudo chmod -R 2770 /srv/samba/kelas
 
 ---
 
-# ⚙️ 6. KONFIGURASI SAMBA
+# 6. KONFIGURASI SAMBA
 
 Edit file:
 
@@ -168,7 +168,7 @@ Tambahkan di PALING BAWAH:
 
 ---
 
-## 📌 PENJELASAN PENTING
+## PENJELASAN PENTING
 
 | Konfigurasi    | Arti                   |
 | -------------- | ---------------------- |
@@ -180,7 +180,7 @@ Tambahkan di PALING BAWAH:
 
 ---
 
-# 🧪 7. CEK KONFIGURASI
+# 7. CEK KONFIGURASI
 
 ```bash
 testparm
@@ -194,7 +194,7 @@ Loaded services file OK
 
 ---
 
-# 🔄 8. RESTART SAMBA
+# 8. RESTART SAMBA
 
 ```bash
 sudo systemctl restart smbd nmbd
@@ -202,7 +202,7 @@ sudo systemctl restart smbd nmbd
 
 ---
 
-# 🪟 9. TEST DARI WINDOWS
+# 9. TEST DARI WINDOWS
 
 Tekan:
 
@@ -223,7 +223,7 @@ Login:
 
 ---
 
-# 🐧 10. TEST DARI LINUX CLIENT
+# 10. TEST DARI LINUX CLIENT
 
 ## 10.1 Install tools
 
@@ -260,7 +260,7 @@ exit   → keluar
 
 ---
 
-# 🚨 TROUBLESHOOTING
+# TROUBLESHOOTING
 
 ## ❌ Tidak bisa akses
 
