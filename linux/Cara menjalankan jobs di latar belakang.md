@@ -5,16 +5,16 @@ Berikut rincian fungsinya:
 ---
 
 ### 1. pakai `CTRL+Z` dan `bg`?
-Biasanya kalau Abang jalankan `python3 server.py`, terminalnya jadi "kekunci" (nggak bisa ngetik apa-apa lagi kecuali matiin servernya).
+Biasanya kalau jalankan `python3 server.py`, terminalnya jadi "kekunci" (nggak bisa ngetik apa-apa lagi kecuali matiin servernya).
 * **`CTRL+Z`**: Fungsinya buat mem-*pause* (menghentikan sementara) si Python.
 * **`bg`**: Fungsinya buat menyuruh si Python jalan lagi tapi di **latar belakang** (background).
-* **Hasilnya**: Server Python tetap nyala, tapi Abang tetap bisa ngetik perintah lain di terminal yang sama. Kayak dengerin Spotify sambil buka WhatsApp di HP.
+* **Hasilnya**: Server Python tetap nyala, tapi tetap bisa ngetik perintah lain di terminal yang sama. Kayak dengerin Spotify sambil buka WhatsApp di HP.
 
 
 
 ### 2. Kenapa harus tes pakai `curl`?
 `curl` itu ibarat browser tapi versi teks. Perintah ini gunanya untuk **pura-pura jadi `vl-srv2`**. 
-* Daripada Abang bolak-balik pindah ke layar `vl-srv2` cuma buat ngetes (yang ternyata sering gagal tadi), mending kita tes langsung dari dalam rumahnya sendiri (si LXC itu).
+* Daripada bolak-balik pindah ke layar `vl-srv2` cuma buat ngetes (yang ternyata sering gagal tadi), mending kita tes langsung dari dalam rumahnya sendiri (si LXC itu).
 * **`-X POST`**: Ini bagian paling krusial. Tadi kan instalasi Abang **Aborted** karena si Python nggak mau nerima perintah **POST**. Nah, perintah `curl` ini buat ngetes apakah si Python yang baru sudah pintar dan mau nerima perintah POST atau belum.
 
 
@@ -26,7 +26,7 @@ Biasanya kalau Abang jalankan `python3 server.py`, terminalnya jadi "kekunci" (n
 # Kalau di-`bg` (background), si Python itu sekarang lari "di belakang layar". Ada tiga cara buat nangkep dan matiinnya, pilih yang menurut Abang paling gampang:
 
 ### Cara 1: Balikin ke Depan (`fg`)
-Kalau Abang masih di sesi terminal yang sama (nggak ganti tab/nggak keluar SSH):
+Kalau masih di sesi terminal yang sama (nggak ganti tab/nggak keluar SSH):
 1. Ketik: **`jobs`** (Ini buat lihat daftar kerjaan di background).
 2. Nanti muncul angka, misal `[1] Running`.
 3. Ketik: **`fg %1`** (Angkanya sesuaikan sama yang muncul di `jobs`).
@@ -50,7 +50,7 @@ Kalau `fuser` nggak ada, pakai cara manual cari "KTP" (PID) prosesnya:
    ```bash
    kill -9 1234
    ```
-   *(Ganti 1234 dengan angka yang muncul di layar Abang)*.
+   *(Ganti 1234 dengan angka yang muncul di layar)*.
 
 ---
 
