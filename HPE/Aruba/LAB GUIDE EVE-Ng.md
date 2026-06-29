@@ -2,7 +2,7 @@
 # LAB GUIDE EVE-NG
 ## Aruba CX 6300M + 6100 Switch + MikroTik Internet + VPCS
 
----
+
 
 # 1. TOPOLOGY
 
@@ -23,7 +23,7 @@ PC4 PC5              PC6 PC7
 
 
 
----
+
 
 # 2. IP PLAN
 
@@ -39,7 +39,7 @@ PC4 PC5              PC6 PC7
 - VLAN 30 = 10.10.30.0/24
 - VLAN 99 = 10.10.99.0/24
 
----
+
 
 # 3. MIKROTIK (INTERNET GATEWAY)
 
@@ -65,7 +65,7 @@ PC4 PC5              PC6 PC7
 
 
 
----
+
 
 # 4. ARUBA CX 6300M (CORE)
 
@@ -126,7 +126,7 @@ vlan trunk allowed 10,20,30,99
 
 
 
----
+
 
 # 5. ACCESS SWITCH 1 (6100-CX-1)
 
@@ -157,7 +157,7 @@ vlan access 20
 
 
 
----
+
 
 # 6. ACCESS SWITCH 2 (6100-CX-2)
 
@@ -188,7 +188,7 @@ vlan access 99
 
 
 
----
+
 
 # 7. VPCS CONFIG
 
@@ -220,7 +220,7 @@ ip 10.10.99.10 255.255.255.0 10.10.99.1
 
 
 
----
+
 
 # 8. TESTING
 
@@ -251,7 +251,7 @@ ping google.com
 
 
 
----
+
 
 # 9. FINAL STATUS
 
@@ -261,4 +261,4 @@ ping google.com
 - Internet Access = OK
 
 
----
+
