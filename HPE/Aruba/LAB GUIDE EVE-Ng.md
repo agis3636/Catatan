@@ -4,10 +4,14 @@
 
 # 1. TOPOLOGY
 
-CLOUD (Internet)
-→ CORE SWITCH Aruba CX 6300M
-→ ACCESS SWITCH 1 & 2
-→ PC4 PC5 PC6 PC7
+<img width="1306" height="1205" alt="Image" src="https://github.com/user-attachments/assets/ae8ab720-037e-49a1-8408-f252efbe9b52" />
+<img width="1309" height="1202" alt="Image" src="https://github.com/user-attachments/assets/59c2714e-12f0-4e2d-b3d6-7e124fcb54da" />
+<img width="1308" height="1202" alt="Image" src="https://github.com/user-attachments/assets/57c678ae-75a1-45b3-bce5-3612d07d57e8" />
+<img width="1369" height="1149" alt="Image" src="https://github.com/user-attachments/assets/b74d7d5b-b437-403e-b6ec-97426938476d" />
+<img width="1305" height="1205" alt="Image" src="https://github.com/user-attachments/assets/0e2a9296-eea7-4666-8872-921ee0769fbe" />
+<img width="1308" height="1202" alt="Image" src="https://github.com/user-attachments/assets/f8d079f1-b0df-4bd6-86aa-665a0030faf2" />
+<img width="1402" height="1122" alt="Image" src="https://github.com/user-attachments/assets/821aba55-0f3f-409a-aaab-cfcf4e72f292" />
+<img width="1306" height="1204" alt="Image" src="https://github.com/user-attachments/assets/3d690a05-c017-48af-b7cb-d776ea985033" />
 
 ---
 
