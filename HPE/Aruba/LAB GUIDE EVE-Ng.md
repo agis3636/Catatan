@@ -1,7 +1,5 @@
 # 🚀 EVE-NG LAB (Aruba CX 6300M + 6100 Switch + CLOUD INTERNET + VPCS)
 
----
-
 # 1. TOPOLOGY
 
 <img width="1306" height="1205" alt="Image" src="https://github.com/user-attachments/assets/ae8ab720-037e-49a1-8408-f252efbe9b52" />
@@ -13,51 +11,71 @@
 <img width="1402" height="1122" alt="Image" src="https://github.com/user-attachments/assets/821aba55-0f3f-409a-aaab-cfcf4e72f292" />
 <img width="1306" height="1204" alt="Image" src="https://github.com/user-attachments/assets/3d690a05-c017-48af-b7cb-d776ea985033" />
 
+# 2. IP PLAN (WAJIB PAHAM)
+
+## 🌐 INTERNET (CLOUD)
+
+Gateway Internet:
+
+```
+192.168.2.254/24
+```
+
 ---
 
-# 2. IP PLAN
+## 🔵 CORE SWITCH INTERNET INTERFACE
 
-CORE INTERNET INTERFACE:
+```
 192.168.2.93/24
+```
 
-GATEWAY INTERNET (CLOUD ROUTER):
-192.168.2.254
+---
 
-VLAN:
+## 🔵 DEFAULT ROUTE (INTERNET ACCESS)
 
-VLAN 10 = 10.10.10.0/24 → GW 10.10.10.1
-VLAN 20 = 10.10.20.0/24 → GW 10.10.20.1
-VLAN 30 = 10.10.30.0/24 → GW 10.10.30.1
-VLAN 99 = 10.10.99.0/24 → GW 10.10.99.1
+```
+0.0.0.0/0 → 192.168.2.254
+```
+
+---
+
+## 🔵 VLAN NETWORK
+
+| VLAN | NETWORK       | GATEWAY    |
+| ---- | ------------- | ---------- |
+| 10   | 10.10.10.0/24 | 10.10.10.1 |
+| 20   | 10.10.20.0/24 | 10.10.20.1 |
+| 30   | 10.10.30.0/24 | 10.10.30.1 |
+| 99   | 10.10.99.0/24 | 10.10.99.1 |
 
 ---
 
 # 3. CLOUD (INTERNET)
 
-* Cloud0 NAT / Management
-* sudah auto internet dari EVE-NG
-
-👉 TIDAK PERLU CONFIG
+✔ EVE-NG Cloud0 NAT
+✔ TIDAK PERLU CONFIG
 
 ---
 
 # 4. CORE SWITCH (ARUBA CX 6300M)
 
-conf t
-
 ---
 
-## VLAN
+## VLAN CREATE
 
+```
+conf t
 vlan 10
 vlan 20
 vlan 30
 vlan 99
+```
 
 ---
 
 ## SVI (GATEWAY VLAN)
 
+```
 interface vlan 10
 ip address 10.10.10.1/24
 
@@ -69,31 +87,39 @@ ip address 10.10.30.1/24
 
 interface vlan 99
 ip address 10.10.99.1/24
+```
 
 ---
 
-## ENABLE ROUTING
+## ENABLE L3 ROUTING
 
+```
 ip routing
+```
 
 ---
 
-## INTERNET PORT (ke CLOUD)
+## INTERNET PORT (KE CLOUD)
 
+```
 interface 1/1/1
 no shutdown
 ip address 192.168.2.93/24
+```
 
 ---
 
-## DEFAULT ROUTE
+## DEFAULT ROUTE (WAJIB INTERNET)
 
+```
 ip route 0.0.0.0/0 192.168.2.254
+```
 
 ---
 
 ## TRUNK KE ACCESS SWITCH
 
+```
 interface 1/1/2
 no shutdown
 vlan trunk allowed 10,20,30,99
@@ -101,18 +127,28 @@ vlan trunk allowed 10,20,30,99
 interface 1/1/3
 no shutdown
 vlan trunk allowed 10,20,30,99
+```
 
 ---
 
-# 5. ACCESS SWITCH 1
+# 5. ACCESS SWITCH 1 (6100-CX-1)
 
+---
+
+## VLAN
+
+```
 vlan 10
 vlan 20
 vlan 30
 vlan 99
+```
 
 ---
 
+## PORT CONFIG
+
+```
 interface 1/1/1
 no shutdown
 vlan trunk allowed 10,20,30,99
@@ -124,18 +160,28 @@ vlan access 10
 interface 1/1/3
 no shutdown
 vlan access 20
+```
 
 ---
 
-# 6. ACCESS SWITCH 2
+# 6. ACCESS SWITCH 2 (6100-CX-2)
 
+---
+
+## VLAN
+
+```
 vlan 10
 vlan 20
 vlan 30
 vlan 99
+```
 
 ---
 
+## PORT CONFIG
+
+```
 interface 1/1/1
 no shutdown
 vlan trunk allowed 10,20,30,99
@@ -147,54 +193,66 @@ vlan access 30
 interface 1/1/3
 no shutdown
 vlan access 99
+```
 
 ---
 
-# 7. VPCS SETTING
+# 7. VPCS CONFIG
 
-PC4:
+## PC4 (VLAN 10)
+
+```
 ip 10.10.10.10 255.255.255.0 10.10.10.1
+```
 
-PC5:
+## PC5 (VLAN 20)
+
+```
 ip 10.10.20.10 255.255.255.0 10.10.20.1
+```
 
-PC6:
+## PC6 (VLAN 30)
+
+```
 ip 10.10.30.10 255.255.255.0 10.10.30.1
+```
 
-PC7:
+## PC7 (VLAN 99)
+
+```
 ip 10.10.99.10 255.255.255.0 10.10.99.1
+```
 
 ---
 
-# 8. TESTING
+# 8. TESTING (URUT WAJIB)
 
-## internal gateway
+---
 
+## 8.1 TEST GATEWAY (CORE)
+
+```
 ping 10.10.10.1
 ping 10.10.20.1
 ping 10.10.30.1
 ping 10.10.99.1
+```
 
 ---
 
-## antar PC
+## 8.2 TEST INTER VLAN
 
+```
 ping 10.10.20.10
 ping 10.10.30.10
 ping 10.10.99.10
+```
 
 ---
 
-## internet
+## 8.3 TEST INTERNET
 
+```
 ping 8.8.8.8
 ping google.com
-
----
-
-# DONE
-
-✔ VLAN OK
-✔ TRUNK OK
-✔ ROUTING OK
-✔ INTERNET VIA CLOUD OK
+```
