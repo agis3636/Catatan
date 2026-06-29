@@ -16,10 +16,10 @@ CORE SWITCH Aruba CX 6300M
 |
 -
 
-|                       |
-ACCESS SWITCH 1       ACCESS SWITCH 2
-|   |                 |   |
-PC4 PC5              PC6 PC7
+|  ACCESS SWITCH 1                     |  ACCESS SWITCH 2
+      
+| PC4 PC5    |                 |  PC6 PC7  |
+           
 
 
 
