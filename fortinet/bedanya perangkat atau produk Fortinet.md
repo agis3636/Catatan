@@ -1,4 +1,4 @@
-Siap! Berikut bedanya perangkat/produk utama Fortinet dan “dll”-nya—saya kelompokkan biar gampang kebayang arsitekturnya.
+Bedanya perangkat/produk utama Fortinet dan “dll”-nya | Saya kelompokkan biar gampang kebayang arsitekturnya.
 
 # Inti (paling sering dipakai)
 
