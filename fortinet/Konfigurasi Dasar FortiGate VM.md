@@ -139,8 +139,3 @@ execute clear-screen
 
 ```
 
-
-
----
-
-Dengan mengikuti urutan ini, konfigurasi FortiGate Anda akan lebih terstruktur. Apakah ada bagian dari *workflow* ini yang ingin kita simulasikan untuk pembuatan *Firewall Policy*-nya sekarang, Mas Agis?
