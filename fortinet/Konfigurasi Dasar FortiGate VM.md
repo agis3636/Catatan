@@ -1,5 +1,7 @@
 # Konfigurasi Dasar FortiGate VM
 
+<img width="2816" height="1536" alt="Image" src="https://github.com/user-attachments/assets/d57134ef-6f9a-4170-abb9-8817e3471eb8" />
+
 ### Langkah 1: Konfigurasi Interface (IP Address)
 
 **Tujuan:** Memberikan identitas jaringan pada *port*. Setiap *port* butuh akses (`allowaccess`) agar Anda bisa me-*remote* perangkat (Web/SSH/Ping).
