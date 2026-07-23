@@ -406,3 +406,29 @@ Group By sub1.lastPatch
 Order By Total Desc
 
 ```
+
+---
+
+### 18. Alert: Monitoring Waktu Nyala Komputer / Uptime PC
+
+```sql
+Select Top 1000000 
+    tsysAssetTypes.AssetTypeIcon10 As icon, 
+    tblAssets.AssetID, 
+    tblAssets.AssetName, 
+    tblAssets.Domain, 
+    tsysAssetTypes.AssetTypename As AssetType, 
+    tblAssets.Username, 
+    tblAssets.IPAddress, 
+    tblAssetCustom.Manufacturer, 
+    tblAssetCustom.Model, 
+    Convert(nvarchar(10),Ceiling(Floor(Convert(integer,tblAssets.Uptime) / 3600 / 24))) + ' days ' + 
+    Convert(nvarchar(10),Ceiling(Floor(Convert(integer,tblAssets.Uptime) / 3600 % 24))) + ' hours ' + 
+    Convert(nvarchar(10),Ceiling(Floor(Convert(integer,tblAssets.Uptime) % 3600 / 60))) + ' minutes' As Uptime
+From tblAssets 
+Inner Join tblAssetCustom On tblAssets.AssetID = tblAssetCustom.AssetID 
+Inner Join tsysAssetTypes On tsysAssetTypes.AssetType = tblAssets.Assettype 
+Where tblAssetCustom.State = 1 And tblAssets.Uptime Is Not Null 
+Order By tblAssets.Uptime Desc
+
+```
