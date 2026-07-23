@@ -432,3 +432,20 @@ Where tblAssetCustom.State = 1 And tblAssets.Uptime Is Not Null
 Order By tblAssets.Uptime Desc
 
 ```
+
+---
+
+### 19. Alert: Memantau kapasitas hard disk yang hampir penuh (misalnya dibawah 10%)
+
+```sql
+SELECT TOP 1000 
+    a.AssetName, 
+    d.Caption, 
+    d.Size, 
+    d.FreeSpace,
+    CAST(d.FreeSpace AS FLOAT) / CAST(d.Size AS FLOAT) * 100 AS PercentFree
+FROM tblAssets 
+INNER JOIN tblDiskdrives d ON a.AssetID = d.AssetID
+WHERE (CAST(d.FreeSpace AS FLOAT) / CAST(d.Size AS FLOAT)) < 0.1
+
+```
