@@ -409,7 +409,7 @@ Order By Total Desc
 
 ---
 
-### 18. Alert: Monitoring Waktu Nyala Komputer / Uptime PC
+### 18. Monitoring Waktu Nyala Komputer / Uptime PC
 
 ```sql
 Select Top 1000000 
@@ -435,7 +435,7 @@ Order By tblAssets.Uptime Desc
 
 ---
 
-### 19. Alert: Memantau kapasitas hard disk yang hampir penuh (misalnya dibawah 10%)
+### 19. Memantau kapasitas hard disk yang hampir penuh (misalnya dibawah 10%)
 
 ```sql
 SELECT TOP 1000 
@@ -447,5 +447,62 @@ SELECT TOP 1000
 FROM tblAssets 
 INNER JOIN tblDiskdrives d ON a.AssetID = d.AssetID
 WHERE (CAST(d.FreeSpace AS FLOAT) / CAST(d.Size AS FLOAT)) < 0.1
+
+```
+
+---
+
+### 20. Membuat Report Khusus "User yang Login ke PC"
+
+```sql
+Select Top 1000000 
+    tblAssets.AssetName, 
+    tblAssets.Username As LastLoggedOnUser, 
+    tblAssets.IPAddress, 
+    tblAssets.Lastseen 
+From tblAssets 
+Inner Join tblAssetCustom On tblAssets.AssetID = tblAssetCustom.AssetID 
+Where tblAssetCustom.State = 1 
+Order By tblAssets.AssetName Asc
+
+```
+
+---
+
+### 21. Membaca User yang Sedang Aktif (Real-Time saat Scan Terakhir)
+
+```sql
+Select Top 1000000 
+    tsysAssetTypes.AssetTypeIcon10 As icon, 
+    tblAssets.AssetName, 
+    tblAssets.Domain, 
+    tblAssets.Username As CurrentActiveUser, 
+    tblAssets.IPAddress, 
+    tblAssets.Lastseen As LastScanTime 
+From tblAssets 
+Inner Join tblAssetCustom On tblAssets.AssetID = tblAssetCustom.AssetID 
+Inner Join tsysAssetTypes On tsysAssetTypes.AssetType = tblAssets.Assettype 
+Where tblAssetCustom.State = 1 And tblAssets.Username Is Not Null And tblAssets.Username <> '' 
+Order By tblAssets.AssetName Asc
+
+```
+
+---
+
+### 22. Mencatat Semua User yang Pernah Login ke PC (Riwayat Semua User)
+
+```sql
+Select Top 1000000 
+    tsysAssetTypes.AssetTypeIcon10 As icon, 
+    tblAssets.AssetName, 
+    tblAssets.Domain, 
+    tblAssets.Username As CurrentActiveUser, 
+    tblAssets.IPAddress, 
+    tblAssets.Lastseen As LastScanTime 
+From tblAssets 
+Inner Join tblAssetCustom On tblAssets.AssetID = tblAssetCustom.AssetID 
+Inner Join tsysAssetTypes On tsysAssetTypes.AssetType = tblAssets.Assettype 
+Where tblAssetCustom.State = 1 And tblAssets.Username Is Not Null And tblAssets.Username <> '' 
+Order By tblAssets.AssetName Asc
 
 ```
