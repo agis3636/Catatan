@@ -22,16 +22,16 @@ Sebetulnya, prosedur standar klaim garansi perangkat seperti HP memang dirancang
 
 Berikut adalah alur standar klaim garansi HP pada umumnya:
 
-* Kontak Langsung: Pihak end-user menghubungi layanan dukungan HP secara langsung. Ini biasanya bisa dilakukan via telepon bebas pulsa, WhatsApp resmi HP Support, atau melalui portal web HP.
+* **Kontak Langsung:** Pihak end-user menghubungi layanan dukungan HP secara langsung. Ini biasanya bisa dilakukan via telepon bebas pulsa, WhatsApp resmi HP Support, atau melalui portal web HP.
 
-* Verifikasi Serial Number (SN): HP akan meminta Serial Number dan Product Number laptop untuk memverifikasi validitas dan jenis garansi yang menempel pada unit tersebut.
+* **Verifikasi Serial Number (SN):** HP akan meminta Serial Number dan Product Number laptop untuk memverifikasi validitas dan jenis garansi yang menempel pada unit tersebut.
 
-* Troubleshooting Jarak Jauh: Tim teknis HP wajib melakukan diagnosa awal secara jarak jauh (telepon/chat) dengan user yang memegang laptop tersebut. Mereka akan memandu user menjalankan beberapa tes sistem (seperti menekan tombol F2 saat booting untuk masuk ke HP Hardware Diagnostics) guna memastikan apakah masalahnya ada di software atau terkonfirmasi kerusakan hardware.
+* **Troubleshooting Jarak Jauh:** Tim teknis HP wajib melakukan diagnosa awal secara jarak jauh (telepon/chat) dengan user yang memegang laptop tersebut. Mereka akan memandu user menjalankan beberapa tes sistem (seperti menekan tombol F2 saat booting untuk masuk ke HP Hardware Diagnostics) guna memastikan apakah masalahnya ada di software atau terkonfirmasi kerusakan hardware.
 
-* Penerbitan Tiket & Tindakan:
-- Jika kerusakan hardware terkonfirmasi, HP akan membuatkan tiket perbaikan.
-- Jika laptop memiliki garansi On-Site Service, HP akan mengirimkan teknisi beserta suku cadang (sparepart) pengganti langsung ke kantor/lokasi user.
-- Jika garansinya standar (Carry-in), user akan diarahkan untuk membawa unit beserta nomor tiket ke Authorized Service Center HP terdekat.
+* **Penerbitan Tiket & Tindakan:**
+  - Jika kerusakan hardware terkonfirmasi, HP akan membuatkan tiket perbaikan.
+  - Jika laptop memiliki garansi On-Site Service, HP akan mengirimkan teknisi beserta suku cadang (sparepart) pengganti langsung ke kantor/lokasi user.
+  - Jika garansinya standar (Carry-in), user akan diarahkan untuk membawa unit beserta nomor tiket ke Authorized Service Center HP terdekat.
 
 Karena tahap ke-3 (Troubleshooting jarak jauh) mengharuskan unit berada di tangan pelapor agar bisa dites langsung sesuai arahan teknisi HP, proses ini memang paling ideal dan efisien jika dilakukan langsung oleh user atau tim IT user.
 
