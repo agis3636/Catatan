@@ -136,6 +136,7 @@ NooR.NET adalah layanan WiFi voucher yang menyediakan akses internet dengan sist
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 # 6. BAGAIMANA CARA MENJADI MITRA?
+
 **1. Hubungi NooR.NET**
 
 ↓
@@ -209,29 +210,16 @@ NooR.NET dapat dikembangkan untuk:
 ----------------------------------------------------------------------------------------------------------------------------------------
 
 # 10. KONTAK NooR.NET
+
 **NooR.NET**
+
 *Solusi WiFi Voucher & Kemitraan Internet*
+
 📞 WhatsApp: **[Nomor]**
 📧 Email: **[Email]**
 🌐 Website: **[Website]**
 📱 Media Sosial: **[Instagram/Facebook/dll.]**
 📍 Alamat: **[Alamat]**
-
-----------------------------------------------------------------------------------------------------------------------------------------
-
-## STRUKTUR PDF CANVA YANG DISARANKAN
-**Halaman 1** — Cover
-**Halaman 2** — Tentang NooR.NET
-**Halaman 3** — Kenapa NooR.NET?
-**Halaman 4** — Cara Kerja WiFi Voucher
-**Halaman 5** — Paket Full Support Device
-**Halaman 6** — Paket Support Device
-**Halaman 7** — Paket Kemitraan Full Device
-**Halaman 8** — Tabel Perbandingan Paket
-**Halaman 9** — Cara Menjadi Mitra
-**Halaman 10** — Target Lokasi/Mitra
-**Halaman 11** — Keunggulan & Potensi Kemitraan
-**Halaman 12** — Kontak / Call to Action
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
