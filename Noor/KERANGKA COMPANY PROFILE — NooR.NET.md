@@ -8,8 +8,7 @@
 > Internet mudah, terjangkau, dan siap dikembangkan bersama mitra.
 
 * Logo NooR.NET
-* Nomor kontak
-* Website / media sosial
+* 0895 2962 6366
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
