@@ -109,19 +109,11 @@ NooR.NET adalah layanan WiFi voucher yang menyediakan akses internet dengan sist
 
 ### Keuntungan
 
+* Mendapat porsi pendapatan 60%
 * Kepemilikan perangkat
-* Lebih leluasa mengembangkan jaringan
 * Cocok untuk mitra jangka panjang
 * Perangkat menjadi aset milik mitra
-* Mendapat porsi pendapatan 60%
 * Peluang mendapatkan pendapatan berulang dari penjualan voucher
-* Bisa menentukan dan mengembangkan titik layanan sendiri sesuai ketentuan NooR.NET
-* Tidak bergantung pada penyediaan perangkat dari NooR.NET
-* Jaringan bisa dikembangkan secara bertahap sesuai kebutuhan dan kemampuan mitra
-* Semakin banyak pengguna, semakin besar potensi pendapatan
-* Aset tetap dapat digunakan untuk operasional dalam jangka panjang
-* Bisa membangun basis pelanggan sendiri di sekitar lokasi layanan
-* Cocok untuk membangun usaha WiFi voucher jangka panjang
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -163,11 +155,10 @@ NooR.NET adalah layanan WiFi voucher yang menyediakan akses internet dengan sist
 
 # 7. KEUNGGULAN KEMITRAAN NooR.NET
 
-* Modal dapat disesuaikan dengan skema
 * Pilihan kepemilikan perangkat
 * Sistem voucher yang praktis
 * Dukungan NooR.NET
-* Peluang pengembangan jaringan
+* Peluang pengembangan jaringan, Keuntungan makin besar
 * Cocok untuk berbagai lokasi dan kebutuhan
 
 ----------------------------------------------------------------------------------------------------------------------------------------
@@ -205,7 +196,7 @@ NooR.NET dapat dikembangkan untuk:
 
 ↓
 
-**User & NooR.NET mendapatkan bagian**
+**Mitra & NooR.NET mendapatkan keuntungan**
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
