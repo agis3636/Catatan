@@ -1,5 +1,3 @@
-# KERANGKA COMPANY PROFILE — NooR.NET
-
 ### WiFi Voucher & Kemitraan Internet
 
 ## 1. COVER
@@ -13,7 +11,7 @@
 * Nomor kontak
 * Website / media sosial
 
----
+----------------------------------------------------------------------------------------------------------------------------------------
 
 ## 2. TENTANG NooR.NET
 
@@ -28,7 +26,7 @@ NooR.NET adalah layanan WiFi voucher yang menyediakan akses internet dengan sist
 * Peluang Keuntungan Lebih bagi Mitra
 * Sistem bagi hasil yang jelas
 
----
+----------------------------------------------------------------------------------------------------------------------------------------
 
 ## 3. KENAPA MEMILIH NooR.NET?
 
@@ -52,7 +50,7 @@ NooR.NET adalah layanan WiFi voucher yang menyediakan akses internet dengan sist
 * Bisa mulai dari lingkungan sekitar: rumah, kos, warung, tempat usaha, atau area komunitas
 * Tersedia pilihan skema kemitraan sesuai kemampuan dan kebutuhan
 
----
+----------------------------------------------------------------------------------------------------------------------------------------
 
 # 4. PILIHAN PAKET NooR.NET
 
@@ -73,7 +71,6 @@ NooR.NET adalah layanan WiFi voucher yang menyediakan akses internet dengan sist
 ### Skema
 
 **2.500 user + 500 mitra**
-*(sesuaikan kembali angka ini jika maksudnya bukan pembagian user/mitra)*
 
 ---
 
@@ -83,8 +80,7 @@ NooR.NET adalah layanan WiFi voucher yang menyediakan akses internet dengan sist
 
 ### Sistem
 
-* **60% Mitra**
-* **40% NooR.NET**
+* **60% Mitra — 40% NooR.NET**
 * Harga voucher dan durasi ditentukan oleh NooR.NET
 
 ### Keuntungan
@@ -127,7 +123,7 @@ NooR.NET adalah layanan WiFi voucher yang menyediakan akses internet dengan sist
 * Bisa membangun basis pelanggan sendiri di sekitar lokasi layanan
 * Cocok untuk membangun usaha WiFi voucher jangka panjang
 
-----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------
 
 # 5. PERBANDINGAN PAKET
 
@@ -142,7 +138,7 @@ Kemitraan Full Device	|| Perangkat: Dibeli/Dimiliki Mitra 	|| skema: 40% noor.ne
 
 > **Catatan:** istilah **“2.000 user, 1.000 mitra”** pada paket Full Support Device masih ambigu. Sebaiknya diperjelas apakah itu **jumlah pengguna aktif, kapasitas sistem, jumlah titik, atau pembagian tertentu**, supaya tidak membingungkan calon mitra.
 
-----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------
 
 # 6. BAGAIMANA CARA MENJADI MITRA?
 
@@ -158,7 +154,7 @@ Kemitraan Full Device	|| Perangkat: Dibeli/Dimiliki Mitra 	|| skema: 40% noor.ne
 ↓
 **6. Mulai melayani pengguna & mendapatkan hasil**
 
----
+----------------------------------------------------------------------------------------------------------------------------------------
 
 # 7. KEUNGGULAN KEMITRAAN NooR.NET
 
@@ -169,7 +165,7 @@ Kemitraan Full Device	|| Perangkat: Dibeli/Dimiliki Mitra 	|| skema: 40% noor.ne
 * Peluang pengembangan jaringan
 * Cocok untuk berbagai lokasi dan kebutuhan
 
----
+----------------------------------------------------------------------------------------------------------------------------------------
 
 # 8. TARGET MITRA
 
@@ -184,7 +180,7 @@ NooR.NET dapat dikembangkan untuk:
 * Desa / lingkungan komunitas
 * Lokasi dengan kebutuhan internet terjangkau
 
----
+----------------------------------------------------------------------------------------------------------------------------------------
 
 # 9. ALUR PENDAPATAN
 
@@ -198,7 +194,7 @@ NooR.NET dapat dikembangkan untuk:
 ↓
 **User & NooR.NET mendapatkan bagian**
 
----
+----------------------------------------------------------------------------------------------------------------------------------------
 
 # 10. KONTAK NooR.NET
 
@@ -211,7 +207,7 @@ NooR.NET dapat dikembangkan untuk:
 📱 Media Sosial: **[Instagram/Facebook/dll.]**
 📍 Alamat: **[Alamat]**
 
----
+----------------------------------------------------------------------------------------------------------------------------------------
 
 ## STRUKTUR PDF CANVA YANG DISARANKAN
 
@@ -227,6 +223,8 @@ NooR.NET dapat dikembangkan untuk:
 **Halaman 10** — Target Lokasi/Mitra
 **Halaman 11** — Keunggulan & Potensi Kemitraan
 **Halaman 12** — Kontak / Call to Action
+
+----------------------------------------------------------------------------------------------------------------------------------------
 
 **CTA halaman terakhir:**
 
