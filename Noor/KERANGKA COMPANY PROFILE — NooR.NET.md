@@ -127,16 +127,11 @@ NooR.NET adalah layanan WiFi voucher yang menyediakan akses internet dengan sist
 
 # 5. PERBANDINGAN PAKET
 
-paket 1
-full support devices 	|| Perangkat: Didukung Noor.net 	|| skema: ditentukan noor.net 		|| Cocok untuk: mitra yang ingin praktis
-
-paket 2
-support devices 	|| Perangkat: user + Noor.net 		|| skema: 40% noor.net - 60% mitra 	|| Cocok untuk: Mitra yang sudah punya jaringan Wifi
-
-paket 3
-Kemitraan Full Device	|| Perangkat: Dibeli/Dimiliki Mitra 	|| skema: 40% noor.net - 60% mitra 	|| Cocok untuk: Mitra yang ingin membeli perangkat sendiri di noor
-
-> **Catatan:** istilah **“2.000 user, 1.000 mitra”** pada paket Full Support Device masih ambigu. Sebaiknya diperjelas apakah itu **jumlah pengguna aktif, kapasitas sistem, jumlah titik, atau pembagian tertentu**, supaya tidak membingungkan calon mitra.
+| Paket                     | Perangkat             | Skema                    | Cocok Untuk                                        |
+| ------------------------- | --------------------- | -------------------      | -------------------------------------------------- |
+| **Full Support Device**   | Didukung NooR.NET     | Ditentukan NooR.NET      | Mitra yang ingin praktis                           |
+| **Support Device**        | User + NooR.NET       | 40% NooR.NET - 60% Mitra | Mitra yang sudah punya jaringan Wifi               |
+| **Kemitraan Full Device** | Dibeli/Dimiliki Mitra | 40% NooR.NET - 60% Mitra | Mitra yang ingin membeli perangkat sendiri di noor |
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
