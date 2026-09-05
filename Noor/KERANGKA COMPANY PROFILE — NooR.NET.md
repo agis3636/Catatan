@@ -89,10 +89,14 @@ NooR.NET adalah layanan WiFi voucher yang menyediakan akses internet dengan sist
 * Mitra tetap mendapatkan dukungan NooR.NET
 * Dapat menghasilkan Keuntungan dari Wifi yang tersedia
 
----
+### Skema
 
 * **biaya investasi Rp. 0**
 
+### Catatan
+
+* **Biaya layanan internet menjadi tanggung jawab Mitra**
+* **Disarankan paket Internet 200 s/d 300 mbps**
 ---
 
 ## C. KEMITRAAN — PEMBELIAN FULL DEVICE
@@ -106,11 +110,6 @@ NooR.NET adalah layanan WiFi voucher yang menyediakan akses internet dengan sist
 * NooR.NET tetap menjadi bagian dari sistem kemitraan
 * Harga voucher dan durasi ditentukan oleh NooR.NET
 
-
-### Skema
-
-**60% Mitra — 40% NooR.NET**
-
 ### Keuntungan
 
 * Mendapat porsi pendapatan 60%
@@ -119,9 +118,17 @@ NooR.NET adalah layanan WiFi voucher yang menyediakan akses internet dengan sist
 * Perangkat menjadi aset milik mitra
 * Peluang mendapatkan pendapatan berulang dari penjualan voucher
 
----
+### Skema
 
+* **60% Mitra — 40% NooR.NET**
 * **biaya investasi Rp. 5.000.000**
+
+### Catatan
+
+* **Biaya layanan internet menjadi tanggung jawab Mitra**
+* **Disarankan paket Internet 200 s/d 300 mbps**
+
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
