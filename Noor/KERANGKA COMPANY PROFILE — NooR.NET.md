@@ -52,7 +52,7 @@ NooR.NET adalah layanan WiFi voucher yang menyediakan akses internet dengan sist
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-# 4. PILIHAN PAKET NooR.NET
+## 4. PILIHAN PAKET NooR.NET
 
 ## A. FULL SUPPORT DEVICE
 
@@ -70,8 +70,8 @@ NooR.NET adalah layanan WiFi voucher yang menyediakan akses internet dengan sist
 
 ### Skema
 
-**2.500 user + 500 mitra**
-
+* **2.500 user + 500 mitra**
+* **biaya investasi Rp. 0**
 ---
 
 ## B. SUPPORT DEVICE
@@ -88,6 +88,10 @@ NooR.NET adalah layanan WiFi voucher yang menyediakan akses internet dengan sist
 * Beban penyediaan perangkat lebih ringan
 * Mitra tetap mendapatkan dukungan NooR.NET
 * Dapat menghasilkan Keuntungan dari Wifi yang tersedia
+
+---
+
+* **biaya investasi Rp. 0**
 
 ---
 
@@ -114,6 +118,10 @@ NooR.NET adalah layanan WiFi voucher yang menyediakan akses internet dengan sist
 * Cocok untuk mitra jangka panjang
 * Perangkat menjadi aset milik mitra
 * Peluang mendapatkan pendapatan berulang dari penjualan voucher
+
+---
+
+* **biaya investasi Rp. 5.000.000**
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
