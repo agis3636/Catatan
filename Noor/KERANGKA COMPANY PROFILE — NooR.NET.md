@@ -133,7 +133,7 @@ NooR.NET adalah layanan WiFi voucher yang menyediakan akses internet dengan sist
 
 # 5. PERBANDINGAN PAKET
 
-| Paket                     | Perangkat             | Skema                    | Cocok Untuk                                        |
+| PAKET                     | PERANGKAT             | SKEMA                    | COCOK UNTUK                                        |
 | ------------------------- | --------------------- | -------------------      | -------------------------------------------------- |
 | **Full Support Device**   | Didukung NooR.NET     | Ditentukan NooR.NET      | Mitra yang ingin praktis                           |
 | **Support Device**        | User + NooR.NET       | 40% NooR.NET - 60% Mitra | Mitra yang sudah punya jaringan Wifi               |
