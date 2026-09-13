@@ -121,3 +121,36 @@ Untuk lab, home server, testing — **ini totally fine** 👍
 
 > Karena ESXi kamu **tidak punya Key Provider**, TPM memang tidak bisa dipakai.
 > Jadi satu-satunya cara install Windows 11 di situ adalah **bypass registry**.
+
+---
+---
+---
+
+Ini masalah krusial. Jika laptop mahasiswa hanya memiliki RAM 4GB dan Anda mengalokasikan 4GB (atau bahkan 3GB) untuk VirtualBox, laptop utama (Host) akan kehabisan memori dan berisiko *hang* total (Freeze).
+
+Untuk laptop 4GB, pembagian memori harus diatur secara ketat:
+
+| Komponen | Alokasi RAM (Total 4GB) | Keterangan |
+| --- | --- | --- |
+| **Host (Laptop Asli)** | 2 GB (2048 MB) | Menjaga OS utama tetap berjalan lancar dan tidak *hang*. |
+| **Guest (VM Windows 11)** | 2 GB (2048 MB) | Cukup untuk menjalankan proses instalasi secara perlahan. |
+
+**Penyebab Utama Masalah:**
+Windows 11 memiliki syarat mutlak RAM minimal 4GB. Jika VM hanya diberi 2GB, proses instalasi akan dicegat dengan *error* *"This PC can't run Windows 11"*.
+
+**Solusi Bertahap (Cocok untuk Praktik Kelas):**
+Jadikan kendala ini sebagai tambahan materi *troubleshooting* Basic OS. Ketika masuk ke layar pertama instalasi (pemilihan bahasa), instruksikan ini:
+
+1. Tekan **Shift + F10** pada keyboard untuk membuka Command Prompt.
+2. Ketik `regedit` dan tekan Enter.
+3. Arahkan ke: `HKEY_LOCAL_MACHINE\SYSTEM\Setup`.
+4. Klik kanan folder **Setup** -> pilih **New** -> **Key**. Beri nama `LabConfig`.
+5. Di folder LabConfig, klik kanan ruang kosong -> **New** -> **DWORD (32-bit) Value**. Beri nama `BypassRAMCheck`.
+6. Klik ganda `BypassRAMCheck`, ubah **Value data** menjadi `1`.
+7. Tutup Registry Editor dan Command Prompt, lalu lanjutkan instalasi seperti biasa. Instalasi akan lolos dari pengecekan RAM.
+
+**Solusi Lebih Aman & Efisien (Persiapan Pra-Kelas):**
+Jika ingin praktik berjalan lebih cepat tanpa repot masuk ke Registry, suruh mahasiswa mengolah file `win11.iso` asli menggunakan aplikasi **Rufus** di rumah.
+
+* Saat di Rufus, ada pop-up pilihan: centang **"Remove requirement for 4GB+ RAM, Secure Boot and TPM 2.0"**.
+* Gunakan file ISO hasil modifikasi Rufus ini ke dalam VirtualBox. Instalasi dengan RAM 2GB akan langsung lolos otomatis.
