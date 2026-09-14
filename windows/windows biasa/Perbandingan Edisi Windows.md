@@ -19,5 +19,3 @@ Berikut adalah perbedaan utama dari setiap jenis edisi Windows:
 ### Penjelasan Tambahan
 
 **Home Single Language:** Ini adalah turunan dari versi Home yang sering ditemui sebagai sistem operasi bawaan laptop baru. Fiturnya persis dengan Home, namun Anda tidak diizinkan untuk mengunduh atau mengubah bahasa sistem utama setelah instalasi awal selesai.
-
-Apakah ada spesifikasi atau fitur dari salah satu tipe di atas yang ingin Anda bahas lebih dalam untuk bahan materi kepada siswa?
