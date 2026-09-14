@@ -1,4 +1,4 @@
-Tipe atau edisi sistem operasi Windows modern (seperti Windows 10 dan 11) yang biasa muncul saat proses instalasi.
+# Tipe atau edisi sistem operasi Windows modern (seperti Windows 10 dan 11) yang biasa muncul saat proses instalasi.
 
 ### Perbandingan Edisi Windows
 
