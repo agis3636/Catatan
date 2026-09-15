@@ -13,18 +13,13 @@ Jika menggabungkan versi yang jaraknya terlalu jauh (misal 7 dan 9), sistem clus
 
 ### Cara Aman Upgrade Cluster Tanpa Downtime:
 
-Karena ini lingkungan produksi klien, lu harus menggunakan metode rolling upgrade:
+Karena ini lingkungan produksi klien, harus menggunakan metode rolling upgrade:
 
 - **Persiapan:** Pastikan semua node sudah berada di versi update terakhir dari seri 7.4. Lakukan backup seluruh VM.
-
 - **Kosongkan Node 1:** Migrate (Live Migration) semua VM dari node pertama ke node 2 dan node 3.
-
 - **Eksekusi Upgrade:** Jalankan script pve7to8 di terminal node pertama untuk mengecek error, lalu lakukan upgrade OS (Debian) dan Proxmox ke versi 8.
-
 - **Verifikasi:** Setelah node pertama restart dan menyala dengan versi 8, pastikan statusnya "Online" di dalam cluster. (Di titik ini, wajar jika ada percampuran versi 7 dan 8 sementara waktu).
-
 - **Kembalikan VM:** Migrate kembali VM ke node pertama.
-
 - **Ulangi:** Lakukan langkah 2-5 untuk node kedua dan ketiga secara bergantian.
 
 Setelah seluruh node berhasil berada di versi 8, lu baru bisa merencanakan siklus upgrade yang sama untuk menuju ke versi 9.
