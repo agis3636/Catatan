@@ -24,11 +24,11 @@ Buka *Shell* pada node target dan jalankan eksekusi ini secara berurutan:
 
 ### 3. Penanganan Layar & Finalisasi
 
-<img width="525" height="553" alt="Image" src="https://github.com/user-attachments/assets/5c5422da-f721-44e1-bc4e-b0e0eded560e" />
+  <img width="525" height="553" alt="Image" src="https://github.com/user-attachments/assets/5c5422da-f721-44e1-bc4e-b0e0eded560e" />
 
 * pilih English lalu Enter
 
-<img width="981" height="179" alt="Image" src="https://github.com/user-attachments/assets/39885d61-b94f-4080-afda-89275ea6f97d" />
+  <img width="981" height="179" alt="Image" src="https://github.com/user-attachments/assets/39885d61-b94f-4080-afda-89275ea6f97d" />
 
 * pilih yes saat ditanya *Restart services during package upgrades without asking*.
 
@@ -39,7 +39,7 @@ Buka *Shell* pada node target dan jalankan eksekusi ini secara berurutan:
 
   Kalau pilih `<No>`, proses *upgrade* ini bakal sering berhenti di tengah jalan cuma buat nunggu mencet tombol konfirmasi. Jadi pilih `<Yes>` biar prosesnya mulus dan cepat selesai.
 
-<img width="967" height="271" alt="Image" src="https://github.com/user-attachments/assets/b3a4a30b-f522-4089-a555-266c168d1e7f" />
+  <img width="967" height="271" alt="Image" src="https://github.com/user-attachments/assets/b3a4a30b-f522-4089-a555-266c168d1e7f" />
 
 * langsung tekan **Enter** aja. Pilihan **keep the local version currently installed** (yang diblok warna merah) itu sudah paling tepat.
 
@@ -48,7 +48,7 @@ Buka *Shell* pada node target dan jalankan eksekusi ini secara berurutan:
 
   Kalau ubah atau timpa dengan versi *maintainer*, akses komunikasi *cluster* bisa terputus dan berpotensi kehilangan akses ke *node* tersebut. Jadi, pertahankan konfigurasi lokal yang sudah ada. Lanjut!
 
-<img width="413" height="150" alt="Image" src="https://github.com/user-attachments/assets/36c2477d-68b3-4d8f-b32c-c17c64ac581d" />
+  <img width="413" height="150" alt="Image" src="https://github.com/user-attachments/assets/36c2477d-68b3-4d8f-b32c-c17c64ac581d" />
 
 * Langsung tekan **Enter** aja (itu otomatis memilih *default*-nya yaitu **N**).
 
@@ -57,14 +57,14 @@ Buka *Shell* pada node target dan jalankan eksekusi ini secara berurutan:
 
   Kalau pilih Y (di- *replace* pakai versi *maintainer*), nanti layar *welcome* khas Proxmox malah hilang ketimpa tulisan standar bawaan OS Debian. Jadi pilih **N** (*keep your currently-installed version*) adalah pilihan yang paling tepat.
 
-<img width="425" height="157" alt="Image" src="https://github.com/user-attachments/assets/f3b3f1a0-044f-4db1-9b66-83c66200103e" />
+  <img width="425" height="157" alt="Image" src="https://github.com/user-attachments/assets/f3b3f1a0-044f-4db1-9b66-83c66200103e" />
 
 * Seperti biasa, tekan **Enter** lagi aja (pilihan *default* **N**).
 
   **Penjelasan:**
   File `lvm.conf` ini berhubungan dengan pengaturan penyimpanan *Logical Volume Manager* (LVM). Proxmox punya konfigurasi khusus di file ini untuk mengelola `local-lvm` (tempat menyimpan disk VM lokal). Kalau timpa pakai konfigurasi standar bawaan Debian, sistem penyimpanan lokal Proxmox bisa kacau dan disk VM malah berisiko tidak terbaca. Jadi, tetap pertahankan versi lokalnya.
 
-<img width="468" height="161" alt="Image" src="https://github.com/user-attachments/assets/f15c09bc-75b3-4ffa-a9eb-5f4abc9ee36b" />
+  <img width="468" height="161" alt="Image" src="https://github.com/user-attachments/assets/f15c09bc-75b3-4ffa-a9eb-5f4abc9ee36b" />
 
 * Masih sama, langsung tekan **Enter** (pilihan **N**) lagi!
 
@@ -77,11 +77,11 @@ Buka *Shell* pada node target dan jalankan eksekusi ini secara berurutan:
 
   Jadi, biarkan dia tetap terhapus. Lanjut hajar Enter!
 
-<img width="613" height="153" alt="Image" src="https://github.com/user-attachments/assets/d42d5220-0d81-4c6d-bd2d-9a587435009d" />
+  <img width="613" height="153" alt="Image" src="https://github.com/user-attachments/assets/d42d5220-0d81-4c6d-bd2d-9a587435009d" />
 
 * Ketik `reboot` setelah proses instalasi selesai dan kembali ke baris perintah.
 
-<img width="1008" height="292" alt="Image" src="https://github.com/user-attachments/assets/7f98cf33-eb1a-47e1-9cbb-ded480710855" />
+  <img width="1008" height="292" alt="Image" src="https://github.com/user-attachments/assets/7f98cf33-eb1a-47e1-9cbb-ded480710855" />
 
 * Tunggu node kembali *online*, tarik kembali VM ke node tersebut, lalu mulai ulangi siklus dari tahap 1 untuk node selanjutnya.
 
