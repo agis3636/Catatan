@@ -32,6 +32,13 @@ Buka *Shell* pada node target dan jalankan eksekusi ini secara berurutan:
 
 * pilih yes saat ditanya *Restart services during package upgrades without asking*.
 
+(Gunakan tombol panah kiri di keyboard untuk menggeser sorotan merah dari `<No>` ke `<Yes>`).
+
+**Penjelasan:**
+Pilihan ini mengizinkan sistem untuk otomatis me-restart *service* atau layanan di *background* (seperti SSH, cron, atau jaringan) saat paketnya sedang di-upgrade, tanpa harus nanya dan nunggu persetujuan satu per satu.
+
+Kalau pilih `<No>`, proses *upgrade* ini bakal sering berhenti di tengah jalan cuma buat nunggu mencet tombol konfirmasi. Jadi pilih `<Yes>` biar prosesnya mulus dan cepat selesai.
+
 <img width="967" height="271" alt="Image" src="https://github.com/user-attachments/assets/b3a4a30b-f522-4089-a555-266c168d1e7f" />
 
 * pilih nomer 2 langsung enter
