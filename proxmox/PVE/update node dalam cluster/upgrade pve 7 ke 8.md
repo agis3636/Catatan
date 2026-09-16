@@ -177,12 +177,9 @@ Sebagai penutupan untuk lab ini, lakukan **Validasi Pasca-Upgrade** untuk memast
 
 ### Validasi Pasca-Upgrade (Post-Check)
 
-  **Cek Status Quorum Cluster:** Buka terminal di node mana saja, lalu jalankan `pvecm status`. Pastikan bagian *Quorum* berstatus OK dan ketiga node terdeteksi *online*.
-
   <img width="378" height="456" alt="Image" src="https://github.com/user-attachments/assets/f34fce40-42c5-4ae1-bdc6-21c23bed3dc0" />
 
----
-
+* **Cek Status Quorum Cluster:** Buka terminal di node mana saja, lalu jalankan `pvecm status`. Pastikan bagian *Quorum* berstatus OK dan ketiga node terdeteksi *online*.
 * **Verifikasi Kernel Baru:** Jalankan `uname -r` di tiap node. Pastikan hasilnya menunjukkan versi `6.x` (kernel bawaan Debian 12 / Proxmox 8), bukan lagi `5.15`. Kalau masih 5.15, berarti node tersebut belum lu *reboot*.
 * **Uji Coba Live Migration:** Coba pindahkan (*migrate*) 1 VM yang sedang menyala dari satu node ke node lain. Ini penting untuk memastikan komunikasi antar-node dan konfigurasi *storage* lokal lu (LVM) tidak ada yang terganggu pasca-upgrade.
 * **Cek Layanan HA (High Availability):** Kalau sempat mengonfigurasi HA sebelumnya, pastikan status grup HA kembali normal di menu *Datacenter > HA*.
