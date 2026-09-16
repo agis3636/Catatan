@@ -1,4 +1,4 @@
-## Modul Rolling Upgrade Proxmox 7 ke 8 untuk no-subscription
+# Rolling Upgrade Proxmox 7 ke 8 untuk no-subscription
 
 | Fase | Fokus Utama | Status VM |
 | --- | --- | --- |
@@ -114,7 +114,7 @@ Buka *Shell* pada node target dan jalankan eksekusi ini secara berurutan:
 
 ---
 
-### Modul Eksekusi: Upgrade Proxmox 7 ke 8 (Enterprise)
+# Eksekusi: Upgrade Proxmox 7 ke 8 (Enterprise)
 
 **1. Evakuasi & Validasi Awal**
 
