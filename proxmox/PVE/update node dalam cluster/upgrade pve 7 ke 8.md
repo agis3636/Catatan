@@ -24,6 +24,7 @@ Buka *Shell* pada node target dan jalankan eksekusi ini secara berurutan:
 
 ### 3. Penanganan Layar & Finalisasi
 
+
   <img width="525" height="553" alt="Image" src="https://github.com/user-attachments/assets/5c5422da-f721-44e1-bc4e-b0e0eded560e" />
 
 * pilih English lalu Enter
