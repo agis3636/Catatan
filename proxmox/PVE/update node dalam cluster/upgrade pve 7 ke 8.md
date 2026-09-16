@@ -32,16 +32,21 @@ Buka *Shell* pada node target dan jalankan eksekusi ini secara berurutan:
 
 * pilih yes saat ditanya *Restart services during package upgrades without asking*.
 
-(Gunakan tombol panah kiri di keyboard untuk menggeser sorotan merah dari `<No>` ke `<Yes>`).
+  (Gunakan tombol panah kiri di keyboard untuk menggeser sorotan merah dari `<No>` ke `<Yes>`).
 
-**Penjelasan:**
-Pilihan ini mengizinkan sistem untuk otomatis me-restart *service* atau layanan di *background* (seperti SSH, cron, atau jaringan) saat paketnya sedang di-upgrade, tanpa harus nanya dan nunggu persetujuan satu per satu.
+  **Penjelasan:**
+  Pilihan ini mengizinkan sistem untuk otomatis me-restart *service* atau layanan di *background* (seperti SSH, cron, atau jaringan) saat paketnya sedang di-upgrade, tanpa harus nanya dan nunggu persetujuan satu per satu.
 
-Kalau pilih `<No>`, proses *upgrade* ini bakal sering berhenti di tengah jalan cuma buat nunggu mencet tombol konfirmasi. Jadi pilih `<Yes>` biar prosesnya mulus dan cepat selesai.
+  Kalau pilih `<No>`, proses *upgrade* ini bakal sering berhenti di tengah jalan cuma buat nunggu mencet tombol konfirmasi. Jadi pilih `<Yes>` biar prosesnya mulus dan cepat selesai.
 
 <img width="967" height="271" alt="Image" src="https://github.com/user-attachments/assets/b3a4a30b-f522-4089-a555-266c168d1e7f" />
 
-* pilih nomer 2 langsung enter
+* langsung tekan **Enter** aja. Pilihan **keep the local version currently installed** (yang diblok warna merah) itu sudah paling tepat.
+
+  **Penjelasan:**
+  File `sshd_config` adalah jantung dari koneksi SSH di server. Proxmox sangat bergantung pada pengaturan spesifik di file ini (seperti mengizinkan *login root* secara langsung) agar antar-node di dalam *cluster* bisa saling berkomunikasi dengan lancar, terutama saat memigrasikan VM.
+
+  Kalau ubah atau timpa dengan versi *maintainer*, akses komunikasi *cluster* bisa terputus dan berpotensi kehilangan akses ke *node* tersebut. Jadi, pertahankan konfigurasi lokal yang sudah ada. Lanjut!
 
 <img width="413" height="150" alt="Image" src="https://github.com/user-attachments/assets/36c2477d-68b3-4d8f-b32c-c17c64ac581d" />
 
