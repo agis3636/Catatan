@@ -165,4 +165,19 @@ Setelah instalasi selesai dan kembali ke baris perintah (*shell*):
 **Solusi:** Tarik kunci GPG secara manual dengan perintah berikut, lalu ulangi `apt update`:
 `apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6ED0E7B82643E131 78DBA3BC47EF2265 F8D2585B8783D481`
 
-Apakah infrastruktur Proxmox di tempat klien lu nanti menggunakan *storage* lokal LVM/ZFS biasa, atau menggunakan Ceph *Shared Storage* bawaan Proxmox?
+---
+
+---
+
+---
+
+Mengingat sempat melewati beberapa rintangan (mulai dari paket yang belum mentok di versi 7, GPG key *error*, sampai salah format teks repositori), ini justru jadi simulasi tempur dan bekal pengalaman yang mahal banget.
+
+Sebagai penutupan untuk lab ini, lakukan **Validasi Pasca-Upgrade** untuk memastikan *cluster* benar-benar sehat 100%:
+
+### Validasi Pasca-Upgrade (Post-Check)
+
+* **Cek Status Quorum Cluster:** Buka terminal di node mana saja, lalu jalankan `pvecm status`. Pastikan bagian *Quorum* berstatus OK dan ketiga node terdeteksi *online*.
+* **Verifikasi Kernel Baru:** Jalankan `uname -r` di tiap node. Pastikan hasilnya menunjukkan versi `6.x` (kernel bawaan Debian 12 / Proxmox 8), bukan lagi `5.15`. Kalau masih 5.15, berarti node tersebut belum lu *reboot*.
+* **Uji Coba Live Migration:** Coba pindahkan (*migrate*) 1 VM yang sedang menyala dari satu node ke node lain. Ini penting untuk memastikan komunikasi antar-node dan konfigurasi *storage* lokal lu (LVM) tidak ada yang terganggu pasca-upgrade.
+* **Cek Layanan HA (High Availability):** Kalau sempat mengonfigurasi HA sebelumnya, pastikan status grup HA kembali normal di menu *Datacenter > HA*.
