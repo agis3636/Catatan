@@ -30,7 +30,7 @@ Buka *Shell* pada node target dan jalankan eksekusi ini secara berurutan:
 
 <img width="981" height="179" alt="Image" src="https://github.com/user-attachments/assets/39885d61-b94f-4080-afda-89275ea6f97d" />
 
-* Sorot dan pilih **** saat ditanya *Restart services during package upgrades without asking*.
+* pilih yes saat ditanya *Restart services during package upgrades without asking*.
 
 <img width="967" height="271" alt="Image" src="https://github.com/user-attachments/assets/b3a4a30b-f522-4089-a555-266c168d1e7f" />
 
