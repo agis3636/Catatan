@@ -17,8 +17,8 @@ Buka *Shell* pada node target dan jalankan eksekusi ini secara berurutan:
 
 1. `rm -f /etc/apt/sources.list.d/pve-enterprise.list`
 2. `sed -i 's/bullseye/bookworm/g' /etc/apt/sources.list`
-3. `echo "deb [http://download.proxmox.com/debian/pve](http://download.proxmox.com/debian/pve) bookworm pve-no-subscription" > /etc/apt/sources.list.d/pve-no-subscription.list`
-4. `echo "deb [http://download.proxmox.com/debian/ceph-quincy](http://download.proxmox.com/debian/ceph-quincy) bookworm no-subscription" > /etc/apt/sources.list.d/ceph.list`
+3. `echo "deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription" > /etc/apt/sources.list.d/pve-no-subscription.list`
+4. `echo "deb http://download.proxmox.com/debian/ceph-quincy bookworm no-subscription" > /etc/apt/sources.list.d/ceph.list`
 5. `apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6ED0E7B82643E131 78DBA3BC47EF2265 F8D2585B8783D481`
 6. `apt update && apt dist-upgrade -y`
 
