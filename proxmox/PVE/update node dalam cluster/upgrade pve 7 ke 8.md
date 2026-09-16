@@ -100,7 +100,9 @@ Buka *Shell* pada node target dan jalankan eksekusi ini secara berurutan:
   <img width="1008" height="292" alt="Image" src="https://github.com/user-attachments/assets/7f98cf33-eb1a-47e1-9cbb-ded480710855" />
 
 ---
+
 ---
+
 ---
 
 ### Perbandingan Upgrade: Enterprise vs No-Subscription
@@ -111,6 +113,10 @@ Buka *Shell* pada node target dan jalankan eksekusi ini secara berurutan:
 | **File Target PVE** | `/etc/apt/sources.list.d/pve-enterprise.list` | `/etc/apt/sources.list.d/pve-no-subscription.list` |
 | **Tindakan Repositori** | **Edit** (ubah *bullseye* jadi *bookworm*) | **Hapus** file *enterprise* bawaan, lalu **buat** file baru |
 | **Stabilitas Paket** | Sangat teruji (*Production-ready*) | Paket terbaru, rentan *bug* minor |
+
+---
+
+---
 
 ---
 
