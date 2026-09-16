@@ -50,11 +50,32 @@ Buka *Shell* pada node target dan jalankan eksekusi ini secara berurutan:
 
 <img width="413" height="150" alt="Image" src="https://github.com/user-attachments/assets/36c2477d-68b3-4d8f-b32c-c17c64ac581d" />
 
+* Langsung tekan **Enter** aja (itu otomatis memilih *default*-nya yaitu **N**).
+
+  **Penjelasan singkat:**
+  File `/etc/issue` itu isinya teks *welcome screen* yang muncul di layar monitor fisik/konsol saat server Proxmox lu baru nyala (yang biasanya ada tulisan *Welcome to the Proxmox Virtual Environment* beserta IP address-nya).
+
+  Kalau pilih Y (di- *replace* pakai versi *maintainer*), nanti layar *welcome* khas Proxmox malah hilang ketimpa tulisan standar bawaan OS Debian. Jadi pilih **N** (*keep your currently-installed version*) adalah pilihan yang paling tepat.
+
 <img width="425" height="157" alt="Image" src="https://github.com/user-attachments/assets/f3b3f1a0-044f-4db1-9b66-83c66200103e" />
+
+* Seperti biasa, tekan **Enter** lagi aja (pilihan *default* **N**).
+
+  **Penjelasan:**
+  File `lvm.conf` ini berhubungan dengan pengaturan penyimpanan *Logical Volume Manager* (LVM). Proxmox punya konfigurasi khusus di file ini untuk mengelola `local-lvm` (tempat menyimpan disk VM lokal). Kalau timpa pakai konfigurasi standar bawaan Debian, sistem penyimpanan lokal Proxmox bisa kacau dan disk VM malah berisiko tidak terbaca. Jadi, tetap pertahankan versi lokalnya.
 
 <img width="468" height="161" alt="Image" src="https://github.com/user-attachments/assets/f15c09bc-75b3-4ffa-a9eb-5f4abc9ee36b" />
 
-* Tekan **Enter (opsi bawaan N / Keep current version)** setiap kali sistem menanyakan modifikasi file konfigurasi (contoh: `/etc/issue`, `sshd_config`, `lvm.conf`, `pve-enterprise.list`) agar koneksi *cluster* aman.
+* Masih sama, langsung tekan **Enter** (pilihan **N**) lagi!
+
+  **Penjelasan:**
+  Ingat kan di langkah sebelumnya sempat menjalankan perintah `rm -f /etc/apt/sources.list.d/pve-enterprise.list`?
+
+  Nah, sistem `apt` mendeteksi kalau file bawaan pabrik tersebut sudah dihapus, dan dia menawarkan apakah mau memulihkannya kembali (Y) atau membiarkannya tetap terhapus (N).
+
+  Karena menggunakan repositori *No-Subscription* (gratisan), **wajib** memilih **N** agar file *enterprise* itu tidak dipulihkan. Kalau sampai file itu kembali, nanti setiap kali menjalankan `apt update` di masa depan, akan terus-terusan diganggu oleh *error* "401 Unauthorized".
+
+  Jadi, biarkan dia tetap terhapus. Lanjut hajar Enter!
 
 <img width="613" height="153" alt="Image" src="https://github.com/user-attachments/assets/d42d5220-0d81-4c6d-bd2d-9a587435009d" />
 
