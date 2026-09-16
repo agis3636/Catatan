@@ -24,9 +24,26 @@ Buka *Shell* pada node target dan jalankan eksekusi ini secara berurutan:
 
 ### 3. Penanganan Layar & Finalisasi
 
+<img width="525" height="553" alt="Image" src="https://github.com/user-attachments/assets/5c5422da-f721-44e1-bc4e-b0e0eded560e" />
+* pilih English lalu Enter
+
+<img width="981" height="179" alt="Image" src="https://github.com/user-attachments/assets/39885d61-b94f-4080-afda-89275ea6f97d" />
 * Sorot dan pilih **** saat ditanya *Restart services during package upgrades without asking*.
+
+<img width="967" height="271" alt="Image" src="https://github.com/user-attachments/assets/b3a4a30b-f522-4089-a555-266c168d1e7f" />
+* pilih nomer 2 langsung enter
+
+<img width="413" height="150" alt="Image" src="https://github.com/user-attachments/assets/36c2477d-68b3-4d8f-b32c-c17c64ac581d" />
+
+<img width="425" height="157" alt="Image" src="https://github.com/user-attachments/assets/f3b3f1a0-044f-4db1-9b66-83c66200103e" />
+
+<img width="468" height="161" alt="Image" src="https://github.com/user-attachments/assets/f15c09bc-75b3-4ffa-a9eb-5f4abc9ee36b" />
+
 * Tekan **Enter (opsi bawaan N / Keep current version)** setiap kali sistem menanyakan modifikasi file konfigurasi (contoh: `/etc/issue`, `sshd_config`, `lvm.conf`, `pve-enterprise.list`) agar koneksi *cluster* aman.
+
+<img width="613" height="153" alt="Image" src="https://github.com/user-attachments/assets/d42d5220-0d81-4c6d-bd2d-9a587435009d" />
 * Ketik `reboot` setelah proses instalasi selesai dan kembali ke baris perintah.
+
 * Tunggu node kembali *online*, tarik kembali VM ke node tersebut, lalu mulai ulangi siklus dari tahap 1 untuk node selanjutnya.
 
 ---
