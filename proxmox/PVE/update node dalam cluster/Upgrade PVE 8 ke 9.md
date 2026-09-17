@@ -7,6 +7,9 @@
 * Seluruh node dalam *cluster* harus sudah berada di versi Proxmox 8.4 ke atas.
 * Node target yang akan di-upgrade harus dikosongkan dari VM/Container aktif (*Live Migration* ke node lain).
 
+---
+---
+
 ### Tahap 1: Validasi Kesiapan Sistem
 
 Buka terminal pada node target, lalu jalankan alat pengecekan bawaan:
@@ -21,6 +24,7 @@ pve8to9 --full
 <img width="129" height="119" alt="Image" src="https://github.com/user-attachments/assets/a5e05a8b-bbc6-45d5-b3c4-635929338de7" />
 
 ---
+---
 
 ### Tahap 2: Pembersihan Repositori Usang
 
@@ -32,6 +36,7 @@ sed -i '/pve-no-subscription/d' /etc/apt/sources.list
 
 ```
 
+---
 
 2. Hapus sisa konfigurasi Ceph versi lama (bisa diinstal ulang via GUI nanti jika dibutuhkan):
 ```bash
@@ -39,7 +44,8 @@ rm -f /etc/apt/sources.list.d/ceph.list
 
 ```
 
-
+---
+---
 
 ### Tahap 3: Perubahan Basis OS (Bookworm ke Trixie)
 
@@ -51,6 +57,7 @@ sed -i 's/bookworm/trixie/g' /etc/apt/sources.list
 
 ```
 
+---
 
 2. Ubah repositori Proxmox gratisan:
 ```bash
@@ -58,7 +65,8 @@ sed -i 's/bookworm/trixie/g' /etc/apt/sources.list.d/pve-no-subscription.list
 
 ```
 
-
+---
+---
 
 ### Tahap 4: Eksekusi Instalasi Mayor
 
@@ -70,15 +78,18 @@ apt update
 
 ```
 
-
 *(Pastikan proses selesai tanpa ada teks error berwarna merah).*
+
+---
+
 2. Eksekusi pembaruan inti:
 ```bash
 apt dist-upgrade -y
 
 ```
 
-
+---
+---
 
 ### Tahap 5: Penanganan Layar Interaktif (Krusial)
 
@@ -146,10 +157,7 @@ apt dist-upgrade -y
   <img width="468" height="161" alt="Image" src="https://github.com/user-attachments/assets/f15c09bc-75b3-4ffa-a9eb-5f4abc9ee36b" />
 
 ---
-
 ---
-
-
 
 ### Tahap 6: Finalisasi & Validasi Pasca-Upgrade
 
@@ -161,10 +169,13 @@ reboot
 
   <img width="613" height="153" alt="Image" src="https://github.com/user-attachments/assets/d42d5220-0d81-4c6d-bd2d-9a587435009d" />
 
+---
 
 2. Tunggu node menyala kembali (sekitar 2-5 menit).
 
   <img width="1010" height="289" alt="Image" src="https://github.com/user-attachments/assets/80dc8a76-f1fc-4fad-8739-903456172c03" />   
+
+---
 
 3. Verifikasi dari node lain dengan perintah:
 ```bash
