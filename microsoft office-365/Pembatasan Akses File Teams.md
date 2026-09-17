@@ -1,56 +1,97 @@
-# Panduan Pembatasan Akses File di Microsoft Teams
+Pembatasan Akses File Teams
+Skenario A: Membatasi beberapa anggota internal tertentu agar tidak bisa
+membuka file tertentu di Channel Teams
+Jawaban Singkat
+Bisa, tetapi tidak dilakukan dari Teams. Harus dilakukan dari SharePoint yang menjadi backend penyimpanan file Teams.
+Setiap file yang di-upload ke Teams Channel sebenarnya disimpan di SharePoint. Karena itu permission file dapat diatur
+langsung pada file atau folder di SharePoint.
+Opsi 1 (Paling Sederhana)
+1. Buka tab Files pada channel Teams.
+2. Klik Open in SharePoint.
+3. Pilih file yang ingin dibatasi.
+4. Klik Manage Access.
+5. Hapus akses user tertentu (misalnya A dan B).
+6. Berikan akses hanya kepada user yang diperbolehkan.
+SharePoint mendukung pengaturan permission sampai level file/folder tertentu sehingga user tertentu dapat dihapus aksesnya
+tanpa harus mengeluarkannya dari Team. Referensi internal juga menunjukkan permission di level file/library dapat dikelola
+langsung melalui SharePoint.
+Opsi 2 (Untuk Dokumen Sangat Rahasia)
+Gunakan Microsoft Purview Sensitivity Label + Encryption.
+Dengan metode ini pemilik dokumen dapat menentukan user atau grup tertentu yang boleh membuka file, dan proteksi akan
+tetap berlaku walaupun file di-download atau dikirim ke tempat lain.
+Ini biasanya menjadi rekomendasi untuk instansi seperti KPK karena lebih aman dibanding hanya mengandalkan SharePoint
+permission.
+Catatan Penting
+• Secara teknis bisa menghapus permission individual pada file tertentu.
+• Tetapi Microsoft kurang merekomendasikan terlalu banyak "broken inheritance" pada banyak file karena akan menyulitkan
+administrasi jangka panjang.
+• Untuk kasus dokumen rahasia yang hanya boleh diakses sebagian kecil anggota, lebih baik menggunakan:
+• Private Channel
+• Shared Channel
+• Sensitivity Label dengan encryption
+Skenario B: Guest / Akun Eksternal Tidak Boleh Melihat atau
+Download File Tertentu
+Jawaban Singkat
+Bisa. Bahkan ada beberapa level kontrol.
+Opsi 1: Batasi Permission File/Folder di SharePoint
+9/17/26, 8:48 AM Pembatasan Akses File Teams
+https://loop.cloud.microsoft/print/eyJwIjp7InUiOiJodHRwczovL3NpczM2NS5zaGFyZXBvaW50LmNvbS86Zmw6L3IvY29udGVudHN0b3JhZ2UveDhGTk8te… 1/3
+Guest Teams sebenarnya mengakses file melalui SharePoint. Permission file dapat diatur agar guest tidak memiliki akses ke
+folder/file tertentu. Microsoft juga menyatakan bahwa permission file guest mengikuti konfigurasi SharePoint dan dikelola oleh
+admin.
+Contoh:
+• Internal user → Full Access
+• Guest → Tidak ada akses
+Opsi 2: Sensitivity Label "Internal Only"
+Sangat direkomendasikan untuk instansi pemerintah.
+File diberi label:
+• Confidential
+• Internal Only
+• Employees Only
+Maka:
+• Guest tidak bisa membuka file.
+• Bahkan jika link diberikan, akses tetap ditolak karena hak akses dienforce oleh label. Sensitivity Label dapat menerapkan
+access control dan conditional access pada Teams, SharePoint, dan Microsoft 365 Group.
+Opsi 3: Block Download untuk Guest
+Menggunakan kombinasi:
+• Sensitivity Label
+• Conditional Access
+• SharePoint Restricted Access Control
+Microsoft Purview mendukung proteksi sehingga file yang dilabeli dapat dicegah untuk didownload dan perlindungan tetap
+melekat pada file.
+Contoh kebijakan:
+• Guest hanya boleh baca lewat browser.
+• Tidak boleh download.
+• Tidak boleh print.
+• Tidak boleh copy-paste.
+Opsi 4 (Desain yang Paling Bersih)
+Gunakan Private Channel atau Shared Channel
+Jika memang ada subset informasi yang tidak boleh terlihat user luar:
+• Tim utama tetap berisi seluruh anggota.
+• Buat Private Channel khusus internal.
+• Simpan dokumen rahasia di Private Channel tersebut.
+Karena Private Channel memiliki membership dan SharePoint Site tersendiri. Microsoft menyebut membership private channel
+dikelola melalui Teams, dan channel tersebut memiliki kontrol akses tersendiri.
+9/17/26, 8:48 AM Pembatasan Akses File Teams
+https://loop.cloud.microsoft/print/eyJwIjp7InUiOiJodHRwczovL3NpczM2NS5zaGFyZXBvaW50LmNvbS86Zmw6L3IvY29udGVudHN0b3JhZ2UveDhGTk8te… 2/3
+Rekomendasi Untuk KPK
+Saya biasanya merekomendasikan matriks berikut:
+Kebutuhan Rekomendasi
+1 1-2 file rahasia Manage Access di SharePoint
+2 Banyak file rahasia Private Channel
+3 Dokumen sangat sensitif (investigasi, audit, hukum) Purview Sensitivity Label + Encryption
+4 Guest boleh lihat tapi tidak boleh download Conditional Access + Sensitivity Label
+5 Kerja sama dengan instansi luar Shared Channel / B2B Guest dengan pembatasan akses
+Dokumentasi Microsoft
+SharePoint & Teams Permissions
+Manage settings and permissions when SharePoint and Teams are integrated
+Guest Access in Teams
+Guest access in Microsoft Teams
+Guest Permissions in Teams
+Set guest permissions for channels in Microsoft Teams
+Microsoft Purview Sensitivity Labels
+Microsoft Purview Information Protection
+Restrict Access with Sensitivity Labels
+Learn about sensitivity labels
 
-Dokumen ini berisi panduan teknis dan skenario pengelolaan hak akses file pada Microsoft Teams. Secara arsitektur dasar, setiap file yang diunggah ke *channel* Teams akan disimpan secara otomatis di SharePoint[cite: 3]. Oleh karena itu, pengaturan izin (*permissions*) harus dilakukan langsung pada file atau folder di SharePoint[cite: 3].
-
-## Skenario A: Membatasi Akses Anggota Internal
-
-Skenario ini digunakan ketika ada kebutuhan agar beberapa anggota internal tertentu tidak dapat membuka file spesifik di dalam *channel* Teams[cite: 3].
-
-### Opsi 1: Kelola Akses SharePoint (Paling Sederhana)
-Cara ini mengelola izin pada level file/folder tertentu tanpa harus mengeluarkan pengguna dari keanggotaan *Team*[cite: 3].
-1. Buka tab **Files** pada *channel* Teams[cite: 3].
-2. Klik **Open in SharePoint**[cite: 3].
-3. Pilih file yang ingin dibatasi hak aksesnya[cite: 3].
-4. Klik **Manage Access**[cite: 3].
-5. Hapus akses *user* tertentu yang tidak berkepentingan[cite: 3].
-6. Berikan akses hanya kepada *user* yang diperbolehkan[cite: 3].
-
-### Opsi 2: Microsoft Purview (Untuk Dokumen Sangat Rahasia)
-Gunakan *Microsoft Purview Sensitivity Label + Encryption*[cite: 3]. Proteksi ini akan menentukan *user* atau grup yang boleh membuka file, dan perlindungan tersebut akan tetap berlaku meskipun file diunduh atau dikirim ke tempat lain[cite: 3]. Ini adalah rekomendasi utama untuk instansi pemerintahan atau lembaga dengan tingkat keamanan tinggi[cite: 3].
-
-> **Catatan Penting:** Menghapus izin individual per file secara teknis bisa dilakukan, namun Microsoft tidak merekomendasikan terlalu banyak *"broken inheritance"* pada banyak file karena akan menyulitkan administrasi jangka panjang[cite: 3].
-
----
-
-## Skenario B: Membatasi Akses Akun Eksternal (Guest)
-
-Skenario ini diterapkan agar pengguna tamu (*guest*) tidak dapat melihat atau mengunduh file tertentu di dalam Teams[cite: 3].
-
-### Opsi 1: Batasi Izin File/Folder di SharePoint
-Konfigurasi file dapat diatur agar *internal user* memiliki *Full Access*, sementara *guest* tidak memiliki akses sama sekali[cite: 3].
-
-### Opsi 2: Sensitivity Label "Internal Only"
-Dokumen dapat diberi label spesifik seperti *Confidential*, *Internal Only*, atau *Employees Only*[cite: 3]. Dengan label ini, *guest* tidak akan bisa membuka file, bahkan jika mereka mendapatkan *link* dokumen tersebut (hak akses di-*enforce* oleh label)[cite: 3]. 
-
-### Opsi 3: Block Download untuk Guest
-Menggunakan kombinasi *Sensitivity Label*, *Conditional Access*, dan *SharePoint Restricted Access Control*[cite: 3]. Kebijakan ini memungkinkan *guest* hanya bisa membaca dokumen melalui *browser*[cite: 3]. *Guest* tidak diperbolehkan melakukan *download*, *print*, atau *copy-paste*[cite: 3].
-
-### Opsi 4: Private / Shared Channel (Desain Paling Bersih)
-Jika terdapat dokumen yang tidak boleh dilihat oleh pihak luar, disarankan membuat **Private Channel** khusus internal dan menyimpan dokumen tersebut di sana[cite: 3]. *Private Channel* memiliki keanggotaan dan situs SharePoint yang terpisah dan dikelola tersendiri dari *channel* utama[cite: 3].
-
----
-
-## Matriks Rekomendasi Implementasi
-
-Tabel berikut merangkum rekomendasi solusi berdasarkan kebutuhan spesifik:
-
-| Kebutuhan | Rekomendasi Solusi |
-| :--- | :--- |
-| 1-2 file rahasia | Manage Access di SharePoint[cite: 3] |
-| Banyak file rahasia | Private Channel[cite: 3] |
-| Dokumen sangat sensitif (investigasi, audit, hukum) | Purview Sensitivity Label + Encryption[cite: 3] |
-| Guest boleh lihat tapi tidak boleh download | Conditional Access + Sensitivity Label[cite: 3] |
-| Kerja sama dengan instansi luar | Shared Channel / B2B Guest dengan pembatasan akses[cite: 3] |
-
----
-**Referensi:** Berdasarkan panduan arsitektur keamanan Microsoft Teams dan SharePoint, serta kebijakan akses informasi lintas lembaga.
+harus persis seperti ini
