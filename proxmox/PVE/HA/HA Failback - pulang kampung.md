@@ -27,7 +27,7 @@ Tahap ini bertujuan untuk menyerahkan kendali perpindahan VM kepada sistem *High
      * *Jika dicentang:* Mengaktifkan sensor pemantauan beban dan status *node* secara *real-time*. Ini krusial agar sistem menyadari momen ketika *node* utama sudah hidup kembali.
      * *Jika tidak dicentang:* Sensor akan pasif saat kondisi *server* sedang normal, sehingga jadwal "pulang kampung" bisa tertunda atau gagal dieksekusi.
 
-5. Klik tombol **Add** berwarna biru.
+5. Klik tombol **OK** berwarna biru.
 
       <img width="478" height="173" alt="Image" src="https://github.com/user-attachments/assets/bb010a36-659c-49fe-9694-a35471fdd513" />
 
@@ -61,7 +61,7 @@ Tahap ini bertujuan untuk menentukan target kepulangan VM. Pastikan lu melakukan
       * *Penjelasan Angka:* Semakin tinggi angkanya, semakin tinggi status "VIP"-nya. Jika suatu saat lu mencentang dua *node* (misalnya `node4` prioritas 2, dan `node3` prioritas 1), sistem akan tahu: "Rumah utama adalah `node4`. Tapi kalau `node4` hancur, usahakan mengungsi ke `node3` dulu. `node2` adalah pilihan paling akhir."
       * Karena lu cuma butuh menunjuk satu rumah utama, cukup berikan angka **1** pada `node4`.
 
-5. Klik tombol **Add**.
+5. Klik tombol **OK**.
 
       <img width="482" height="246" alt="Image" src="https://github.com/user-attachments/assets/5929ee50-647e-439d-b0d3-efd9f8af84ec" />
 
