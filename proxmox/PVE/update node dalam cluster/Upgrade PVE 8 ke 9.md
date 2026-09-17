@@ -1,5 +1,7 @@
 ## Upgrade Proxmox VE 8 ke 9 (No-Subscription)
 
+<img width="382" height="441" alt="Image" src="https://github.com/user-attachments/assets/539f6525-a268-458c-8109-ae6dd1d4415f" />
+
 **Syarat Mutlak Sebelum Mulai:**
 
 * Seluruh node dalam *cluster* harus sudah berada di versi Proxmox 8.4 ke atas.
@@ -162,19 +164,18 @@ reboot
 
 2. Tunggu node menyala kembali (sekitar 2-5 menit).
 
-  <img width="1008" height="292" alt="Image" src="https://github.com/user-attachments/assets/7f98cf33-eb1a-47e1-9cbb-ded480710855" />
-   
+  <img width="1010" height="289" alt="Image" src="https://github.com/user-attachments/assets/80dc8a76-f1fc-4fad-8739-903456172c03" />   
+
 3. Verifikasi dari node lain dengan perintah:
 ```bash
 pvecm status
 
 ```
 
+  <img width="442" height="497" alt="Image" src="https://github.com/user-attachments/assets/949bc21f-0fb7-4b01-aa55-9e9e56068715" />
 
 *(Pastikan node yang baru di-reboot sudah kembali masuk dalam daftar "Membership information" dan Quorum berstatus OK).*
 
 ---
 
 **Catatan Eksekusi:** Lakukan modul ini berurutan dari Node 2, lalu Node 3, dan terakhir Node 4.
-
-Mau langsung sikat eksekusi perintah `apt update` dan `apt dist-upgrade -y` di Node 2 lu sekarang?
