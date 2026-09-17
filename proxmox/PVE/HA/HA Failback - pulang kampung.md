@@ -16,20 +16,20 @@ Tahap ini bertujuan untuk menyerahkan kendali perpindahan VM kepada sistem *High
 2. Luaskan menu **HA** dengan mengklik tanda panah di sebelahnya, lalu klik menu **HA** (induk) tersebut untuk membuka dasbor Status.
 3. Perhatikan area bawah layar pada bagian tabel **Resources**. Klik tombol **Add**.
 4. Sebuah jendela pengaturan (*Add: Resource: Container/Virtual Machine*) akan muncul. Isi parameter berikut:
-  * **VM:** Buka *dropdown* dan pilih ID VM target (contoh: `100`).
-  * **Max. Restart:** Isi dengan angka `1`. (Berfungsi membatasi Proxmox agar hanya mencoba me-*restart* VM di tempat sebanyak 1 kali jika terjadi *error/hang* pada *guest* OS. Jika tetap gagal, VM langsung diungsikan).
-  * **Max. Relocate:** Isi dengan angka `1`. (Berfungsi membatasi lompatan pengungsian VM maksimal 1 kali antar-node untuk mencegah sistem *looping error*).
-  * **Failback:** Wajib **DICENTANG**.
-    * *Jika dicentang:* Mengaktifkan izin sistem untuk menarik pulang VM ke *node* asalnya nanti.
-    * *Jika tidak dicentang:* VM akan nyangkut dan menetap selamanya di *node* pengungsian meskipun *node* asalnya sudah diperbaiki.
+   * **VM:** Buka *dropdown* dan pilih ID VM target (contoh: `100`).
+   * **Max. Restart:** Isi dengan angka `1`. (Berfungsi membatasi Proxmox agar hanya mencoba me-*restart* VM di tempat sebanyak 1 kali jika terjadi *error/hang* pada *guest* OS. Jika tetap gagal, VM langsung diungsikan).
+   * **Max. Relocate:** Isi dengan angka `1`. (Berfungsi membatasi lompatan pengungsian VM maksimal 1 kali antar-node untuk mencegah sistem *looping error*).
+   * **Failback:** Wajib **DICENTANG**.
+     * *Jika dicentang:* Mengaktifkan izin sistem untuk menarik pulang VM ke *node* asalnya nanti.
+     * *Jika tidak dicentang:* VM akan nyangkut dan menetap selamanya di *node* pengungsian meskipun *node* asalnya sudah diperbaiki.
 
-  * **Auto-Rebalance:** Wajib **DICENTANG**.
-    * *Jika dicentang:* Mengaktifkan sensor pemantauan beban dan status *node* secara *real-time*. Ini krusial agar sistem menyadari momen ketika *node* utama sudah hidup kembali.
-    * *Jika tidak dicentang:* Sensor akan pasif saat kondisi *server* sedang normal, sehingga jadwal "pulang kampung" bisa tertunda atau gagal dieksekusi.
+   * **Auto-Rebalance:** Wajib **DICENTANG**.
+     * *Jika dicentang:* Mengaktifkan sensor pemantauan beban dan status *node* secara *real-time*. Ini krusial agar sistem menyadari momen ketika *node* utama sudah hidup kembali.
+     * *Jika tidak dicentang:* Sensor akan pasif saat kondisi *server* sedang normal, sehingga jadwal "pulang kampung" bisa tertunda atau gagal dieksekusi.
 
 5. Klik tombol **Add** berwarna biru.
 
-  <img width="478" height="173" alt="Image" src="https://github.com/user-attachments/assets/bb010a36-659c-49fe-9694-a35471fdd513" />
+    <img width="478" height="173" alt="Image" src="https://github.com/user-attachments/assets/bb010a36-659c-49fe-9694-a35471fdd513" />
 
 ---
 
