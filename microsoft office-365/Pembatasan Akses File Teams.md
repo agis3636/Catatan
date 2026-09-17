@@ -46,6 +46,8 @@ Contoh:
 * Internal user → Full Access
 * Guest → Tidak ada akses
 
+---
+
 ### Opsi 2: Sensitivity Label "Internal Only"
 Sangat direkomendasikan untuk instansi pemerintah.
 
@@ -57,6 +59,8 @@ File diberi label:
 Maka:
 * Guest tidak bisa membuka file.
 * Bahkan jika link diberikan, akses tetap ditolak karena hak akses dienforce oleh label. Sensitivity Label dapat menerapkan access control dan conditional access pada Teams, SharePoint, dan Microsoft 365 Group.
+
+---
 
 ### Opsi 3: Block Download untuk Guest
 Menggunakan kombinasi:
@@ -71,6 +75,8 @@ Contoh kebijakan:
 * Tidak boleh download.
 * Tidak boleh print.
 * Tidak boleh copy-paste.
+
+---
 
 ### Opsi 4 (Desain yang Paling Bersih)
 Gunakan **Private Channel** atau **Shared Channel**
@@ -100,16 +106,21 @@ Saya biasanya merekomendasikan matriks berikut:
 ## Dokumentasi Microsoft
 
 **SharePoint & Teams Permissions**
+
 [Manage settings and permissions when SharePoint and Teams are integrated](https://learn.microsoft.com/en-us/sharepoint/manage-teams-sharepoint-experiences)
 
 **Guest Access in Teams**
+
 [Guest access in Microsoft Teams](https://learn.microsoft.com/en-us/microsoftteams/guest-access)
 
 **Guest Permissions in Teams**
+
 [Set guest permissions for channels in Microsoft Teams](https://support.microsoft.com/en-us/teams/teams-channels/set-guest-permissions-for-channels-in-microsoft-teams)
 
 **Microsoft Purview Sensitivity Labels**
+
 [Microsoft Purview Information Protection](https://learn.microsoft.com/en-us/purview/information-protection)
 
 **Restrict Access with Sensitivity Labels**
+
 [Learn about sensitivity labels](https://learn.microsoft.com/en-us/purview/sensitivity-labels)
