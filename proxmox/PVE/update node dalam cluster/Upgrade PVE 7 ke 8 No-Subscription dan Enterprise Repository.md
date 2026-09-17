@@ -11,6 +11,8 @@
 * Lakukan *Live Migration* seluruh VM/Container dari node target ke node penyokong.
 * Pastikan node target kosong 100% dari VM yang berjalan untuk mencegah *downtime*.
 
+  <img width="306" height="335" alt="Image" src="https://github.com/user-attachments/assets/0af6adf1-d6df-4148-9d2b-d584ec3b79d7" />
+
 ### 2. Eksekusi Upgrade di Terminal
 
 Buka *Shell* pada node target dan jalankan eksekusi ini secara berurutan:
