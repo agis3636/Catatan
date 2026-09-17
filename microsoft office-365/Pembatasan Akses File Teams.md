@@ -100,16 +100,26 @@ Saya biasanya merekomendasikan matriks berikut:
 ## Dokumentasi Microsoft
 
 **SharePoint & Teams Permissions**
+
 Manage settings and permissions when SharePoint and Teams are integrated
+https://learn.microsoft.com/en-us/sharepoint/manage-teams-sharepoint-experiences
 
 **Guest Access in Teams**
+
 Guest access in Microsoft Teams
+https://learn.microsoft.com/en-us/microsoftteams/guest-access
 
 **Guest Permissions in Teams**
+
 Set guest permissions for channels in Microsoft Teams
+https://support.microsoft.com/en-us/teams/teams-channels/set-guest-permissions-for-channels-in-microsoft-teams
 
 **Microsoft Purview Sensitivity Labels**
+
 Microsoft Purview Information Protection
+https://learn.microsoft.com/en-us/purview/information-protection
 
 **Restrict Access with Sensitivity Labels**
+
 Learn about sensitivity labels
+https://learn.microsoft.com/en-us/purview/sensitivity-labels
