@@ -1,4 +1,4 @@
-## Upgrade Proxmox VE 8 ke 9 (No-Subscription)
+# Upgrade Proxmox VE 8 ke 9 (No-Subscription)
 
 <img width="382" height="441" alt="Image" src="https://github.com/user-attachments/assets/539f6525-a268-458c-8109-ae6dd1d4415f" />
 
@@ -190,3 +190,161 @@ pvecm status
 ---
 
 **Catatan Eksekusi:** Lakukan modul ini berurutan dari Node 2, lalu Node 3, dan terakhir Node 4.
+
+---
+---
+---
+---
+
+# Modul Major Upgrade Proxmox VE 8 ke 9 (Enterprise Repository)
+
+Kunci utama agar **tidak mengulangi *error* GPG/kunci yang hilang** seperti saat transisi versi 7 ke 8 kemarin adalah: **Jangan terburu-buru mengubah repositori ke versi baru sebelum versi yang lama di-update sampai mentok.**
+
+Berikut adalah modul sistematis dan aman untuk lingkungan *production* klien.
+
+**Syarat Mutlak:** Node target memiliki lisensi *Enterprise* yang aktif dan sedang dalam keadaan kosong dari VM aktif (*Live Migration* ke node lain).
+
+### Tahap 1: Mentokkan Versi 8 (Solusi Anti-Error)
+
+Ini adalah langkah wajib jika node klien belum berada di *patch* versi 8 yang paling baru. Langkah ini memastikan sistem mendapatkan kunci GPG terbaru untuk Debian 13 (Trixie) sebelum transisi dilakukan.
+
+Jalankan pembaruan pada posisi repositori saat ini (Bookworm):
+
+```bash
+apt update && apt dist-upgrade -y
+
+```
+
+*(Tunggu sampai proses selesai. Jika ada permintaan restart service, pilih `<Yes>`. Jika sistem meminta reboot setelah update kernel minor ini, lakukan `reboot` sebelum lanjut ke Tahap 2).*
+
+### Tahap 2: Validasi Kesiapan Sistem
+
+Pastikan sistem sudah sempurna di versi 8 terakhir tanpa ada konflik:
+
+```bash
+pve8to9 --full
+
+```
+
+*(Pastikan bagian **SUMMARY** terbaca `0 FAILURES`. Jika ada peringatan terkait `intel-microcode`, abaikan).*
+
+### Tahap 3: Perubahan Basis OS (Bookworm ke Trixie)
+
+Ubah teks target OS menjadi `trixie` pada sumber repositori utama dan berlisensi. Jangan menghapus file apa pun.
+
+1. Ubah repositori Debian utama:
+```bash
+sed -i 's/bookworm/trixie/g' /etc/apt/sources.list
+
+```
+
+
+2. Ubah repositori Proxmox Enterprise:
+```bash
+sed -i 's/bookworm/trixie/g' /etc/apt/sources.list.d/pve-enterprise.list
+
+```
+
+
+3. *(Opsional)* Ubah repositori Ceph Enterprise, **HANYA** jika klien menggunakan Ceph:
+```bash
+sed -i 's/bookworm/trixie/g' /etc/apt/sources.list.d/ceph.list
+
+```
+
+
+
+### Tahap 4: Eksekusi Instalasi Mayor Proxmox 9
+
+Tarik daftar paket versi Trixie dan eksekusi instalasinya:
+
+```bash
+apt update
+
+```
+
+*(Karena sudah melakukan Tahap 1, perintah ini dijamin 100% mulus tanpa error `NO_PUBKEY`).*
+
+Langsung hajar dengan eksekusi utama:
+
+```bash
+apt dist-upgrade -y
+
+```
+
+### Tahap 5: Penanganan Layar Interaktif (Krusial)
+
+Saat layar instalasi muncul, aturan mainnya sama untuk menjaga kestabilan *cluster* klien:
+
+| Pertanyaan / Peringatan Sistem | Tindakan Wajib | Alasan |
+| --- | --- | --- |
+| *Restart services during package upgrades without asking?* | Pilih **** | Mencegah terhentinya layanan secara manual |
+| *Modified configuration file* (contoh: `pve-enterprise.list`) | Tekan **Enter** (Pilih **N**) | Menjaga format lisensi klien tidak tertimpa |
+| *Modified configuration file* (contoh: `issue`, `sshd_config`, `lvm.conf`) | Tekan **Enter** (Pilih **N**) | Menjaga koneksi jaringan dan *storage* bawaan klien |
+
+### Tahap 6: Finalisasi
+
+1. Setelah kembali ke baris perintah (*root@node~#*), jalankan:
+```bash
+reboot
+
+```
+
+
+2. Tunggu node menyala, lalu verifikasi status keamanan *cluster* dari terminal:
+```bash
+pvecm status
+
+```
+
+
+3. Kembalikan (*migrate*) VM ke node tersebut, lalu ulangi Tahap 1 hingga Tahap 6 secara bergantian untuk sisa node yang ada.
+
+---
+---
+---
+---
+
+# Troubleshooting: Error NO_PUBKEY (Jika Tahap 1 Dilewati)
+
+Kalau *skip* Tahap 1 (nggak mentokkan versi 8 dulu) dan langsung ganti repositori ke `trixie`, hampir pasti akan kena *error* `NO_PUBKEY` saat menjalankan `apt update`.
+
+Bisa saja pakai cara `apt-key adv` sebagai jalan pintas, tapi **tidak bisa menggunakan deretan kode *key* yang sama persis** seperti saat *upgrade* dari 7 ke 8. Kunci keamanan Debian 13 (Trixie) berbeda dengan Debian 12 (Bookworm).
+
+Berikut adalah blok **Troubleshooting Kedaruratan** yang wajib lu tambahkan di bagian bawah modul Enterprise lu:
+
+**Masalah:** Saat menjalankan `apt update` di Tahap 4, muncul tulisan merah bata seperti ini:
+`W: GPG error: [http://ftp.debian.org/debian](http://ftp.debian.org/debian) trixie InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 225629DF75B188BD NO_PUBKEY B7C5D7D6350947F8`
+
+**Penyebab:** Server tidak memiliki paket `debian-archive-keyring` terbaru, sehingga menolak tautan repositori Debian 13 (Trixie).
+
+**Solusi Eksekusi:**
+
+1. Cek 16 digit kode alfanumerik yang muncul tepat setelah tulisan `NO_PUBKEY` pada layar terminal (kode bisa 1 atau lebih).
+2. Tarik kunci tersebut secara manual dari *server* Ubuntu. Ganti kode di bawah ini sesuai dengan yang muncul di layar:
+```bash
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 225629DF75B188BD B7C5D7D6350947F8
+
+```
+
+
+3. Pastikan muncul keterangan `imported` di layar.
+4. Jalankan ulang pembaruan:
+```bash
+apt update
+
+```
+
+
+5. Jika sudah jalan mulus tanpa *error*, langsung hajar eksekusi utama:
+```bash
+apt dist-upgrade -y
+
+```
+
+
+
+---
+
+**Saran tambahan:**
+Selalu baca pesan *error*-nya. Jangan asal *copy-paste* perintah `apt-key` dari *history* lama, karena kalau kodenya beda, *error*-nya nggak akan hilang dan bakal mentok di lokasi klien. Tinggal *copy* kode dari *error* merahnya, tempel di belakang perintah `apt-key`, beres!
