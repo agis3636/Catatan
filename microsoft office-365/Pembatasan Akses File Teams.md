@@ -7,6 +7,8 @@ Bisa, tetapi tidak dilakukan dari Teams. Harus dilakukan dari SharePoint yang me
 
 Setiap file yang di-upload ke Teams Channel sebenarnya disimpan di SharePoint. Karena itu permission file dapat diatur langsung pada file atau folder di SharePoint.
 
+---
+
 ### Opsi 1 (Paling Sederhana)
 1. Buka tab **Files** pada channel Teams.
 2. Klik **Open in SharePoint**.
@@ -16,6 +18,8 @@ Setiap file yang di-upload ke Teams Channel sebenarnya disimpan di SharePoint. K
 6. Berikan akses hanya kepada user yang diperbolehkan.
 
 SharePoint mendukung pengaturan permission sampai level file/folder tertentu sehingga user tertentu dapat dihapus aksesnya tanpa harus mengeluarkannya dari Team. Referensi internal juga menunjukkan permission di level file/library dapat dikelola langsung melalui SharePoint.
+
+---
 
 ### Opsi 2 (Untuk Dokumen Sangat Rahasia)
 Gunakan **Microsoft Purview Sensitivity Label + Encryption**.
@@ -38,6 +42,8 @@ Ini biasanya menjadi rekomendasi untuk instansi seperti KPK karena lebih aman di
 
 **Jawaban Singkat**
 Bisa. Bahkan ada beberapa level kontrol.
+
+---
 
 ### Opsi 1: Batasi Permission File/Folder di SharePoint
 Guest Teams sebenarnya mengakses file melalui SharePoint. Permission file dapat diatur agar guest tidak memiliki akses ke folder/file tertentu. Microsoft juga menyatakan bahwa permission file guest mengikuti konfigurasi SharePoint dan dikelola oleh admin.
