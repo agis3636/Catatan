@@ -145,10 +145,6 @@ apt dist-upgrade -y
 
 ---
 
-* Ketik `reboot` setelah proses instalasi selesai dan kembali ke baris perintah.
-
-  <img width="613" height="153" alt="Image" src="https://github.com/user-attachments/assets/d42d5220-0d81-4c6d-bd2d-9a587435009d" />
-
 ---
 
 
@@ -161,9 +157,13 @@ reboot
 
 ```
 
-  <img width="1008" height="292" alt="Image" src="https://github.com/user-attachments/assets/7f98cf33-eb1a-47e1-9cbb-ded480710855" />
+  <img width="613" height="153" alt="Image" src="https://github.com/user-attachments/assets/d42d5220-0d81-4c6d-bd2d-9a587435009d" />
+
 
 2. Tunggu node menyala kembali (sekitar 2-5 menit).
+
+  <img width="1008" height="292" alt="Image" src="https://github.com/user-attachments/assets/7f98cf33-eb1a-47e1-9cbb-ded480710855" />
+   
 3. Verifikasi dari node lain dengan perintah:
 ```bash
 pvecm status
