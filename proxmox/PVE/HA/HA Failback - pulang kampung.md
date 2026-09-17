@@ -29,7 +29,7 @@ Tahap ini bertujuan untuk menyerahkan kendali perpindahan VM kepada sistem *High
 
 5. Klik tombol **Add** berwarna biru.
 
-    <img width="478" height="173" alt="Image" src="https://github.com/user-attachments/assets/bb010a36-659c-49fe-9694-a35471fdd513" />
+      <img width="478" height="173" alt="Image" src="https://github.com/user-attachments/assets/bb010a36-659c-49fe-9694-a35471fdd513" />
 
 ---
 
@@ -39,36 +39,31 @@ Tahap ini bertujuan untuk menentukan target kepulangan VM. Pastikan lu melakukan
 
 1. Masih di dalam menu **Datacenter** -> **HA**, pilih sub-menu **Affinity Rules**.
 2. Pada tabel atas (**HA Node Affinity Rules**), klik tombol **Add**.
-3. Di jendela *Add: HA Node Affinity* (`image_544c61.png`), atur parameter berikut:
-* **Enable:** Wajib **DICENTANG**.
-* *Jika dicentang:* Aturan prioritas yang akan kita buat di bawah ini aktif dan langsung dieksekusi oleh sistem.
-* *Jika tidak dicentang:* Aturan ini sekadar disimpan sebagai *draft* mati dan sistem akan mengabaikannya.
+3. Di jendela *Add: HA Node Affinity*, atur parameter berikut:
+    * **Enable:** Wajib **DICENTANG**.
+      * *Jika dicentang:* Aturan prioritas yang akan kita buat di bawah ini aktif dan langsung dieksekusi oleh sistem.
+      * *Jika tidak dicentang:* Aturan ini sekadar disimpan sebagai *draft* mati dan sistem akan mengabaikannya.
 
+    * **HA Resources:** Pilih **ID VM** target lu (contoh: `100`).
+    * **Strict:** Pastikan **KOSONG** (jangan dicentang).
+      * *Jika tidak dicentang:* Mengizinkan VM kabur/mengungsi ke *node* lain (misal `node2`) saat `node4` meledak.
+      * *Jika dicentang (AWAS):* Aturan berubah menjadi "harga mati". VM 100 diharamkan menyentuh *node* selain `node4`. Konsekuensinya, jika `node4` mati, VM 100 dibiarkan ikut mati total dan fitur *failover* (pengungsian) dibatalkan.
 
-* **HA Resources:** Pilih **ID VM** target lu (contoh: `100`).
-* **Strict:** Pastikan **KOSONG** (jangan dicentang).
-* *Jika tidak dicentang:* Mengizinkan VM kabur/mengungsi ke *node* lain (misal `node2`) saat `node4` meledak.
-* *Jika dicentang (AWAS):* Aturan berubah menjadi "harga mati". VM 100 diharamkan menyentuh *node* selain `node4`. Konsekuensinya, jika `node4` mati, VM 100 dibiarkan ikut mati total dan fitur *failover* (pengungsian) dibatalkan.
+    * **Affinity:** Buka *dropdown* dan pilih **Prefer Nodes (positive)**.
+      * *Prefer Nodes (positive):* Bersifat seperti magnet. Sistem akan **menarik/memprioritaskan** VM untuk selalu berusaha hidup di *node* yang kita tandai di bawah. Ini adalah opsi yang benar untuk skenario "pulang kampung".
+      * *Avoid Nodes (negative):* Bersifat seperti penolak. Sistem akan **menjauhkan/melarang** VM mendekati *node* yang kita tandai di bawah (biasanya dipakai jika ada satu *server* fisik yang rentan rusak/kepanasan).
 
-
-* **Affinity:** Buka *dropdown* dan pilih **Prefer Nodes (positive)** sesuai `image_545020.png`.
-* *Prefer Nodes (positive):* Bersifat seperti magnet. Sistem akan **menarik/memprioritaskan** VM untuk selalu berusaha hidup di *node* yang kita tandai di bawah. Ini adalah opsi yang benar untuk skenario "pulang kampung".
-* *Avoid Nodes (negative):* Bersifat seperti penolak. Sistem akan **menjauhkan/melarang** VM mendekati *node* yang kita tandai di bawah (biasanya dipakai jika ada satu *server* fisik yang rentan rusak/kepanasan).
-
-
-* **Comment:** (Opsional) Isi dengan catatan pribadi agar teknisi lain paham tujuan aturan ini. Contoh: `Aturan Pulang Kampung VM Abuntu`.
-
+    * **Comment:** (Opsional) Isi dengan catatan pribadi agar teknisi lain paham tujuan aturan ini. Contoh: `Aturan Pulang Kampung VM Abuntu`.
 
 4. Pada tabel daftar *Node* di bagian bawah jendela:
-* **Centang kotak (Checkbox):** Centang *node* yang akan dijadikan rumah utama (misal: `node4`). Biarkan `node2` dan `node3` kosong.
-* **Priority:** Pada baris `node4`, klik panah atas di kolom **Priority** hingga muncul angka **1**.
-* *Penjelasan Angka:* Semakin tinggi angkanya, semakin tinggi status "VIP"-nya. Jika suatu saat lu mencentang dua *node* (misalnya `node4` prioritas 2, dan `node3` prioritas 1), sistem akan tahu: "Rumah utama adalah `node4`. Tapi kalau `node4` hancur, usahakan mengungsi ke `node3` dulu. `node2` adalah pilihan paling akhir."
-* Karena lu cuma butuh menunjuk satu rumah utama, cukup berikan angka **1** pada `node4`.
-
-
-
+    * **Centang kotak (Checkbox):** Centang *node* yang akan dijadikan rumah utama (misal: `node4`). Biarkan `node2` dan `node3` kosong.
+    * **Priority:** Pada baris `node4`, klik panah atas di kolom **Priority** hingga muncul angka **1**.
+      * *Penjelasan Angka:* Semakin tinggi angkanya, semakin tinggi status "VIP"-nya. Jika suatu saat lu mencentang dua *node* (misalnya `node4` prioritas 2, dan `node3` prioritas 1), sistem akan tahu: "Rumah utama adalah `node4`. Tapi kalau `node4` hancur, usahakan mengungsi ke `node3` dulu. `node2` adalah pilihan paling akhir."
+      * Karena lu cuma butuh menunjuk satu rumah utama, cukup berikan angka **1** pada `node4`.
 
 5. Klik tombol **Add**.
+
+      <img width="482" height="246" alt="Image" src="https://github.com/user-attachments/assets/5929ee50-647e-439d-b0d3-efd9f8af84ec" />
 
 ---
 
