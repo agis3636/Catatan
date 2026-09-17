@@ -196,7 +196,7 @@ pvecm status
 ---
 ---
 
-# Modul Major Upgrade Proxmox VE 8 ke 9 (Enterprise Repository)
+# Major Upgrade Proxmox VE 8 ke 9 (Enterprise Repository)
 
 Kunci utama agar **tidak mengulangi *error* GPG/kunci yang hilang** seperti saat transisi versi 7 ke 8 kemarin adalah: **Jangan terburu-buru mengubah repositori ke versi baru sebelum versi yang lama di-update sampai mentok.**
 
