@@ -151,9 +151,6 @@ apt dist-upgrade -y
 
 ---
 
-* Tunggu node kembali *online*, tarik kembali VM ke node tersebut, lalu mulai ulangi siklus dari tahap 1 untuk node selanjutnya.
-
-  <img width="1008" height="292" alt="Image" src="https://github.com/user-attachments/assets/7f98cf33-eb1a-47e1-9cbb-ded480710855" />
 
 
 ### Tahap 6: Finalisasi & Validasi Pasca-Upgrade
@@ -164,6 +161,7 @@ reboot
 
 ```
 
+  <img width="1008" height="292" alt="Image" src="https://github.com/user-attachments/assets/7f98cf33-eb1a-47e1-9cbb-ded480710855" />
 
 2. Tunggu node menyala kembali (sekitar 2-5 menit).
 3. Verifikasi dari node lain dengan perintah:
