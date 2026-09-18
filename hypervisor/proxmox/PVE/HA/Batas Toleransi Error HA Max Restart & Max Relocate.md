@@ -38,14 +38,14 @@ Setiap kali VM melakukan *Relocate* (pindah ke *node* baru), **jatah *Max Restar
 Jika lu salah memasukkan nilai menjadi **Max Restart: 2** dan **Max Relocate: 2**, inilah alur penderitaan klaster lu jika OS VM 100 rusak saat berada di `node2`:
 
 1. VM mati di `node2`.
-2. **Restart 1 di node2:** Gagal.
-3. **Restart 2 di node2:** Gagal. Jatah *restart* `node2` habis.
-4. **Relocate 1 (ke node3):** Jatah *restart* direset jadi **2** lagi.
-5. **Restart 1 di node3:** Gagal.
-6. **Restart 2 di node3:** Gagal. Jatah *restart* `node3` habis.
-7. **Relocate 2 (ke node4):** Jatah *restart* direset jadi 0 lagi.
-8. **Restart 1 di node4:** Gagal.
-9. **Restart 2 di node4:** Gagal. Seluruh jatah habis.
+2. **Restart `**1**` di node2:** Gagal.
+3. **Restart `**2**` di node2:** Gagal. Jatah *restart* `node2` habis.
+4. **Relocate `**1**` (ke node3):** Jatah *restart* direset jadi `**2**` lagi.
+5. **Restart `**1**` di node3:** Gagal.
+6. **Restart `**2**` di node3:** Gagal. Jatah *restart* `node3` habis.
+7. **Relocate `**2**` (ke node4):** Jatah *restart* direset jadi `**2**` lagi.
+8. **Restart `**1**` di node4:** Gagal.
+9. **Restart `**2**` di node4:** Gagal. Seluruh jatah habis.
 10. **Menyerah:** Proxmox membiarkan VM mati (*error*).
 
 **Hasil Akhir:** Proxmox melakukan 6 kali percobaan *booting* yang sia-sia, membuat beban CPU/RAM klaster melonjak tanpa hasil. Dengan mengatur parameter ke angka **1 dan 1**, administrator bisa langsung mendeteksi kerusakan OS lebih cepat dan server tidak kelelahan.
