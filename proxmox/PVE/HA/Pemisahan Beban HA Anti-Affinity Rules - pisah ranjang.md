@@ -1,45 +1,59 @@
-Mantap! Sesuai gambar `image_55bf07.png`, sekarang kita punya **CT 100** dan **CT 101** yang sama-sama nongkrong di `node4`.
+# Konfigurasi: Pemisahan Beban (Anti-Affinity / Pisah Ranjang)
 
-Karena tujuannya mau ngetes aturan pisah ranjang (**Anti-Affinity**), kita bakal mendaftarkan kedua kontainer ini ke dalam pengawasan HA, lalu membuat aturan agar mereka berdua **haram** berjalan di *node* fisik yang sama.
+**Tujuan:** Mendaftarkan VM/CT ke dalam sistem HA dan memastikan dua atau lebih VM/CT target dilarang keras berjalan di *node* fisik yang sama.
 
-Mari kita eksekusi langkah demi langkah:
+### Langkah 1: Daftarkan VM/CT ke HA Resources
 
-### Langkah 1: Daftarkan Kedua Container ke HA Utama
+Langkah ini wajib agar VM/CT dipantau oleh sistem High Availability.
 
-1. Klik menu **Datacenter** di paling atas panel kiri.
-2. Pilih sub-menu **HA** (induk).
-3. Di tabel bagian bawah (**Resources**), klik **Add**.
-* Masukkan **CT 100**, set *Max. Restart: 1*, *Max. Relocate: 1*, centang **Failback** dan **Auto-Rebalance**, lalu klik **Add**.
+1. Buka menu **Datacenter** > klik **HA**.
+2. Di tabel bawah (**Resources**), klik tombol **Add**.
+3. Isi form untuk CT 100, lalu ulangi proses yang sama untuk CT 101.
 
+**Penjelasan Parameter HA Resources:**
 
-4. Ulangi langkah yang sama untuk mendaftarkan **CT 101** ke HA (tambahkan dengan setelan parameter yang identik).
+| Parameter | Pengaturan | Penjelasan Efek |
+| --- | --- | --- |
+| **VM** | Pilih ID (`100` / `101`) | Menentukan target mesin yang akan diawasi. |
+| **Max. Restart** | Isi angka `1` | Proxmox akan mencoba me-*restart* mesin 1x di *node* yang sama jika *hang*. Jika gagal, langsung diungsikan. |
+| **Max. Relocate** | Isi angka `1` | Membatasi mesin agar maksimal hanya pindah 1x antar-node saat darurat untuk mencegah *looping error*. |
+| **Failback** | **Dicentang (True)** | Mengizinkan mesin ditarik pulang otomatis ke *node* asalnya saat *node* tersebut sudah nyala kembali. |
+|  | **Tidak Dicentang** | Mesin akan menetap selamanya di *node* pengungsian meskipun *node* asal sudah normal. |
+| **Auto-Rebalance** | **Dicentang (True)** | Menyalakan sensor agar sistem membagi rata beban RAM/CPU antar-node secara otomatis saat kondisi normal. |
+|  | **Tidak Dicentang** | Sensor pasif. Mesin hanya dipindah saat *node* mati, bukan untuk menyeimbangkan beban. |
 
-*Catatan:* Sekarang kedua kontainer sudah diawasi oleh HA. Kalau `node4` mati, keduanya pasti bakal diselamatkan. Tapi kalau dibiarkan *default*, Proxmox bisa saja menaruh mereka berdua di `node2` secara bersamaan. Di sinilah aturan Anti-Affinity kita perlukan.
+*Klik **Add** setelah selesai.*
 
-### Langkah 2: Buat Aturan Anti-Affinity (Pemisahan Beban)
+    <img width="479" height="176" alt="Image" src="https://github.com/user-attachments/assets/b0527fa0-ce87-48cc-af9a-27ed46ce083f" />
 
-1. Masih di dalam menu **Datacenter -> HA**, pindah ke tab **Affinity Rules**.
-2. Fokus ke tabel bagian **BAWAH** yang namanya **HA Resource Affinity Rules** (ini khusus buat ngatur hubungan antar-VM/Container).
-3. Klik tombol **Add** di tabel bawah tersebut.
-4. Pada jendela yang muncul, atur parameternya:
-* **Enable:** Centang (aktif).
-* **Affinity:** Buka *dropdown* dan pilih **Avoid Resources (negative)**. *(Artinya: Tolak-menolak / jangan biarkan mereka seruangan).*
-* **HA Resources:** Centang **kedua kontainer** sekaligus (`ct:100` dan `ct:101`).
-* **Comment:** Isi catatan bebas, misal: `pisah-ct100-ct101`.
+    <img width="480" height="175" alt="Image" src="https://github.com/user-attachments/assets/3e1a31a1-dd78-4c31-8354-d1b29d88d2de" />
 
-
-5. Klik tombol **Add**.
+    <img width="743" height="133" alt="Image" src="https://github.com/user-attachments/assets/71c8de70-d7f2-4ebe-88e9-60c5ae2628b0" />
 
 ---
 
-### Cara Pengujiannya (Uji Coba Lapangan)
+### Langkah 2: Buat Aturan HA Resource Affinity Rules
 
-Sekarang aturan Anti-Affinity sudah aktif mengunci mereka berdua. Mari kita buktikan:
+Langkah ini untuk mengunci aturan "Pisah Ranjang" pada mesin yang sudah didaftarkan di Langkah 1.
 
-1. Pastikan saat ini CT 100 dan CT 101 sama-sama menyala di `node4`.
-2. Matikan paksa `node4` (atau cabut simulasinya).
-3. Amati ke mana mereka mengungsi.
+1. Masih di menu **Datacenter** > **HA**, klik sub-menu **Affinity Rules** di panel kiri.
+2. Fokus ke tabel bagian **BAWAH** (**HA Resource Affinity Rules**).
+3. Klik tombol **Add**.
 
-Karena ada aturan *Avoid Resources*, Proxmox **tidak boleh** menaruh CT 100 dan CT 101 di *node* pengungsian yang sama. Satu kontainer harus mengungsi ke `node2`, dan kontainer satunya lagi wajib lari ke `node3`.
+**Penjelasan Parameter HA Resource Affinity:**
 
-Coba laksanakan dan lihat hasilnya di layar *server* lu!
+| Parameter | Pilihan / Status | Penjelasan Efek |
+| --- | --- | --- |
+| **Enable** | **Dicentang (✔)** | Aturan langsung aktif, dipantau, dan dieksekusi oleh Proxmox saat itu juga. |
+|  | **Tidak Dicentang** | Aturan dimatikan (hanya jadi *draft*). Sistem akan mengabaikannya. |
+| **Affinity** | **Keep Separate (negative)** | **[PILIH INI]** Memaksa mesin-mesin terpilih wajib BERPISAH di *node* yang berbeda. |
+|  | **Keep Together (positive)** | Memaksa mesin-mesin terpilih wajib MENEMPEL di satu *node* yang sama. |
+| **HA Resources** | Centang ID `100` & `101` | Memilih mesin mana saja yang akan dikenakan aturan pemisahan ini. (Hanya muncul jika sudah lewat Langkah 1). |
+| **Comment** | Bebas diisi teks | Hanya berfungsi sebagai label/catatan teknisi (contoh: `Pisah-CT100-CT101`). Tidak ngefek ke sistem. |
+
+*Klik **Add** setelah selesai.*
+
+---
+
+**Hasil Akhir di Lapangan:**
+Pengaturan selesai. Jika *node* tempat CT 100 dan CT 101 mati, Proxmox akan memindahkan mereka ke dua *node* yang berbeda (misal satu ke `node2`, satu ke `node3`). Mereka dijamin tidak akan pernah berkumpul di satu *node* yang sama.
