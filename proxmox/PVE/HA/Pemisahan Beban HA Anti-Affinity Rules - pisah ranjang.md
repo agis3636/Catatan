@@ -24,11 +24,11 @@ Langkah ini wajib agar VM/CT dipantau oleh sistem High Availability.
 
 *Klik **Add** setelah selesai.*
 
-    <img width="479" height="176" alt="Image" src="https://github.com/user-attachments/assets/b0527fa0-ce87-48cc-af9a-27ed46ce083f" />
+<img width="479" height="176" alt="Image" src="https://github.com/user-attachments/assets/b0527fa0-ce87-48cc-af9a-27ed46ce083f" />
 
-    <img width="480" height="175" alt="Image" src="https://github.com/user-attachments/assets/3e1a31a1-dd78-4c31-8354-d1b29d88d2de" />
+<img width="480" height="175" alt="Image" src="https://github.com/user-attachments/assets/3e1a31a1-dd78-4c31-8354-d1b29d88d2de" />
 
-    <img width="743" height="133" alt="Image" src="https://github.com/user-attachments/assets/71c8de70-d7f2-4ebe-88e9-60c5ae2628b0" />
+<img width="743" height="133" alt="Image" src="https://github.com/user-attachments/assets/71c8de70-d7f2-4ebe-88e9-60c5ae2628b0" />
 
 ---
 
