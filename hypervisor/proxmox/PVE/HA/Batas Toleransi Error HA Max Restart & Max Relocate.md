@@ -38,7 +38,7 @@ Setiap kali VM melakukan *Relocate* (pindah ke *node* baru), **jatah *Max Restar
 Jika lu salah memasukkan nilai menjadi **Max Restart: 2** dan **Max Relocate: 2**, inilah alur penderitaan klaster lu jika OS VM 100 rusak saat berada di `node2`:
 
 1. VM mati di `node2`.
-2. **Restart `**1**` di node2:** Gagal.
+2. **Restart `*1*` di node2:** Gagal.
 3. **Restart `**2**` di node2:** Gagal. Jatah *restart* `node2` habis.
 4. **Relocate `**1**` (ke node3):** Jatah *restart* direset jadi `**2**` lagi.
 5. **Restart `**1**` di node3:** Gagal.
