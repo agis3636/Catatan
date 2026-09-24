@@ -11,24 +11,24 @@
 
 ## Kategori 1: Website
 
-* Website: Fitur untuk membuat dan mendesain website perusahaan secara instan tanpa perlu keahlian coding (sistem geser dan lepas/drag-and-drop).
-* eCommerce: Fitur untuk membuka toko online, memajang produk, mengintegrasikan sistem pembayaran digital, dan mengelola pesanan masuk dari pembeli.
-* Blog: Tempat untuk menulis dan mempublikasikan artikel, pengumuman, atau berita perusahaan guna menarik perhatian pengunjung lewat internet (SEO).
-* Forum: Wadah diskusi digital atau halaman FAQ interaktif bagi pelanggan untuk bertanya dan menjawab pertanyaan seputar produk Anda.
-* eLearning: Platform untuk membuat kelas online, mengunggah materi video/dokumen, serta mempublikasikan kursus digital bagi karyawan maupun publik.
-* Live Chat: Fitur obrolan langsung di website untuk menyapa dan melayani pertanyaan pengunjung secara real-time.
+* **Website:** Fitur untuk membuat dan mendesain website perusahaan secara instan tanpa perlu keahlian coding (sistem geser dan lepas/drag-and-drop).
+* **eCommerce:** Fitur untuk membuka toko online, memajang produk, mengintegrasikan sistem pembayaran digital, dan mengelola pesanan masuk dari pembeli.
+* **Blog:** Tempat untuk menulis dan mempublikasikan artikel, pengumuman, atau berita perusahaan guna menarik perhatian pengunjung lewat internet (SEO).
+* **Forum:** Wadah diskusi digital atau halaman FAQ interaktif bagi pelanggan untuk bertanya dan menjawab pertanyaan seputar produk Anda.
+* **eLearning:** Platform untuk membuat kelas online, mengunggah materi video/dokumen, serta mempublikasikan kursus digital bagi karyawan maupun publik.
+* **Live Chat:** Fitur obrolan langsung di website untuk menyapa dan melayani pertanyaan pengunjung secara real-time.
 
 ## Kategori 2: Sales
 
-* CRM (Customer Relationship Management): Tempat untuk mengelola calon pelanggan (leads), melacak progres negosiasi tim sales, hingga memprediksi target penjualan sampai kesepakatan berhasil diraih.
-* Sales: Fitur untuk membuat surat penawaran harga (quotation atau SO) resmi yang dikirim ke pelanggan, yang nantinya bisa langsung diubah menjadi faktur tagihan jika disetujui.
-* POS (Point of Sale): Sistem aplikasi kasir digital untuk mencatat penjualan langsung di toko fisik atau restoran yang terintegrasi dengan mesin cetak struk dan laci uang.
-* Langganan: Fitur untuk mengelola bisnis berbasis langganan bulanan/tahunan (seperti Netflix atau langganan produk), termasuk otomatisasi penagihan berulang.
-* Rental: Modul khusus untuk mengelola penyewaan barang, melacak masa sewa, proses pengiriman, hingga pengembalian barang sewaan.
+* **CRM (Customer Relationship Management):** Tempat untuk mengelola calon pelanggan (leads), melacak progres negosiasi tim sales, hingga memprediksi target penjualan sampai kesepakatan berhasil diraih.
+* **Sales:** Fitur untuk membuat surat penawaran harga (quotation atau SO) resmi yang dikirim ke pelanggan, yang nantinya bisa langsung diubah menjadi faktur tagihan jika disetujui.
+* **POS (Point of Sale):** Sistem aplikasi kasir digital untuk mencatat penjualan langsung di toko fisik atau restoran yang terintegrasi dengan mesin cetak struk dan laci uang.
+* **Langganan:** Fitur untuk mengelola bisnis berbasis langganan bulanan/tahunan (seperti Netflix atau langganan produk), termasuk otomatisasi penagihan berulang.
+* **Rental:** Modul khusus untuk mengelola penyewaan barang, melacak masa sewa, proses pengiriman, hingga pengembalian barang sewaan.
 
 ## Kategori 3: Keuangan
 
-* Akuntansi: Pusat pengelolaan keuangan besar perusahaan, mencakup pembukuan otomatis, analisis laba rugi, laporan arus kas, hingga kepatuhan pajak.
+* **Akuntansi:** Pusat pengelolaan keuangan besar perusahaan, mencakup pembukuan otomatis, analisis laba rugi, laporan arus kas, hingga kepatuhan pajak.
 * Faktur (Invoicing): Alat untuk membuat, mengirimkan tagihan secara otomatis ke email pelanggan, dan melacak status pembayaran apakah sudah lunas atau belum.
 * Pengeluaran: Tempat bagi karyawan untuk mengajukan klaim biaya (reimbursement) atas pengeluaran operasional (seperti uang bensin atau makan dengan klien).
 * Dokumen: Sistem penyimpanan berkas digital perusahaan agar dokumen penting tertata rapi, mudah dicari, dan aman.
