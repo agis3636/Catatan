@@ -1,7 +1,7 @@
 # Berikut adalah penjelasan lengkap untuk semua modul Odoo yang ada di ketiga foto yang Anda kirim, dikelompokkan sesuai dengan kategorinya agar mudah dipahami:
 ------------------------------
 
-<img width="914" height="835" alt="Image" src="https://github.com/user-attachments/assets/cf912008-584d-46f6-b4e7-143d8fd57307" />
+<img width="946" height="835" alt="Image" src="https://github.com/user-attachments/assets/cf912008-584d-46f6-b4e7-143d8fd57307" />
 
 <img width="944" height="830" alt="Image" src="https://github.com/user-attachments/assets/3409b93d-5df3-4aef-ad42-767933fcf0e9" />
 
