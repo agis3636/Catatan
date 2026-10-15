@@ -1,28 +1,26 @@
-
-
 Synology punya banyak lini produk, tetapi cara paling mudah memahaminya adalah membagi produk menjadi tiga kelompok: NAS serbaguna, storage enterprise khusus, dan perangkat ekspansi.
 
 Hal penting sebelum mulai: tidak semua kode seri Synology mempunyai kepanjangan resmi. Ada yang memang nama produk, seperti DiskStation dan RackStation; ada yang menggambarkan fungsi, seperti High Density; dan ada yang merupakan kode keluarga produk, seperti PAS, GS, PAX, FX, RX, dan DX. Gue tidak akan mengarang kepanjangan untuk kode yang tidak dijelaskan secara resmi.
 
 Panduan ini mengikuti lini yang kamu sebutkan dan katalog produk Synology, termasuk kategori XS+/XS, Plus, Value, dan J.&#x20;
 
-[image](https://www.google.com/s2/favicons?domain=https://www.synology.com\&sz=32)
+![image](https://www.google.com/s2/favicons?domain=https://www.synology.com\&sz=32)
 
 # 1. Gambaran besar seluruh lini Synology
 
-[Synology DS925+ Desktop, 4-bay , QUAD CO | NetOnNet](https://images.openai.com/static-rsc-4/xMQRGc5OJ4sxVFLo-c47oYX4gYcF3T71JkYJ6fRx7175NODnuZInk99jXE1CPKVNriJE_HNpuoMOwtYplEEdHgJlzFw7dgrlaOGQfNH2QyuVUE2HnCkEMmvsJPafsXhvMx6bCeZVoQZT0uZIK4ztTaqtIf-Zf0DIoPQPtEQh8_o?purpose=inline)
+![Synology DS925+ Desktop, 4-bay , QUAD CO | NetOnNet](https://images.openai.com/static-rsc-4/xMQRGc5OJ4sxVFLo-c47oYX4gYcF3T71JkYJ6fRx7175NODnuZInk99jXE1CPKVNriJE_HNpuoMOwtYplEEdHgJlzFw7dgrlaOGQfNH2QyuVUE2HnCkEMmvsJPafsXhvMx6bCeZVoQZT0uZIK4ztTaqtIf-Zf0DIoPQPtEQh8_o?purpose=inline)
 
 **NAS serbaguna — DS dan RS**
 
 Untuk file server, backup, sinkronisasi file, aplikasi kolaborasi, surveillance, dan berbagai layanan bisnis. DS berbentuk desktop/tower, sedangkan RS berbentuk rackmount.
 
-[FlashStation FS6420 | Synology ビジネス向け 2UオールインワンNASストレージキット | 株式会社アスク](https://images.openai.com/static-rsc-4/PP1m7bRATiOuNSXGXVFsRVI7s1UYZC4QqpAnyc9QOReodP_It_1ZxzQnKUCwGaOuqfbTqUzB9l9AQOSS3MV86aMzPE0sZDvwz-gYok9A5G9MuTBTByqcq8SbYY-z0nTTm3ScH57FeRlz95yvFqAl-oNklqwqfVvpRCtptWQ5I_E?purpose=inline)
+![FlashStation FS6420 | Synology ビジネス向け 2UオールインワンNASストレージキット | 株式会社アスク](https://images.openai.com/static-rsc-4/PP1m7bRATiOuNSXGXVFsRVI7s1UYZC4QqpAnyc9QOReodP_It_1ZxzQnKUCwGaOuqfbTqUzB9l9AQOSS3MV86aMzPE0sZDvwz-gYok9A5G9MuTBTByqcq8SbYY-z0nTTm3ScH57FeRlz95yvFqAl-oNklqwqfVvpRCtptWQ5I_E?purpose=inline)
 
 **Storage enterprise — FS, SA, HD, UC, PAS, GS**
 
 Lini yang dirancang untuk kebutuhan khusus seperti performa SSD tinggi, kapasitas masif, SAN, high availability, dan storage perusahaan.
 
-[Synology RX418 4-Bay Expansion Unit India – Tanotis](https://images.openai.com/static-rsc-4/MtcPtbSEDsGHI5kvMTaq46QAfPuvzwPdx8gDBTRJz7awPSb3gFFvwa8FtCGaf6eOglRtddtIfIdZu-zV_8zraNLP4NnrV6Fo9LG_TxOtiMdBH8iLYjMPhfYdaZi8sajtrRfipTW1JXA_cusc7JOY4YAXZUlYHO4Kjt_zZ7mQME4?purpose=inline)
+![Synology RX418 4-Bay Expansion Unit India – Tanotis](https://images.openai.com/static-rsc-4/MtcPtbSEDsGHI5kvMTaq46QAfPuvzwPdx8gDBTRJz7awPSb3gFFvwa8FtCGaf6eOglRtddtIfIdZu-zV_8zraNLP4NnrV6Fo9LG_TxOtiMdBH8iLYjMPhfYdaZi8sajtrRfipTW1JXA_cusc7JOY4YAXZUlYHO4Kjt_zZ7mQME4?purpose=inline)
 
 **Ekspansi — DX, RX, FX, PAX**
 
@@ -30,7 +28,7 @@ Menambah kapasitas atau kemampuan perangkat utama yang kompatibel. Umumnya bukan
 
 # 2. DS Series — DiskStation
 
-[Synology DiskStation DS923+  - Serveur NAS - LDLC | Muséericorde](https://images.openai.com/static-rsc-4/mhvsk3dJT5vhmgLR8PzZoaLz5FLOeXIXCVwjJFz-C43ZQbiqj1PtQDaOX72sT-ghtc6Hq9363_cVfmK1EGFgJKDXWqbl4-KfXnTbNgeuiwU2dcJ4IuvAJDLMqzRVxhf9uIJJ2XC6O5ThZumPfpfrWCj9vkwdv67EusGbks5F96I?purpose=inline)
+![Synology DiskStation DS923+  - Serveur NAS - LDLC | Muséericorde](https://images.openai.com/static-rsc-4/mhvsk3dJT5vhmgLR8PzZoaLz5FLOeXIXCVwjJFz-C43ZQbiqj1PtQDaOX72sT-ghtc6Hq9363_cVfmK1EGFgJKDXWqbl4-KfXnTbNgeuiwU2dcJ4IuvAJDLMqzRVxhf9uIJJ2XC6O5ThZumPfpfrWCj9vkwdv67EusGbks5F96I?purpose=inline)
 
 Kepanjangan: DiskStation.
 
@@ -46,7 +44,7 @@ DS dibagi lagi menjadi beberapa kelas.
 
 ## A. DS XS+/XS Series
 
-[Synology 12 Bay DiskStation DS3622xs+ Desktop NAS (Diskless) - Newegg.ca](https://images.openai.com/static-rsc-4/aCym18v29-8kVJOFCPGVq-x8f8YLjSdkwSWAe5dxVvLW8UjMtVZa_9zy3ZbKPzKmuxevymZaNPqiJSPl0-X1fiXz-oP9uZsk1HDa-65qu9TIrwKdEQkT4D37T7PGHHV2Q5cWRcH80UtmVapHeg5KGdMDm2zt3pTLWIRhN15dG4A?purpose=inline)
+![Synology 12 Bay DiskStation DS3622xs+ Desktop NAS (Diskless) - Newegg.ca](https://images.openai.com/static-rsc-4/aCym18v29-8kVJOFCPGVq-x8f8YLjSdkwSWAe5dxVvLW8UjMtVZa_9zy3ZbKPzKmuxevymZaNPqiJSPl0-X1fiXz-oP9uZsk1HDa-65qu9TIrwKdEQkT4D37T7PGHHV2Q5cWRcH80UtmVapHeg5KGdMDm2zt3pTLWIRhN15dG4A?purpose=inline)
 
 Arti: kelas performa tinggi untuk bisnis. `XS` dan `XS+` merupakan penanda kelas produk, bukan kepanjangan resmi yang perlu dianggap sebagai singkatan tertentu.
 
