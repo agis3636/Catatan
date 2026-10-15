@@ -3,7 +3,6 @@ Synology punya banyak lini produk, tetapi cara paling mudah memahaminya adalah m
 Hal penting sebelum mulai: tidak semua kode seri Synology mempunyai kepanjangan resmi. Ada yang memang nama produk, seperti DiskStation dan RackStation; ada yang menggambarkan fungsi, seperti High Density; dan ada yang merupakan kode keluarga produk, seperti PAS, GS, PAX, FX, RX, dan DX. Gue tidak akan mengarang kepanjangan untuk kode yang tidak dijelaskan secara resmi.
 
 Panduan ini mengikuti lini yang kamu sebutkan dan katalog produk Synology, termasuk kategori XS+/XS, Plus, Value, dan J.
-
 ![image](https://www.google.com/s2/favicons?domain=https://www.synology.com\&sz=32)
 
 # 1. Gambaran besar seluruh lini Synology
