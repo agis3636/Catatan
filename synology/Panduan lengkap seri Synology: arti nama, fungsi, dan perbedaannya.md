@@ -2,7 +2,7 @@ Synology punya banyak lini produk, tetapi cara paling mudah memahaminya adalah m
 
 Hal penting sebelum mulai: tidak semua kode seri Synology mempunyai kepanjangan resmi. Ada yang memang nama produk, seperti DiskStation dan RackStation; ada yang menggambarkan fungsi, seperti High Density; dan ada yang merupakan kode keluarga produk, seperti PAS, GS, PAX, FX, RX, dan DX. Gue tidak akan mengarang kepanjangan untuk kode yang tidak dijelaskan secara resmi.
 
-Panduan ini mengikuti lini yang kamu sebutkan dan katalog produk Synology, termasuk kategori XS+/XS, Plus, Value, dan J.&#x20;
+Panduan ini mengikuti lini yang kamu sebutkan dan katalog produk Synology, termasuk kategori XS+/XS, Plus, Value, dan J.
 
 ![image](https://www.google.com/s2/favicons?domain=https://www.synology.com\&sz=32)
 
@@ -52,7 +52,7 @@ Cocok untuk: perusahaan dengan banyak pengguna, beban kerja berat, jaringan cepa
 
 Contoh model: DS1823xs+ dan DS3622xs+.
 
-Kelas ini biasanya memiliki kemampuan hardware dan konektivitas lebih tinggi daripada DS Plus biasa. Fitur persisnya tetap tergantung model.&#x20;
+Kelas ini biasanya memiliki kemampuan hardware dan konektivitas lebih tinggi daripada DS Plus biasa. Fitur persisnya tetap tergantung model.
 
 ![image](https://www.google.com/s2/favicons?domain=https://www.synology.com\&sz=32)
 
@@ -66,7 +66,7 @@ Cocok untuk: pengguna rumahan tingkat lanjut, kantor kecil-menengah, server file
 
 Contoh model: DS925+, DS725+, DS1825+.
 
-Lini ini sering menjadi pilihan untuk bisnis yang ingin menggunakan lebih dari sekadar fungsi file server biasa.&#x20;
+Lini ini sering menjadi pilihan untuk bisnis yang ingin menggunakan lebih dari sekadar fungsi file server biasa.
 
 ![image](https://www.google.com/s2/favicons?domain=https://www.synology.com\&sz=32)
 
@@ -78,7 +78,7 @@ Arti: Value, yaitu kelas yang menekankan kebutuhan utama dengan biaya lebih terj
 
 Cocok untuk: penyimpanan bersama, backup PC, private cloud sederhana, dan kantor kecil.
 
-Contoh model: DS223 dan DS423. Value bukan berarti tidak berguna untuk bisnis; artinya fitur dan performanya difokuskan pada kebutuhan yang lebih mendasar.&#x20;
+Contoh model: DS223 dan DS423. Value bukan berarti tidak berguna untuk bisnis; artinya fitur dan performanya difokuskan pada kebutuhan yang lebih mendasar.
 
 ![image](https://www.google.com/s2/favicons?domain=https://www.synology.com\&sz=32)
 
@@ -90,7 +90,7 @@ Arti: kategori J Series; Synology tidak mencantumkan kepanjangan resmi huruf `j`
 
 Cocok untuk: pemula, rumah, dan kantor kecil yang terutama membutuhkan backup dan penyimpanan file bersama.
 
-Contoh model: DS223j. Kelas ini biasanya lebih sederhana daripada DS Plus. Jangan menganggap huruf `j` sebagai kepanjangan resmi tertentu tanpa dokumentasi Synology.&#x20;
+Contoh model: DS223j. Kelas ini biasanya lebih sederhana daripada DS Plus. Jangan menganggap huruf `j` sebagai kepanjangan resmi tertentu tanpa dokumentasi Synology.
 
 ![image](https://www.google.com/s2/favicons?domain=https://www.synology.com\&sz=32)
 
@@ -104,7 +104,7 @@ Bentuk: perangkat NAS yang dipasang pada rak server.
 
 Kegunaan: file server perusahaan, backup terpusat, penyimpanan VM, layanan jaringan, dan infrastruktur kantor atau data center.
 
-Fungsi software RS mirip dengan DS, tetapi chassis, pilihan konektivitas, kapasitas, catu daya, serta karakteristik hardware disesuaikan untuk lingkungan rackmount. RS bukan otomatis lebih kencang daripada semua DS; model dan spesifikasinya tetap perlu dibandingkan.&#x20;
+Fungsi software RS mirip dengan DS, tetapi chassis, pilihan konektivitas, kapasitas, catu daya, serta karakteristik hardware disesuaikan untuk lingkungan rackmount. RS bukan otomatis lebih kencang daripada semua DS; model dan spesifikasinya tetap perlu dibandingkan.
 
 ![image](https://www.google.com/s2/favicons?domain=https://www.synology.com\&sz=32)
 
@@ -128,7 +128,7 @@ Contoh: RS1226+, RS2423+, RS2825RP+.
 
 ## C. RS Value Series
 
-Synology juga mencantumkan kategori RS Value pada pemilih produknya. Kategori ini menekankan kebutuhan rackmount yang lebih mendasar dibanding kelas RS XS+/XS dan RS Plus. Daftar model serta ketersediaannya bergantung katalog pasar dan generasi produk.&#x20;
+Synology juga mencantumkan kategori RS Value pada pemilih produknya. Kategori ini menekankan kebutuhan rackmount yang lebih mendasar dibanding kelas RS XS+/XS dan RS Plus. Daftar model serta ketersediaannya bergantung katalog pasar dan generasi produk.
 
 ![image](https://www.google.com/s2/favicons?domain=https://www.synology.com\&sz=32)
 
@@ -167,7 +167,7 @@ Deskripsi resmi: High scalability.
 
 Fokus: storage perusahaan yang bisa ditingkatkan kapasitasnya secara besar melalui expansion unit.
 
-Synology menggunakan deskripsi High Scalability untuk lini SA. Namun, gue tidak menemukan definisi resmi yang memastikan bahwa huruf `SA` merupakan kepanjangan kata tertentu. Jadi, lebih tepat menyebutnya lini SA yang berfokus pada skalabilitas daripada mengarang kepanjangan akronimnya.&#x20;
+Synology menggunakan deskripsi High Scalability untuk lini SA. Namun, gue tidak menemukan definisi resmi yang memastikan bahwa huruf `SA` merupakan kepanjangan kata tertentu. Jadi, lebih tepat menyebutnya lini SA yang berfokus pada skalabilitas daripada mengarang kepanjangan akronimnya.
 
 ![image](https://www.google.com/s2/favicons?domain=https://www.synology.com\&sz=32)
 
@@ -180,7 +180,7 @@ Kegunaan SA antara lain:
 
 ### Perbedaan SA biasa dan SA dengan akhiran D
 
-Contoh pentingnya adalah SA3400D. Model D memiliki dua controller dengan konfigurasi active-passive untuk menjaga layanan tetap tersedia ketika controller utama bermasalah. Jangan menganggap semua seri SA memiliki arsitektur controller yang sama; modelnya harus diperiksa satu per satu.&#x20;
+Contoh pentingnya adalah SA3400D. Model D memiliki dua controller dengan konfigurasi active-passive untuk menjaga layanan tetap tersedia ketika controller utama bermasalah. Jangan menganggap semua seri SA memiliki arsitektur controller yang sama; modelnya harus diperiksa satu per satu.
 
 ![image](https://www.google.com/s2/favicons?domain=https://www.synology.com\&sz=32)
 
@@ -212,7 +212,7 @@ Fokus: menampung banyak drive dalam satu sistem dan memperluas kapasitas hingga 
 
 Contoh: HD6500 memiliki 60 bay dan dapat berkembang hingga 300 drive dengan unit ekspansi yang didukung.
 
-Penggunaan yang cocok antara lain repositori backup perusahaan, penyimpanan rekaman surveillance dalam jumlah besar, arsip, data produksi media, dan data yang perlu disimpan dalam kapasitas besar.&#x20;
+Penggunaan yang cocok antara lain repositori backup perusahaan, penyimpanan rekaman surveillance dalam jumlah besar, arsip, data produksi media, dan data yang perlu disimpan dalam kapasitas besar.
 
 ![image](https://www.google.com/s2/favicons?domain=https://www.synology.com\&sz=32)
 
@@ -228,7 +228,7 @@ Fokus: storage produksi berperforma tinggi untuk beban kerja penting perusahaan.
 
 PAS7700 merupakan sistem dual-controller active-active dengan 48 bay U.3 NVMe SSD. Kedua controller dapat melayani akses storage secara bersamaan.
 
-PAS mendukung protokol file dan block storage, termasuk SMB, NFS, iSCSI, Fibre Channel, serta NVMe-oF sesuai protokol yang didukung sistem. Operating system-nya adalah DSM Enterprise, berbeda dari DSM biasa pada DS/RS.&#x20;
+PAS mendukung protokol file dan block storage, termasuk SMB, NFS, iSCSI, Fibre Channel, serta NVMe-oF sesuai protokol yang didukung sistem. Operating system-nya adalah DSM Enterprise, berbeda dari DSM biasa pada DS/RS
 
 ![image](https://www.google.com/s2/favicons?domain=https://www.synology.com\&sz=32)
 
@@ -266,7 +266,7 @@ Nama resmi kategori: Desktop Expansion Unit.
 
 Kegunaan: menambahkan bay HDD atau SSD SATA ke NAS desktop yang kompatibel.
 
-Contohnya, DX525 menambahkan lima bay SATA ke model DiskStation yang didukung. Kapasitas tambahan dapat dikelola melalui DSM pada NAS utama. DX bukan NAS mandiri yang menjalankan kumpulan aplikasi sendiri.&#x20;
+Contohnya, DX525 menambahkan lima bay SATA ke model DiskStation yang didukung. Kapasitas tambahan dapat dikelola melalui DSM pada NAS utama. DX bukan NAS mandiri yang menjalankan kumpulan aplikasi sendiri.
 
 ![image](https://www.google.com/s2/favicons?domain=https://www.synology.com\&sz=32)
 
@@ -290,7 +290,7 @@ Fungsi: ekspansi storage berkapasitas tinggi untuk model FlashStation tertentu.
 
 Contoh: FX2421, dengan 24 bay drive 2,5 inci.
 
-FX2421 mendukung drive SAS HDD, SAS SSD, dan SATA SSD sesuai daftar kompatibilitasnya. Model ini dirancang untuk FlashStation yang telah ditentukan, seperti FS6400, FS3600, dan FS3400—bukan untuk semua NAS Synology.&#x20;
+FX2421 mendukung drive SAS HDD, SAS SSD, dan SATA SSD sesuai daftar kompatibilitasnya. Model ini dirancang untuk FlashStation yang telah ditentukan, seperti FS6400, FS3600, dan FS3400—bukan untuk semua NAS Synology
 
 ![image](https://www.google.com/s2/favicons?domain=https://www.synology.com\&sz=32)
 
@@ -302,7 +302,7 @@ Fungsi: ekspansi NVMe khusus untuk PAS7700.
 
 Contoh: PAX224, dengan 24 bay U.3 NVMe SSD.
 
-PAX224 menambah kapasitas NVMe ke PAS7700. Synology mencantumkan kemampuan ekspansi hingga 216 bay ketika sistem menggunakan hingga tujuh unit PAX224 bersama PAS7700. Ini ditujukan untuk kebutuhan enterprise dengan kapasitas dan performa tinggi.&#x20;
+PAX224 menambah kapasitas NVMe ke PAS7700. Synology mencantumkan kemampuan ekspansi hingga 216 bay ketika sistem menggunakan hingga tujuh unit PAX224 bersama PAS7700. Ini ditujukan untuk kebutuhan enterprise dengan kapasitas dan performa tinggi.
 
 ![image](https://www.google.com/s2/favicons?domain=https://www.synology.com\&sz=32)
 
