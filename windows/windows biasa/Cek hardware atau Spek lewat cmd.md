@@ -1,4 +1,4 @@
-# MODUL CMD & POWERSHELL WINDOWS 10/11
+# CMD & POWERSHELL WINDOWS 10/11
 
 ## 1. Membuka CMD dan PowerShell
 
