@@ -846,4 +846,4 @@ Storage `lvm-iscsi-omv` akhirnya berstatus Active: Yes dengan kapasitas sekitar 
 - OpenMediaVault 8 – [NFS](https://docs.openmediavault.org/en/stable/administration/services/nfs.html)
 - OpenMediaVault TGT Plugin – [GitHub](https://github.com/OpenMediaVault-Plugin-Developers/openmediavault-tgt)
 - Proxmox VE – [Administration Guide](https://pve.proxmox.com/pve-docs/)
-- Microsoft – [iSCSI Initiator](https://learn.microsoft.com/en-us/windows-server/storage/iscsi/iscsi-initiator-portal)
+- Microsoft – [iSCSI Initiator](https://learn.microsoft.com/en-us/windows-server/storage/iscsi/iscsi-target-server)
