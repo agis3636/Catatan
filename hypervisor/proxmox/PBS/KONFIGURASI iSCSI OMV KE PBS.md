@@ -51,8 +51,8 @@ lsblk -o NAME,SIZE,TYPE /dev/sdb
 Target:
 
 ```
-sdb     100G disk
-└─sdb1  100G part
+sdb     200G disk
+└─sdb1  200G part
 ```
 
 ## 3. Membuat Physical Volume
@@ -232,7 +232,7 @@ sda     15G
 sdb    200G
 └─sdb1 200G xfs /mnt/datastore/synology
 
-sdc    100G disk iscsi
+sdc    200G disk iscsi
 ```
 
 Fungsi: memastikan disk iSCSI 100 GiB sudah terdeteksi.
@@ -312,7 +312,7 @@ Hasil sesuai konfigurasi kita:
 
 ```
 Filesystem     Type  Size
-/dev/sdc       ext4   98G
+/dev/sdc       ext4  198G
 ```
 
 Opsi `_netdev` penting agar mount dikenali sebagai filesystem berbasis jaringan dan dikoordinasikan dengan startup iSCSI.
@@ -376,7 +376,7 @@ Hasil:
 | Pemeriksaan        | Hasil                    |
 | ------------------ | ------------------------ |
 | iSCSI Session      | Connected                |
-| Disk iSCSI         | 100 GiB                  |
+| Disk iSCSI         | 200 GiB                  |
 | Filesystem         | EXT4                     |
 | Mount              | `/mnt/datastore/omv-pbs` |
 | PBS Datastore      | Available                |
