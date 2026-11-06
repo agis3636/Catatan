@@ -156,11 +156,24 @@ Catat IQN yang muncul di tabel Targets. IQN tersebut dipakai untuk koneksi PBS.
 
 TGT menggunakan backing device sebagai LUN dan ACL untuk membatasi initiator yang boleh mengaksesnya.
 
+---
+---
+---
 
+Modul lu sudah benar secara alur, tetapi ada beberapa bagian yang perlu dikoreksi berdasarkan error yang benar-benar kita alami saat PBS reboot.
 
-## 7. Menghubungkan iSCSI ke PBS
+Ada 4 koreksi penting:
 
-CLI — PBS Shell
+| Bagian             | Modul lama                    | Koreksi                                                             |
+| ------------------ | ----------------------------- | ------------------------------------------------------------------- |
+| Kapasitas LUN PBS  | 200 GB                        | 100 GiB                                                             |
+| Auto-connect iSCSI | Ada, tetapi kurang ditekankan | Wajib `node.startup = automatic`                                    |
+| Mount otomatis     | `_netdev`                     | Benar, pertahankan                                                  |
+| Add Datastore      | Langsung Add                  | Verifikasi mount terlebih dahulu agar tidak menggunakan disk OS PBS |
+
+## Modul revisi — langkah 7 sampai 11
+
+### 7. Menghubungkan iSCSI ke PBS
 
 A. Install iSCSI Initiator
 
@@ -169,7 +182,7 @@ apt update
 apt install open-iscsi -y
 ```
 
-Fungsi: memasang layanan agar PBS dapat mengakses iSCSI Target OMV.
+Fungsi: menginstal layanan iSCSI Initiator di PBS.
 
 B. Discovery Target
 
@@ -177,9 +190,9 @@ B. Discovery Target
 iscsiadm -m discovery -t sendtargets -p 192.168.200.2
 ```
 
-Fungsi: mencari iSCSI Target yang tersedia di OMV.
+Fungsi: mencari Target iSCSI dari OMV.
 
-Contoh hasil:
+Hasil:
 
 ```
 192.168.200.2:3260,1 iqn.2026-11.openmediavault:pbs-lun
@@ -187,23 +200,41 @@ Contoh hasil:
 
 C. Login ke Target
 
-Gunakan IQN persis dari hasil discovery:
-
 ```
-iscsiadm -m node -T IQN_HASIL_DISCOVERY -p 192.168.200.2 --login
+iscsiadm -m node -T iqn.2026-11.openmediavault:pbs-lun -p 192.168.200.2 --login
 ```
 
 Fungsi: menghubungkan PBS ke LUN OMV.
 
-D. Aktifkan koneksi otomatis
+D. Aktifkan koneksi otomatis (WAJIB)
 
 ```
-iscsiadm -m node -T IQN_HASIL_DISCOVERY -p 192.168.200.2 --op update -n node.startup -v automatic
+iscsiadm -m node -T iqn.2026-11.openmediavault:pbs-lun -p 192.168.200.2 --op update -n node.startup -v automatic
 ```
 
-Fungsi: mengatur agar PBS otomatis login ke target saat startup.
+Fungsi: membuat PBS otomatis login ke iSCSI Target setiap boot.
 
-## 8. Identifikasi disk iSCSI
+Verifikasi:
+
+```
+iscsiadm -m node -o show | grep node.startup
+```
+
+Hasil wajib:
+
+```
+node.startup = automatic
+```
+
+Ini adalah perbaikan utama dari masalah kita sebelumnya. Sebelum diperbaiki, nilainya `manual`, sehingga PBS tidak otomatis menemukan LUN setelah reboot. Dokumentasi Debian juga mensyaratkan `automatic` untuk auto-login.&#x20;
+
+[image](https://www.google.com/s2/favicons?domain=https://sources.debian.org\&sz=32)
+
+Debian Sources+1
+
+
+
+### 8. Identifikasi disk iSCSI
 
 Jalankan:
 
@@ -211,41 +242,37 @@ Jalankan:
 lsblk -o NAME,SIZE,TYPE,TRAN,FSTYPE,MOUNTPOINTS
 ```
 
-Contoh:
+Contoh hasil sesuai konfigurasi kita:
 
 ```
 sda     15G
 sdb    200G
-└─sdb1 200G xfs
+└─sdb1 200G xfs /mnt/datastore/synology
 
-sdc    200G disk iscsi
+sdc    100G disk iscsi
 ```
 
-Penting: Jangan mengandalkan nama `/dev/sdc`. Pastikan disk baru memiliki `TRAN=iscsi` dan kapasitas sekitar 200 GB. Disk Synology PBS yang sudah ada juga jangan disentuh.
+Fungsi: memastikan disk iSCSI 100 GiB sudah terdeteksi.
 
-Cek path permanen:
+Catatan: Nama `/dev/sdc` bisa berubah setelah reboot. Gunakan identitas permanen untuk langkah berikutnya.
 
 ```
 ls -l /dev/disk/by-path/ | grep iscsi
 ```
 
-Catat nama symbolic link yang mengarah ke disk iSCSI.
+### 9. Membuat filesystem EXT4
 
-## 9. Membuat filesystem EXT4
+Hanya dilakukan sekali untuk LUN baru
 
-CLI — PBS Shell
-
-Gunakan path iSCSI dari hasil langkah 8, bukan menebak nama disk.
-
-Contoh jika path-nya `/dev/disk/by-path/ip-...`:
+Gunakan path iSCSI hasil langkah 8.
 
 ```
 mkfs.ext4 -L PBS_OMV_ISCSI /dev/disk/by-path/PATH_ISCSI
 ```
 
-Fungsi: membuat filesystem EXT4 pada LUN agar bisa digunakan PBS.
+Fungsi: membuat filesystem EXT4 pada LUN agar dapat digunakan PBS.
 
-Kemudian cek UUID:
+Cek UUID:
 
 ```
 blkid /dev/disk/by-path/PATH_ISCSI
@@ -253,15 +280,17 @@ blkid /dev/disk/by-path/PATH_ISCSI
 
 Catat UUID yang muncul.
 
-## 10. Mount storage di PBS
+Jangan ulangi `mkfs.ext4` setelah filesystem berhasil dibuat karena akan menghapus data di dalamnya.
 
-Buat folder:
+### 10. Mount storage secara permanen
+
+A. Buat folder mount
 
 ```
 mkdir -p /mnt/datastore/omv-pbs
 ```
 
-Edit konfigurasi mount:
+B. Edit konfigurasi mount
 
 ```
 nano /etc/fstab
@@ -270,69 +299,105 @@ nano /etc/fstab
 Tambahkan:
 
 ```
-UUID=UUID_HASIL_BLKID /mnt/datastore/omv-pbs ext4 defaults,_netdev,nofail 0 2
+UUID=UUID_HASIL_BLKID /mnt/datastore/omv-pbs ext4 defaults,_netdev 0 2
 ```
 
-Ganti `UUID_HASIL_BLKID` dengan UUID filesystem sebenarnya.
+Ganti `UUID_HASIL_BLKID` dengan UUID sebenarnya.
 
-Simpan:
-
-- `Ctrl + O` → Enter
-- `Ctrl + X`
-
-Aktifkan mount:
+C. Aktifkan mount
 
 ```
 systemctl enable iscsid open-iscsi
+systemctl daemon-reload
 mount -a
 ```
 
-Verifikasi:
+Fungsi:
+
+- `enable` memastikan layanan aktif saat startup sesuai konfigurasi sistem.
+- `daemon-reload` memuat ulang konfigurasi systemd.
+- `mount -a` menjalankan konfigurasi mount dari fstab.
+
+D. Verifikasi
 
 ```
 findmnt --mountpoint /mnt/datastore/omv-pbs
 df -hT /mnt/datastore/omv-pbs
 ```
 
-Hasil yang diharapkan:
+Hasil sesuai konfigurasi kita:
 
-- Filesystem: `ext4`
-- Source: disk iSCSI OMV
-- Mount point: `/mnt/datastore/omv-pbs`
-- Kapasitas: sekitar 200 GB nominal.
+```
+Filesystem     Type  Size
+/dev/sdc       ext4   98G
+```
 
-Jangan mount filesystem LUN ini di OMV. Hanya PBS yang boleh mount filesystem tersebut.
+Opsi `_netdev` penting agar mount dikenali sebagai filesystem berbasis jaringan dan dikoordinasikan dengan startup iSCSI.
 
-## 11. Add Datastore di PBS GUI
 
-GUI — PBS Web Interface
 
-Buka PBS melalui browser:
+PENTING: Jangan mount filesystem LUN PBS di OMV. Hanya PBS yang boleh mengakses filesystem EXT4 tersebut.
+
+### 11. Add Datastore di PBS GUI
+
+Buka:
 
 ```
 https://192.168.200.4:8007
 ```
 
-Klik:
-
-Datastore → Add Datastore
+Pilih Datastore → Add Datastore.
 
 Isi:
 
 | Field          | Nilai                    |
 | -------------- | ------------------------ |
 | Name           | `omv-pbs`                |
-| Datastore Type | `Local`                  |
+| Datastore Type | Local                    |
 | Backing Path   | `/mnt/datastore/omv-pbs` |
-| GC Schedule    | `daily`                  |
-| Prune Schedule | `daily`                  |
+| GC Schedule    | daily                    |
+| Prune Schedule | daily                    |
 
 Klik Add.
 
-Selesai. Datastore akan muncul di sidebar PBS.
+Selesai
+
+Datastore `omv-pbs` akan muncul di sidebar PBS.
 
 ![Proxmox Backup Server | Storagecenter Documentation](https://images.openai.com/static-rsc-4/vCoG43BXwrVAhJzZmh04lbMMFZVaOq184caYXS0g5t5o5YZrwc-tB3V_nyZxoDWN51Aja5gbs2_D-v3ebH0tKaT-qXMjQmG9YZ22_VwRD5SsDxYn7kmLbuCH_5culsQ0kqP-4rG323_kKQ8WD4M3LkjSlk9NvV_wAZhTl8Q4JIw?purpose=inline)
 
 [wiki.storagecenter.ch](https://wiki.storagecenter.ch/de/applications/Proxmox-Backup-Server?utm_source=chatgpt.com)
+
+## 12. Tes auto-connect setelah reboot
+
+Bagian ini saya tambahkan karena kita sempat mengalami masalah datastore tidak tersedia setelah PBS dinyalakan kembali.
+
+Pastikan OMV sudah menyala dan TGT aktif, kemudian reboot PBS.
+
+Setelah PBS hidup, jalankan:
+
+```
+iscsiadm -m session
+```
+
+```
+lsblk -o NAME,SIZE,TRAN,FSTYPE,MOUNTPOINTS
+```
+
+```
+findmnt /mnt/datastore/omv-pbs
+```
+
+Hasil:
+
+| Pemeriksaan        | Hasil                    |
+| ------------------ | ------------------------ |
+| iSCSI Session      | Connected                |
+| Disk iSCSI         | 100 GiB                  |
+| Filesystem         | EXT4                     |
+| Mount              | `/mnt/datastore/omv-pbs` |
+| PBS Datastore      | Available                |
+| Synology Datastore | Tetap Available          |
+
 
 Catatan: Datastore PBS menggunakan filesystem standar seperti EXT4, XFS, atau ZFS. Kapasitas yang terlihat di PBS sedikit lebih kecil dari kapasitas nominal akibat perbedaan satuan dan ruang filesystem.
