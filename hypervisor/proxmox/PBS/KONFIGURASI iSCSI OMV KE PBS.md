@@ -1,22 +1,6 @@
-### Target: Membuat 1 iSCSI LUN dari OMV sebesar 200 GB, menghubungkannya ke PBS, membuat filesystem EXT4, sampai muncul sebagai Datastore dan siap digunakan.
+# Target: Membuat 1 iSCSI LUN dari OMV sebesar 200 GB, menghubungkannya ke PBS, membuat filesystem EXT4, sampai muncul sebagai Datastore dan siap digunakan.
 
-#### Topologi
-
-OpenMediaVault
-
-IP: 192.168.200.2
-
-iSCSI Target — 200 GB
-
-LVM2 + TGT
-
-Network / TCP 3260
-
-Proxmox Backup Server
-
-IP: 192.168.200.4
-
-iSCSI Initiator → EXT4 → Datastore
+<img width="451" height="280" alt="Image" src="https://github.com/user-attachments/assets/fa6f6536-9491-4267-9108-b08429b50467" />
 
 ## 1. Persiapan OMV
 
@@ -170,11 +154,7 @@ Hasil yang diharapkan:
 
 Catat IQN yang muncul di tabel Targets. IQN tersebut dipakai untuk koneksi PBS.
 
-TGT menggunakan backing device sebagai LUN dan ACL untuk membatasi initiator yang boleh mengaksesnya.&#x20;
-
-[image](https://www.google.com/s2/favicons?domain=https://github.com\&sz=32)
-
-GitHub
+TGT menggunakan backing device sebagai LUN dan ACL untuk membatasi initiator yang boleh mengaksesnya.
 
 
 
