@@ -9,7 +9,7 @@ Pastikan perangkat:
 | Komponen   | Kapasitas              |
 | ---------- | ---------------------- |
 | `/dev/sda` | 20 GB — OS OMV         |
-| `/dev/sdb` | 100 GB — Storage iSCSI |
+| `/dev/sdb` | 200 GB — Storage iSCSI |
 
 Plugin yang dibutuhkan:
 
