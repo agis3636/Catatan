@@ -8,7 +8,7 @@ Ada 3 level konfigurasi:
 
 ![Proxmox VE - 7.2-3 | SysNetBR](https://images.openai.com/static-rsc-4/dRsa39uGthdkCxm9ieoMaMKhiwFIwF1Byf_fqTHsV4VuXOPG2w6rf9chTkb-LXO1OyBsRjBnqWM0Me4PfF-dxopHSN23bHMQfLUdrXMuIlUY4JsdavAVGEjxRU8gKXMI7kUV2GRQ0VYRRcFzV7DMHHIL8x9nRfD37EGiJhQmdqM?purpose=inline)
 
-![sysnetbr.eng.br](https://www.sysnetbr.eng.br/docs/Linux/intermediario/virtualizacao/Proxmox/?utm_source=chatgpt.com)
+[sysnetbr.eng.br](https://www.sysnetbr.eng.br/docs/Linux/intermediario/virtualizacao/Proxmox/?utm_source=chatgpt.com)
 
 | Level      | Fungsi                                           |
 | ---------- | ------------------------------------------------ |
