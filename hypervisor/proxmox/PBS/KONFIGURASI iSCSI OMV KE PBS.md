@@ -9,7 +9,7 @@ Pastikan perangkat:
 | Komponen   | Kapasitas              |
 | ---------- | ---------------------- |
 | `/dev/sda` | 20 GB — OS OMV         |
-| `/dev/sdb` | 200 GB — Storage iSCSI |
+| `/dev/sdb` | 100 GB — Storage iSCSI |
 
 Plugin yang dibutuhkan:
 
@@ -51,8 +51,8 @@ lsblk -o NAME,SIZE,TYPE /dev/sdb
 Target:
 
 ```
-sdb     200G disk
-└─sdb1  200G part
+sdb     100G disk
+└─sdb1  100G part
 ```
 
 ## 3. Membuat Physical Volume
@@ -160,19 +160,6 @@ TGT menggunakan backing device sebagai LUN dan ACL untuk membatasi initiator yan
 ---
 ---
 
-Modul lu sudah benar secara alur, tetapi ada beberapa bagian yang perlu dikoreksi berdasarkan error yang benar-benar kita alami saat PBS reboot.
-
-Ada 4 koreksi penting:
-
-| Bagian             | Modul lama                    | Koreksi                                                             |
-| ------------------ | ----------------------------- | ------------------------------------------------------------------- |
-| Kapasitas LUN PBS  | 200 GB                        | 100 GiB                                                             |
-| Auto-connect iSCSI | Ada, tetapi kurang ditekankan | Wajib `node.startup = automatic`                                    |
-| Mount otomatis     | `_netdev`                     | Benar, pertahankan                                                  |
-| Add Datastore      | Langsung Add                  | Verifikasi mount terlebih dahulu agar tidak menggunakan disk OS PBS |
-
-## Modul revisi — langkah 7 sampai 11
-
 ### 7. Menghubungkan iSCSI ke PBS
 
 A. Install iSCSI Initiator
@@ -226,11 +213,7 @@ Hasil wajib:
 node.startup = automatic
 ```
 
-Ini adalah perbaikan utama dari masalah kita sebelumnya. Sebelum diperbaiki, nilainya `manual`, sehingga PBS tidak otomatis menemukan LUN setelah reboot. Dokumentasi Debian juga mensyaratkan `automatic` untuk auto-login.&#x20;
-
-[image](https://www.google.com/s2/favicons?domain=https://sources.debian.org\&sz=32)
-
-Debian Sources+1
+Ini adalah perbaikan utama dari masalah kita sebelumnya. Sebelum diperbaiki, nilainya `manual`, sehingga PBS tidak otomatis menemukan LUN setelah reboot. Dokumentasi Debian juga mensyaratkan `automatic` untuk auto-login.
 
 
 
