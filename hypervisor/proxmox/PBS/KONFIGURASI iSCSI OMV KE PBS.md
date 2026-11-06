@@ -335,23 +335,4 @@ Selesai. Datastore akan muncul di sidebar PBS.
 
 [wiki.storagecenter.ch](https://wiki.storagecenter.ch/de/applications/Proxmox-Backup-Server?utm_source=chatgpt.com)
 
-## 12. Verifikasi akhir
-
-Di PBS GUI buka:
-
-Datastore → omv-pbs → Summary
-
-Pastikan kapasitas menunjukkan sekitar 200 GB nominal, bukan 13 GB.
-
-| Komponen        | Kondisi akhir       |
-| --------------- | ------------------- |
-| OMV `/dev/sdb1` | LVM Physical Volume |
-| Volume Group    | `vg_pbs`            |
-| Logical Volume  | `lun_pbs`           |
-| TGT Target      | `pbs-lun`           |
-| PBS Initiator   | Connected           |
-| Filesystem      | EXT4                |
-| Datastore       | `omv-pbs`           |
-| Status          | Siap digunakan      |
-
 Catatan: Datastore PBS menggunakan filesystem standar seperti EXT4, XFS, atau ZFS. Kapasitas yang terlihat di PBS sedikit lebih kecil dari kapasitas nominal akibat perbedaan satuan dan ruang filesystem.
