@@ -2,15 +2,7 @@
 
 ## **1. Portal untuk Global Admin**
 
-[Microsoft 365 Admin Center](https://images.openai.com/static-rsc-4/-pI1bk806a2Iuyle2ifmxTo_pFrGZ5OglsDLzz9dgisrWF06c-X1gih4Yac5ps2zq2bjRVLyX04uTFxLaZf9HkH5Xzgihe4fHfJqzg05hZ-MFtmLnWTDzz-a2dbO4WoDrATZdHq3scIyI00ANKLaYnT3uQnnYDr55QKFiIeWQNM?purpose=inline)
-
-**Microsoft 365 Admin Center**
-
-Khusus administrator
-
-[https://admin.microsoft.com](https://admin.microsoft.com?utm_source=chatgpt.com)
-
-Login menggunakan akun Global Admin.
+![Microsoft 365 Admin Center](https://images.openai.com/static-rsc-4/-pI1bk806a2Iuyle2ifmxTo_pFrGZ5OglsDLzz9dgisrWF06c-X1gih4Yac5ps2zq2bjRVLyX04uTFxLaZf9HkH5Xzgihe4fHfJqzg05hZ-MFtmLnWTDzz-a2dbO4WoDrATZdHq3scIyI00ANKLaYnT3uQnnYDr55QKFiIeWQNM?purpose=inline)
 
 Di sini kamu melakukan:
 
@@ -21,29 +13,13 @@ Di sini kamu melakukan:
 
 ## **2. Portal untuk user/karyawan**
 
-[Microsoft 365 Email Setup | Technology Services](https://images.openai.com/static-rsc-4/vO9yhaq2lKy3sxTkqelIWmXqGJ7F8VmFuEqVBJjyszhlE6k5xZ8bQeAXLC5AprM9956era3Kbz6mBWrXpcGX7F6GMivo1yoVc-SQ9OcjpcpJgqXtfO2llbiJaP0Je8su5nB0VXdTstmbd0qFmpPR3z_Rt-VFIid7n2ABPKacVQY?purpose=inline)
-
-**Microsoft 365 Apps Portal**
-
-Untuk user
-
-[https://m365.cloud.microsoft/apps](https://m365.cloud.microsoft/apps?utm_source=chatgpt.com)
-
-Login menggunakan akun karyawan yang sudah dibuat dan diberi lisensi.
+![Microsoft 365 Email Setup | Technology Services](https://images.openai.com/static-rsc-4/vO9yhaq2lKy3sxTkqelIWmXqGJ7F8VmFuEqVBJjyszhlE6k5xZ8bQeAXLC5AprM9956era3Kbz6mBWrXpcGX7F6GMivo1yoVc-SQ9OcjpcpJgqXtfO2llbiJaP0Je8su5nB0VXdTstmbd0qFmpPR3z_Rt-VFIid7n2ABPKacVQY?purpose=inline)
 
 Di sini user bisa:
 
 - Download installer Office.
 - Install Word, Excel, PowerPoint, dan aplikasi lainnya.
 - Mengakses aplikasi Microsoft 365.
-
-Sumber:&#x20;
-
-[image](https://www.google.com/s2/favicons?domain=https://learn.microsoft.com\&sz=32)
-
-Microsoft Learn+2
-
-
 
 ## **3. Simulasi langsung saat kamu datang ke kantor customer**
 
