@@ -4,6 +4,8 @@
 
 ![Microsoft 365 Admin Center](https://images.openai.com/static-rsc-4/-pI1bk806a2Iuyle2ifmxTo_pFrGZ5OglsDLzz9dgisrWF06c-X1gih4Yac5ps2zq2bjRVLyX04uTFxLaZf9HkH5Xzgihe4fHfJqzg05hZ-MFtmLnWTDzz-a2dbO4WoDrATZdHq3scIyI00ANKLaYnT3uQnnYDr55QKFiIeWQNM?purpose=inline)
 
+[https://admin.microsoft.com](https://admin.microsoft.com?utm_source=chatgpt.com)
+
 Di sini kamu melakukan:
 
 - Membuat akun karyawan (Add a user).
@@ -14,6 +16,8 @@ Di sini kamu melakukan:
 ## **2. Portal untuk user/karyawan**
 
 ![Microsoft 365 Email Setup | Technology Services](https://images.openai.com/static-rsc-4/vO9yhaq2lKy3sxTkqelIWmXqGJ7F8VmFuEqVBJjyszhlE6k5xZ8bQeAXLC5AprM9956era3Kbz6mBWrXpcGX7F6GMivo1yoVc-SQ9OcjpcpJgqXtfO2llbiJaP0Je8su5nB0VXdTstmbd0qFmpPR3z_Rt-VFIid7n2ABPKacVQY?purpose=inline)
+
+[https://m365.cloud.microsoft/apps](https://m365.cloud.microsoft/apps?utm_source=chatgpt.com)
 
 Di sini user bisa:
 
@@ -97,3 +101,21 @@ Selesai
 **Satu hal penting:** Jangan sampai user login ke Office menggunakan akun Global Admin. Gunakan akun masing-masing yang sudah mendapat lisensi.
 
 Jadi alurnya sederhana: **Kamu mengelola akun dan lisensi dari Admin Center, sedangkan karyawan menggunakan portal Microsoft 365 untuk download Office dan akun masing-masing untuk aktivasi.**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
