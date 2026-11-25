@@ -175,11 +175,11 @@ Native VLAN di Cisco harus sama dengan Native VLAN di UCG.
 
 ## **6. Konfigurasi Access Port**
 
+![VLAN Riassunto Maturità: Segmentazione Reti | Maturando](https://images.openai.com/static-rsc-4/iVRVFwHNm2Idmnnmpg1XQsM2uIF2Z7T4RfmqwkW1DbXLNWQXBsaIMPhIHfEQJgZghpqDwjscxi_vsVRozx9PgVcd-wVVRa2t5jMKzqAliRjbO6MCM3xI6v1fM-JFGPCWgkw4PHgUx0VHZ1nGIxnNCNpGHHRokyiKA_1Qappv-LQ?purpose=inline)
+
 Sekarang kita menentukan pembagian port untuk perangkat akhir.
 
 ### **A. Port Fa0/2–Fa0/8 → VLAN 50**
-
-![VLAN Riassunto Maturità: Segmentazione Reti | Maturando](https://images.openai.com/static-rsc-4/iVRVFwHNm2Idmnnmpg1XQsM2uIF2Z7T4RfmqwkW1DbXLNWQXBsaIMPhIHfEQJgZghpqDwjscxi_vsVRozx9PgVcd-wVVRa2t5jMKzqAliRjbO6MCM3xI6v1fM-JFGPCWgkw4PHgUx0VHZ1nGIxnNCNpGHHRokyiKA_1Qappv-LQ?purpose=inline)
 
 ```
 interface range fa0/2 - 8
