@@ -4,33 +4,9 @@ Perangkat: Cisco Catalyst 2950 · IOS 12.1(22)EA14 · Router: UCG Ultra
 
 ## **1. Topologi jaringan**
 
-**UCG Ultra**
+![WS-C2950-24-CISCO Cisco Network Switch](https://images.openai.com/static-rsc-4/vxL4dI_CHP6Lz7uQyxb00pDtNT5jHf6E1wY2nharihgocA7oT_DAkLizH74NURcm6ojwGclZniXb15S2tEvsOfw4oq6PkSN52L0qMfcRm0h0Hf1zlRGiIK5U4H7VIk-nSoj5Ke4RVaSHfPyhfAa5_us6mADwGqVKqY5nG3gFqp0?purpose=inline)
 
-Gateway, DHCP, Routing, Internet
-
-Port 2 ↔ Fa0/1 · Trunk
-
-**Cisco Catalyst 2950**
-
-Layer 2 Switch
-
-**VLAN 50**
-
-KUM-JKT
-
-Fa0/2–8
-
-**VLAN 80**
-
-Testing
-
-Fa0/9–16
-
-**VLAN 150**
-
-Port 2
-
-Fa0/17–24
+<img width="483" height="234" alt="image" src="https://github.com/user-attachments/assets/350b2ddb-001b-43a7-82f2-d9c6ef95ead8" />
 
 ### **IP Addressing**
 
@@ -43,6 +19,8 @@ Fa0/17–24
 IP management Cisco: `192.168.50.13/24`.
 
 ## **2. Konfigurasi UCG Ultra**
+
+![Configuring VLANs on UniFi Switches](https://images.openai.com/static-rsc-4/4af36C4EV2yXZKhV4sIAc9VtIOtFxC8hyJHgAKMmX-DM4SxGo23B_to8y3etE3o9P5TClBkw3Go0IxQQ8ttpTQNg3auJYm9HobWlY0DZq-LOB-iWJxHD4AFyrktarTvI-njHHJGdZvcMPzoOZMyQq6IGurqqcPyre7E4eBoYqQg?purpose=inline)
 
 Bagian ini dilakukan dari UniFi Network.
 
@@ -200,6 +178,8 @@ Native VLAN di Cisco harus sama dengan Native VLAN di UCG.
 Sekarang kita menentukan pembagian port untuk perangkat akhir.
 
 ### **A. Port Fa0/2–Fa0/8 → VLAN 50**
+
+![VLAN Riassunto Maturità: Segmentazione Reti | Maturando](https://images.openai.com/static-rsc-4/iVRVFwHNm2Idmnnmpg1XQsM2uIF2Z7T4RfmqwkW1DbXLNWQXBsaIMPhIHfEQJgZghpqDwjscxi_vsVRozx9PgVcd-wVVRa2t5jMKzqAliRjbO6MCM3xI6v1fM-JFGPCWgkw4PHgUx0VHZ1nGIxnNCNpGHHRokyiKA_1Qappv-LQ?purpose=inline)
 
 ```
 interface range fa0/2 - 8
@@ -424,21 +404,28 @@ show ip ssh
 
 Perintah ini menampilkan status SSH.
 
-## **11. Konfigurasi SSH di Windows**
+## **11. Konfigurasi SSH di Windows** / **Koneksi SSH dari Windows**
 
-Cisco 2950 menggunakan algoritma SSH generasi lama. OpenSSH modern di Windows perlu diberi izin algoritma tersebut hanya untuk koneksi ke switch ini.
+**Tes pertama — CMD**
 
-Buat file konfigurasi SSH:
+Gunakan perintah lengkap berikut karena Cisco 2950 menawarkan algoritma SSH generasi lama:
 
-Buka CMD:
+```
+ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-rsa -oCiphers=+3des-cbc -oMACs=+hmac-sha1 admin@192.168.50.13
+```
+
+Masukkan password admin saat diminta.
+
+**Supaya tidak perlu mengetik perintah panjang setiap kali:**
+
+Buat konfigurasi SSH di Windows. Jalankan CMD:
 
 ```
 if not exist "%USERPROFILE%\.ssh" mkdir "%USERPROFILE%\.ssh"
-
 notepad "%USERPROFILE%\.ssh\config"
 ```
 
-Masukkan:
+Masukkan konfigurasi berikut ke Notepad:
 
 ```
 Host cisco2950
@@ -449,8 +436,6 @@ Host cisco2950
     Ciphers +3des-cbc
     MACs +hmac-sha1
 ```
-
-Simpan sebagai `config`, bukan `config.txt`.
 
 **Fungsi konfigurasi:**
 
@@ -464,19 +449,17 @@ Simpan sebagai `config`, bukan `config.txt`.
 | `Ciphers`           | Mengatur algoritma enkripsi          |
 | `MACs`              | Mengatur autentikasi integritas data |
 
-### **Koneksi SSH**
+Simpan dengan nama `config` (tanpa `.txt`).
 
-Sekarang cukup jalankan:
+Mulai sekarang cukup satu perintah
 
 ```
 ssh cisco2950
 ```
 
-Masukkan password admin Cisco.
+Selesai. Tidak perlu parameter panjang lagi.
 
-Target akhir
-
-Kamu sudah bisa masuk ke Cisco Catalyst 2950 melalui CMD Windows tanpa kabel console.
+Catatan keamanan: algoritma SSH lama ini lemah dan hanya layak digunakan pada jaringan management internal tepercaya. Jangan membuka akses SSH switch ke internet.
 
 ## **12. Ringkasan konfigurasi akhir**
 
@@ -509,12 +492,16 @@ Kamu sudah bisa masuk ke Cisco Catalyst 2950 melalui CMD Windows tanpa kabel con
 | `show ip ssh`             | Melihat status SSH              |
 | `write memory`            | Menyimpan konfigurasi           |
 
-**Catatan keamanan:** SSH pada Catalyst 2950 ini menggunakan algoritma lama seperti `diffie-hellman-group1-sha1` dan `3des-cbc`. Batasi akses management pada jaringan internal tepercaya dan jangan membuka port SSH switch ke internet. Dukungan SSH dan 3DES merupakan bagian dari kemampuan image kriptografi Catalyst 2950 generasi tersebut.&#x20;
-
-[image](https://www.google.com/s2/favicons?domain=https://loel.ucolick.org\&sz=32)
-
-loel.ucolick.org+2
-
-
+**Catatan keamanan:** SSH pada Catalyst 2950 ini menggunakan algoritma lama seperti `diffie-hellman-group1-sha1` dan `3des-cbc`. Batasi akses management pada jaringan internal tepercaya dan jangan membuka port SSH switch ke internet. Dukungan SSH dan 3DES merupakan bagian dari kemampuan image kriptografi Catalyst 2950 generasi tersebut.
 
 **Selesai.** Ini mencakup alur dari switch kosong sampai remote SSH, dengan topologi dan pembagian VLAN yang sudah kita gunakan.
+
+## **Dokumentasi resmi**
+
+1. [Cisco Catalyst 2950/2955 — Command Reference](https://www.cisco.com/c/dam/en/us/td/docs/switches/lan/catalyst2955/software/release/12_1_12c_ea1/command/reference/cr2955.pdf?utm_source=chatgpt.com) — referensi perintah IOS dan VLAN default.
+2. [Cisco Catalyst 2950 — System Message Guide](https://www.cisco.com/c/dam/en/us/td/docs/switches/lan/catalyst2950/software/release/12-1_22_ea2/system/messages/smg2950.pdf?utm_source=chatgpt.com) — dokumentasi sistem dan referensi seri 2950.
+3. [Ubiquiti — Switch Port VLAN Assignment](https://help.ui.com/hc/en-us/articles/26136855808919-Switch-Port-VLAN-Assignment-Trunk-Access-Ports?utm_source=chatgpt.com) — penjelasan trunk, access, native dan tagged VLAN.
+4. [Ubiquiti — UniFi Switch Settings](https://help.ui.com/hc/en-us/articles/33402927617047-UniFi-Switch-Settings?utm_source=chatgpt.com) — pengaturan port dan tagged VLAN.
+5. [Cisco — Configuring Secure Shell](https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960x/software/15-2_5_e/configuration_guide/b_1525e_consolidated_2960x_cg/b_1525e_consolidated_2960x_cg_chapter_0101101.pdf?utm_source=chatgpt.com) — referensi konfigurasi SSH Cisco.
+
+**Target akhir:** Cisco Catalyst 2950 berfungsi sebagai switch Layer 2 dengan tiga VLAN, trunk ke UCG Ultra, pembagian access port, IP management static, dan remote administration melalui SSH.
